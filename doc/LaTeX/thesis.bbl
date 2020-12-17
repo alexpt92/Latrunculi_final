@@ -1,0 +1,20 @@
+\def\etalchar#1{$^{#1}$}
+\begin{thebibliography}{SWDK{\etalchar{+}}98}
+
+\bibitem[BlSt96]{JSAC96}
+G.~Blakowski und R.~Steinmetz.
+\newblock A Media Synchronization Survey: Reference Model, Specification, and
+  Case Studies.
+\newblock {\em IEEE Journal on Selected Areas in Communication} 14(1), Januar
+  1996, S.~5--35.
+
+\bibitem[CNRS98]{qosr}
+E.~Crawley, R.~Nair, B.~Rajagopalan und H.~Sandick.
+\newblock A Framework for QoS-based Routing in the Internet.
+\newblock RFC 2386 (Informational), August 1998.
+
+\bibitem[SWDK{\etalchar{+}}98]{TB98}
+F.~Stenz, W.~Weich, D.~Drollig, K.~Klein und G.~Ganz.
+\newblock {\em Technische Beschreibung f"ur System 4711}, 1998.
+
+\end{thebibliography}
