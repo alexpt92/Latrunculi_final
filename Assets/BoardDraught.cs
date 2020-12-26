@@ -366,7 +366,7 @@ public class BoardDraught : Board
 
     }
 
-    public override bool IsGameOver()
+    public bool IsGameOver()
     {
         bool gameOver = false;
         int whitePiecesLeft = 0;

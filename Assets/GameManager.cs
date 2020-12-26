@@ -26,13 +26,18 @@ public class GameManager : MonoBehaviour
     private bool moving = false;
     //public bool secondAI;
     public Toggle secondAIActive;
-   /* private float pointAttacked = 100f;
-    private float pointThreat = 50f;
-    private float pointHide = -2f;*/
+    public Toggle firstAIActive;
+
+    /* private float pointAttacked = 100f;
+     private float pointThreat = 50f;
+     private float pointHide = -2f;*/
     private float pointAttacked = 100f;
     private float pointThreat = 50f;
     private float pointHide = 20f;
     private float pointHighThreat = 0f;
+
+    public Dropdown DDX;
+    public Dropdown DDY;
 
     public InputField InputX;
     public InputField InputY;
@@ -44,7 +49,7 @@ public class GameManager : MonoBehaviour
     private float pointThreat2 = 50f;
     private float pointHide2 = 20f;
     private float pointHighThreat2 = 0f;
-
+    public EscapeMenuActivator EscapeMenu;
 
     private bool gameRunning;// = false;
                              // private int maxRounds = 10;
@@ -97,10 +102,12 @@ public class GameManager : MonoBehaviour
 
         if ((initialVectorBottomLeft != updatedVectorBottomLeft) || (initialVectorTopRight != updatedVectorTopRight))
         {
+            EscapeMenu.resizeUI();
             if (mBoard.mAllCells != null)
             {
                 mBoard.resizeBoard();
                 mPieceManager.resizePieces();
+               // EscapeMenu.resizeUI();
             }
             //EscapeMenuActivator.resizeUI();
             initialVectorBottomLeft = updatedVectorBottomLeft;
@@ -111,32 +118,97 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         GameObject.FindGameObjectWithTag("StartButton").SetActive(false);
+        GameObject.FindGameObjectWithTag("DDX").SetActive(false);
+        GameObject.FindGameObjectWithTag("DDY").SetActive(false);
 
-        if (secondAIActive.isOn)
+        if (firstAIActive.isOn == false)
+        {
+            //secondAIActive. = false;
+
+            secondAIActive.interactable = false;
+        }
+        if (secondAIActive.isActiveAndEnabled)
         {
             AIActive = 2;
         }
-        else
+        else if (firstAIActive.isOn)
             AIActive = 1;
+        else 
+            AIActive = 0;
 
-        if (InputX.text == "")
-            sizeX = 8;
-        else
-            sizeX = System.Int32.Parse(InputX.text);
+        secondAIActive.interactable = false;
+        firstAIActive.interactable = false;
+        switch (DDX.value)
+        {
+            case 0:
+                sizeX = 6;
+                break;
+            case 1:
+                sizeX = 7;
+                break;
+            case 2:
+                sizeX = 8;
+                break;
+            case 3:
+                sizeX = 9;
+                break;
+            case 4:
+                sizeX = 10;
+                break;
+            case 5:
+                sizeX = 11;
+                break;
+            case 6:
+                sizeX = 12;
+                break;
+        }
+        switch (DDY.value)
+        {
+            case 0:
+                sizeY = 6;
+                break;
+            case 1:
+                sizeY = 7;
+                break;
+            case 2:
+                sizeY = 8;
+                break;
+            case 3:
+                sizeY = 9;
+                break;
+            case 4:
+                sizeY = 10;
+                break;
+            case 5:
+                sizeY = 11;
+                break;
+            case 6:
+                sizeY = 12;
+                break;
+        }
 
-        if (InputY.text == "")
-            sizeY = 8;
-        else
-            sizeY = System.Int32.Parse(InputY.text);
+        /*  if (InputX.text == "")
+              sizeX = 8;
 
+          else
+              sizeX = System.Int32.Parse(InputX.text);
 
+          if (InputY.text == "")
+              sizeY = 8;
+          else
+              sizeY = System.Int32.Parse(InputY.text);
+
+          */
         mBoard.Create(sizeX, sizeY);
 
 
 
         //Create Pieces
         mPieceManager.Setup(mBoard, "iwas");
-
+        if (firstAIActive.isOn == false && secondAIActive.isOn == false)
+        {
+            mPieceManager.isAIActive = false;
+        }
         mPieceManager.SwitchSides(Color.black);
     }
 
@@ -198,12 +270,12 @@ public class GameManager : MonoBehaviour
 
     public void MovePiece()
     {
-        if (currentPlayer == 2)
+        if (currentPlayer == 2 && firstAIActive.isOn)
         {
             List<Move> moves = new List<Move>();
             mPieceManager.setBoard(mBoard);
             string[,] boarddraught = mBoard.getDraughtAsStrings();
-            BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat);
+            BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, 80);
             float test;
             Move currentMove = new Move();
 
@@ -222,7 +294,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (currentPlayer == 1 && AIActive==2)
+        else if (currentPlayer == 1 && secondAIActive.isOn)
         {
             List<Move> moves = new List<Move>();
             mPieceManager.setBoard(mBoard);
@@ -330,22 +402,22 @@ public class GameManager : MonoBehaviour
             if (GameOver() == "Player 1" && AIActive != 2)
             {
                 Debug.Log(GameOver() + "wins.");
-                GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "YOU WIN!";
+               // GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "YOU WIN!";
 
             }
             else if (GameOver() == "Player 2" && AIActive != 2)
             {
-                GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "YOU LOSE!";
+              //  GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "YOU LOSE!";
 
                 Debug.Log(GameOver() + "wins.");
             }
         }
-        if (currentPlayer == 2)
+        if (currentPlayer == 2 && firstAIActive.isOn)
         {
            // StartCoroutine(Move());
              MovePiece();
     }
-        else if (currentPlayer == 1 && AIActive == 2)
+        else if (currentPlayer == 1 && secondAIActive.isOn)//AIActive == 2)
         {
             //StartCoroutine(Move());
 
@@ -364,7 +436,7 @@ public class GameManager : MonoBehaviour
         moving = true;
         //yield on a new YieldInstruction that waits for 5 seconds.
         // MovePiece();
-        if (currentPlayer == 1 & AIActive == 2)
+        if (currentPlayer == 1 & secondAIActive.isOn)
         {
 
             List<Piece> wlist = mPieceManager.getWPieces();
@@ -378,7 +450,7 @@ public class GameManager : MonoBehaviour
             moving = false;
 
         }
-        else if (currentPlayer == 2)
+        else if (currentPlayer == 2 && firstAIActive.isOn)
         {
             List<Piece> blist = mPieceManager.getBPieces();
             blist.ToArray()[idx].ShowCells();
@@ -404,11 +476,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log(GameOver() + "wins.");
             
-            if (GameOver() == "Player 1")
+           /* if (GameOver() == "Player 1")
                 GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "YOU WIN!";
             else if (GameOver() == "Player 2")
                 GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "YOU LOSE!";
-            //SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);*/
         }
         else
         {
@@ -420,12 +492,12 @@ public class GameManager : MonoBehaviour
                     MovePiece();
                 }
             }
-            else if (currentPlayer == 1)
+            else if (currentPlayer == 1 && firstAIActive.isOn)
             {
                 currentPlayer = 2;
                 MovePiece();
 
-            }else if (currentPlayer == 2 && AIActive == 2)
+            }else if (currentPlayer == 2 && secondAIActive.isOn)//AIActive == 2)
             {
                 currentPlayer = 1;
                 MovePiece();
@@ -451,9 +523,9 @@ public class GameManager : MonoBehaviour
     public string GameOver()
     {
 
-        if (mPieceManager.getBPieces().ToArray().Length < 2 || mBoard.IsGameOver())
+        if (/*mPieceManager.getBPieces().ToArray().Length < 2 &&*/ mBoard.IsGameOver() == "Player 1")
             return "Player 1";
-        else if (mPieceManager.getWPieces().ToArray().Length < 2 || mBoard.IsGameOver())
+        else if (/*mPieceManager.getWPieces().ToArray().Length < 2 &&*/ mBoard.IsGameOver() == "Player 2")
             return "Player 2";
         else if (mBoard.GetMoves(1).ToArray().Length == 0)
         {

@@ -107,7 +107,7 @@ public class Board : MonoBehaviour
         return this;// newBoard;
     }*/
 
-    public virtual bool IsGameOver()
+    public virtual string IsGameOver()
     {
         bool gameOver = false;
         int whitePiecesLeft = 0;
@@ -126,11 +126,16 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        if (whitePiecesLeft < 2 || blackPiecesLeft < 2 || GetMoves(1).Count == 0 || GetMoves(2).Count == 0)
+        if (whitePiecesLeft < 2 || GetMoves(1).Count == 0)
         {
             gameOver = true;
+            return "Player 1";
         }
-        return gameOver;
+        else if (blackPiecesLeft < 2 || GetMoves(2).Count == 0)
+            return "Player 2";
+        else
+            return "";
+       // return gameOver;
     }
 
     internal void resizeBoard()
