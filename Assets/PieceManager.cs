@@ -288,7 +288,17 @@ public class PieceManager : MonoBehaviour
         //BoardDraught b2 = new BoardDraught(boarddraught, 2, board.sizeX, board.sizeY);
         board.simpleAllCells = board.getDraughtAsStrings();
         //int player = board.GetCurrentPlayer();
-        return (board.IsGameOver());
+        if (board.IsGameOver() == "Player 1" || board.IsGameOver() == "Player 2")
+            return true;
+        else 
+            return false;
+    }
+
+    IEnumerator RemoveWinMessageAfterDelay()
+    {
+        yield return new WaitForSeconds(5);
+        GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "";
+
     }
 
     public void SwitchSides(Color color)
@@ -297,22 +307,47 @@ public class PieceManager : MonoBehaviour
         Piece[] bPieces = mBPieces.ToArray();
         int wDeathCounter = 0;
         int bDeathCounter = 0;
+        GameObject referenceObject;
+        GameManager referenceScript;
+        referenceObject = GameObject.FindGameObjectWithTag("GameManager");
+        referenceScript = referenceObject.GetComponent<GameManager>();
         if (GameOver(color))
         {
             if (color == Color.black)
             {       if (moveAgain)
+                {
                     Debug.Log("White wins. No Moves left.");
-            else
-                Debug.Log("Black wins. No Moves left");
-           
+                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "SHELL WINS!";
+                    if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
+                        StartCoroutine(RemoveWinMessageAfterDelay());
+                }
+
+                else
+                {
+                    Debug.Log("Black wins. No Moves left");
+                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "STONE WINS!";
+                    if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
+                    StartCoroutine(RemoveWinMessageAfterDelay());
+
+                }
             }
             else
             {
-                    if (moveAgain)
+                if (moveAgain)
+                {
                     Debug.Log("Black wins. No Moves left");
-            else
-                Debug.Log("White wins. No Moves left.");
+                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "STONE WINS!";
+                    if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
+                        StartCoroutine(RemoveWinMessageAfterDelay());
+                }
+                else
+                {
+                    Debug.Log("White wins. No Moves left.");
+                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "SHELL WINS!";
+                    if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
+                        StartCoroutine(RemoveWinMessageAfterDelay());
 
+                }
             }
             ResetPieces(false);
         }
@@ -347,20 +382,22 @@ public class PieceManager : MonoBehaviour
         bool isBlackTurn = color == Color.white ? true : false;
         if (isAIActive && isBlackTurn)
         {
-            GameObject referenceObject;
-            GameManager referenceScript;
-            referenceObject = GameObject.FindGameObjectWithTag("GameManager");
-            referenceScript = referenceObject.GetComponent<GameManager>();
-            if (referenceScript.getCurrentPlayer() == 1 && referenceScript.AIActive != 2)
+            /*   GameObject referenceObject;
+               GameManager referenceScript;
+               referenceObject = GameObject.FindGameObjectWithTag("GameManager");
+               referenceScript = referenceObject.GetComponent<GameManager>();*/
+            if (referenceScript.getCurrentPlayer() == 1 && referenceScript.firstAIActive.isOn)
             {
                 DisableAllPieces();
             }
             else if (referenceScript.getCurrentPlayer() == 2)
             {
-               // referenceScript.MoveAgain(2);
+                // referenceScript.MoveAgain(2);
             }
 
         }
+        else if (referenceScript.secondAIActive.isOn)
+            DisableAllPieces();
         else
         {
             SetInteractive(mWPieces, !isBlackTurn);
@@ -374,10 +411,10 @@ public class PieceManager : MonoBehaviour
         else if (moveAgain)
         {
             moveAgain = false;
-            GameObject referenceObject;
+           /*GameObject referenceObject;
             GameManager referenceScript;
             referenceObject = GameObject.FindGameObjectWithTag("GameManager");
-            referenceScript = referenceObject.GetComponent<GameManager>();
+            referenceScript = referenceObject.GetComponent<GameManager>();*/
             referenceScript.MoveAgain();
         }
     }
