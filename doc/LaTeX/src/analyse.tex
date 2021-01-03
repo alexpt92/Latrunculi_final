@@ -4,70 +4,80 @@
 \chapter{Analyse}
 \label{ch:Analyse}
 %% ==============================
-In diesem Kapitel sollen zunächst das zu lösende Problem
-sowie die Anforderungen und die Randbedingungen 
-einer Lösung\index{Lösung} beschrieben werden (eine präzisierte Aufgabenstellung\index{Aufgabenstellung}).
+Im vorherigen Kapitel sollte klar geworden sein, dass die Ansätze die bereits genutzt wurden, heute noch immer ähnlich funktionieren und ausreichend entwickelt sind diese auch in der Lage erfahrere Spieler oder Profis zu schlagen, wie IBMs Deep Blue beim Schach gezeigt hat.\\
+In diesem Kapitel werden die Anforderungen einer Lösung betrachtet um Latrunculi Digital umzusetzen und auf dem gewünschten Gerät laufen zu lassen.
+%sollen zunächst das zu lösende Problem
+%sowie die Anforderungen und die Randbedingungen 
+%einer Lösung\index{Lösung} beschrieben werden (eine präzisierte Aufgabenstellung\index{Aufgabenstellung}).
 
 
 %% ==============================
-\section{Anforderungen}
+\section{Technische Anforderungen}
+%% ==============================
+\label{ch:Analyse:sec:TechAnforderungen}
+Zum Zeitpunkt der Bearbeitung dieser Arbeit befinden für uns in einer durch Covid-19 verursachten Pandemie, daher begleiten Kontaktbeschränkungen unseren Alltag. Aus diesem Grund soll es auch eine Möglichkeit geben, dieses Spiel Online via Webbrowser abrufen zu können. Außerdem soll es fähig sein auch unter Windows zu laufen und mit einem Touchscreen bedienbar sein. Bei dem vorhandenen Gerät im Landesmuseum Birkenfeld handelt es sich um einen Touch-Tisch mit installiertem Microsoft Windows 10 Enterprise LTSC (x64), 4 GB Ram als Arbeitsspeicher und einem Intel NUC10 i5 FNH. Da das Gerät auch keine dauerhafte Internettverbindung hat, soll es auch möglich sein das Spiel via USB auf dem Gerät zu starten. Da Unity die Möglichkeit bietet ein Entwickeltes Spiel für verschiedene Plattformen bereitzustellen, habe ich mich für Unity als Engine entschieden. Außerdem kann der Ordner mit der ausführbaren Datei prinzipiell auch auf einem USB-Stick liegen und von dort aus gestartet werden.
+
+%% ==============================
+\section{Weitere Anforderungen}
 %% ==============================
 \label{ch:Analyse:sec:Anforderungen}
-Anforderungen und Randbedingungen\index{Randbedingungen} \ldots
+Das Spiel soll die Möglichkeit bieten gegen eine Künstliche Intelligenz zu spielen, beziehungsweise auch als Simulation für Vorführungszwecke laufen zu lassen. Die KI sollte nach Möglichkeit ein sinnvolle Strategie verfolgen, sodass die Züge nicht willkürlich wirken. Das heißt es müssen einerseits die Logik \& Regeln implementiert werden, damit das Spiel grundsätzlich spielbar ist und andererseits der MiniMaxing-Algorithmus um die erlaubten Züge vorher zu bewerten. Weiterhin muss ein ansprechendes Design gewählt werden, dass auch historisch sinnvoll ist und den Spielern im Museum ein relativ realistisches Bild des Spiels bieten. Da historisch überliefert wurde, dass vor Allem mit Steinen gespielt wurde, wurden die Spielfiguren als Steine und Muscheln festgelegt. Die Steuerung sollte möglichst intuitiv sein, daher habe ich mich beim Prototypen für eine "OnClick"-Steuerung entschieden. Das heißt die Steine wurden angeklickt und durch einen Klick auf eine erlaubte Zelle verschoben. Als allerdings klar wurde, dass das Spiel auf einem Touch-Gerät laufen soll wurde Latrunculi für eine "Drag\&Drop"-Bedienung angepasst. Das Menü soll leicht erreichbar sein, um das Spiel Neustarten oder Beenden zu können.
+
+%Anforderungen und Randbedingungen\index{Randbedingungen} \ldots
 
 %% ==============================
-\section{Weiterer Abschnitt}
+%\section{Weiterer Abschnitt}
 %% ==============================
-\label{ch:Analyse:sec:Abschnitt}
+%\label{ch:Analyse:sec:Abschnitt}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-\begin{figure}[htb]
-\centering
-  	{\includegraphics[width=.3\textwidth]{Logo-Uni-Trier.jpg}}
-	\caption{Logo der Universität Trier.\label{fig:grafik1}}
-\centering
-\end{figure}
+%\begin{figure}[htb]
+%\centering
+ % 	{\includegraphics[width=.3\textwidth]{Logo-Uni-Trier.jpg}}
+%	\caption{Logo der Universität Trier.\label{fig:grafik1}}
+%\centering
+%\end{figure}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore %magna aliquyam erat, sed diam voluptua. 
 
-\begin{table}[htb]
-\caption{Tabelle mit Werten.\label{tab:liste}}
-\vspace*{1em}
-\centering
+%\begin{table}[htb]
+%\caption{Tabelle mit Werten.\label{tab:liste}}
+%\vspace*{1em}
+%\centering
 
-\bgroup
-\def\arraystretch{1.3}%  1 is the default, change whatever you need
+%\bgroup
+%\def\arraystretch{1.3}%  1 is the default, change whatever you need
 
-\begin{tabular}[c]{l|l|c}
+%\begin{tabular}[c]{l|l|c}
 	
-	\multicolumn{1}{c|}{\textbf{A}} & 
-	\multicolumn{1}{c|}{\textbf{B}} & 
-	\multicolumn{1}{c}{\textbf{C}} \\ 
+%	\multicolumn{1}{c|}{\textbf{A}} & 
+%	\multicolumn{1}{c|}{\textbf{B}} & 
+%	\multicolumn{1}{c}{\textbf{C}} \\ 
 	
-	\hline
+%	\hline
 
-	Test 1& Slow& 279 \\ 
-	&Fast & 499 \\ 
-	&Very fast& 719 \\ 
+%	Test 1& Slow& 279 \\ 
+%	&Fast & 499 \\ 
+%	&Very fast& 719 \\ 
 	
-\end{tabular}
+%\end{tabular}
 
-\egroup
+%\egroup
 
-\end{table}
+%\end{table}
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. 
+%Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. 
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. 
+%Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. 
 
 %% ==============================
-\section{Zusammenfassung}
+%\section{Zusammenfassung}
 %% ==============================
-\label{ch:Analyse:sec:zusammenfassung}
+%\label{ch:Analyse:sec:zusammenfassung}
 
-Am Ende sollten ggf. die wichtigsten Ergebnisse nochmal in \emph{einem}
-kurzen Absatz zusammengefasst werden.
+%Am Ende sollten ggf. die wichtigsten Ergebnisse nochmal in \emph{einem}
+%kurzen Absatz zusammengefasst werden.
 
 %%% Local Variables: 
 %%% mode: latex

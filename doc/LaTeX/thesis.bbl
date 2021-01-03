@@ -1,20 +1,28 @@
-\def\etalchar#1{$^{#1}$}
-\begin{thebibliography}{SWDK{\etalchar{+}}98}
+\begin{thebibliography}{BaFe14}
 
-\bibitem[BlSt96]{JSAC96}
-G.~Blakowski und R.~Steinmetz.
-\newblock A Media Synchronization Survey: Reference Model, Specification, and
-  Case Studies.
-\newblock {\em IEEE Journal on Selected Areas in Communication} 14(1), Januar
-  1996, S.~5--35.
+\bibitem[BaFe14]{barr2014handbook}
+A.~Barr und E.~A. Feigenbaum.
+\newblock {\em The Handbook of Artificial Intelligence: Volume 2}, Band~2.
+\newblock Butterworth-Heinemann.
+\newblock 2014.
 
-\bibitem[CNRS98]{qosr}
-E.~Crawley, R.~Nair, B.~Rajagopalan und H.~Sandick.
-\newblock A Framework for QoS-based Routing in the Internet.
-\newblock RFC 2386 (Informational), August 1998.
+\bibitem[Hart17]{AlphaBeta}
+M.~Hartmann.
+\newblock Der Alpha-Beta-Algorithmus, 2017.
 
-\bibitem[SWDK{\etalchar{+}}98]{TB98}
-F.~Stenz, W.~Weich, D.~Drollig, K.~Klein und G.~Ganz.
-\newblock {\em Technische Beschreibung f"ur System 4711}, 1998.
+\bibitem[Klin08]{tecchannel}
+H.~Klinge.
+\newblock Warum Künstliche Intelligenz (KI) in Spielen stagniert, 1 2008.
+
+\bibitem[Pett]{ConceptArt}
+J.~Petty.
+\newblock What is Unity 3D \& What is it Used For?
+
+\bibitem[Rous18]{computerweekly}
+M.~Rouse.
+\newblock Künstliche Intelligenz (KI), 2018.
+
+\bibitem[UPr]{UPrefabs}
+{\em Unity Documentation, Prefabs}.
 
 \end{thebibliography}
