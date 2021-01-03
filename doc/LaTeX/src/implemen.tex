@@ -6,7 +6,7 @@
 \label{ch:Implementierung}
 %% ==============================
 
-Aufgrund der unterstützenden Funktionen, wie das Portieren auf verschiedene Systeme, habe ich mich für die Unity Engine in der Version 2019.3.14f entschieden um Latrunculi digital umzusetzen. Die Erklärung zu Unity befindet sich im Abschnitt \ref{ch:Grundlagen:sec:Unity}. Weiterhin habe ich mich in C\# eingearbeitet und damit die verwendeteten Skripte geschrieben und genutzt. Da ich vorher noch nicht mit Unity und/oder C\# gearbeitet habe, benötigte ich erst einmal etwas Einarbeitungszeit um den ersten Prototypen zu erstellen.
+Aufgrund der unterstützenden Funktionen, wie das Portieren auf verschiedene Systeme, habe ich mich für die Unity Engine in der Version 2019.3.14f entschieden um Latrunculi digital umzusetzen. Die Erklärung zu Unity befindet sich im Abschnitt \ref{ch:Grundlagen:sec:Unity}. Weiterhin habe ich mich in C\# eingearbeitet und damit die verwendeteten Skripte geschrieben und genutzt. Da ich vorher noch nicht mit Unity und C\# gearbeitet habe, benötigte ich etwas Einarbeitungszeit um den ersten Prototypen zu erstellen.
 
 \begin{figure}[h]
 	\centering
@@ -20,7 +20,7 @@ Aufgrund der unterstützenden Funktionen, wie das Portieren auf verschiedene Sys
 %% ==============================
 \label{ch:Implementierung:sec:Unity}
 
-Wie zuvor bereits erwähnt, habe ich die Unity Engine genutzt um das Spiel zu implementieren. Die ersten Versuche einer lauffähigen Umsetzung habe ich mit einem vorgefertigten Spielbrett umgesetzt. Dabei habe ich das Brett durch 8x8 einzelnen Zellen beziehungsweise Quadraten dargestellt, die jeweils ein eigenes Spielobjekt sind. Auf diesen Quadraten habe ich die Spielsteine als schwarze und graue Kreise platziert und diesen via Skript Funktionen gegeben. Dieser erste Entwurf \ref{fig:Prototyp} reagierte auf das OnClick Event, sodass beim Anklicken eines Kreises der mögliche Weg hervorgehoben wurde und beim Klick auf das gewünschte Feld, wurde der Kreis auf diesem neuen Feld platziert.
+Wie zuvor bereits erwähnt, habe ich die Unity Engine genutzt um das Spiel zu implementieren. Die ersten Versuche einer lauffähigen Umsetzung habe ich mit einem vorgefertigten Spielbrett umgesetzt. Dabei habe ich das Brett durch 8x8 einzelne Zellen beziehungsweise Quadrate dargestellt, die jeweils ein eigenes Spielobjekt sind. Auf diesen Quadraten habe ich die Spielsteine als schwarze und graue Kreise platziert und diesen via Skript Funktionen gegeben. Dieser erste Entwurf \ref{fig:Prototyp} reagierte auf das OnClick() Event, sodass beim Anklicken eines Kreises der mögliche Weg hervorgehoben wurde und beim Klick auf das gewünschte Feld, wurde der Kreis auf diesem neuen Feld platziert.
 
 \begin{figure}[h]
 	\centering
@@ -29,15 +29,15 @@ Wie zuvor bereits erwähnt, habe ich die Unity Engine genutzt um das Spiel zu im
 	\label{fig:Prototyp}
 \end{figure}
 
-Da dieser erste Entwurf sehr statisch war und die Größe fest verankert war, habe ich mir Informationen gesucht um das Spiel dynamisch zu erstellen und die Größe des Spielfelds variabel zu machen. Dazu habe ich sowohl für die einzelnen Zellen, sowie die Spielsteine als Prefabs erstellt und konnte somit via Skript in der Start-Funktion die Prefabs abrufen und je nach angegebener Größe das Spielfeld zur Laufzeit erstellen.
-Außerdem wurde das OnClick-Event durch Drag \& Drop ersetzt, sodass es auf einem Touchscreen intuitiver zu bedienen ist.
+Da dieser Entwurf sehr statisch und die Größe fest verankert war, habe ich mir Informationen gesucht um das Spiel dynamisch zu erstellen und die Größe des Spielfelds variabel zu machen. Dazu habe ich sowohl für die Zellen, als auch die Spielsteine Prefabs erstellt und somit mittels Skript in der Start-Funktion die Prefabs abrufen und je nach angegebener Größe das Spielfeld zur Laufzeit erstellen.
+Außerdem wurde das OnClick()-Event durch Drag \& Drop ersetzt, sodass es auf einem Touchscreen intuitiver zu bedienen ist.
 %% ==============================
 \section{GameObjects}
 %% ==============================
 \label{ch:Implementierung:sec:GameObjects}
-Um die einzelnen Spielelemente darzustellen, müssen im Unity-Editor erst einmal Spielobjekte (englisch: GameObject) erstellt werden. Die folgenden Objekte wurden dem Spiel hinzugefügt:
+Um die einzelnen Spielelemente darzustellen, müssen im Unity-Editor erst Spielobjekte (englisch: GameObject) erstellt werden. Die folgenden Objekte wurden dem Spiel hinzugefügt:
 \paragraph{Main Camera}
-Die Kamera ist zuständig für den Sichtfeld, sodass hier festgelegt werden kann, was innerhalb der Szene sichtbar ist.
+Die Kamera ist zuständig für das Sichtfeld, sodass hier festgelegt werden kann, was innerhalb der Szene sichtbar ist.
 \paragraph{Board}
 Das \textbf{Board} ist das Objekt, dass das Spielbrett darstellt. Via Prefabs werden dem Board zur Laufzeit die einzelnen Zellen hinzugefügt und so das Brett aufgebaut.
 \paragraph{PieceManager}
@@ -45,7 +45,7 @@ Der \textbf{PieceManager} ist zuständig für die einzelnen Spielsteine, die ebe
 \paragraph{GameManager}
 Der \textbf{GameManager} beinhaltet die Spiellogik und lässt das Spiel starten, sowie auch beenden. Hier wird nach jedem Zug geprüft ob ein Spieler gewonnen hat oder das Spiel noch weiter läuft. Weiterhin wird hier die Berechnung der KI angestoßen.
 \paragraph{EscapeMenuManager}
-Der \textbf{EscapeMenuManager} ist zuständig für das Eventhandling des Menüs und der Buttons. Das heißt, hier wird entschieden, ob das Menü sichtbar und was in dem Menü zu sehen ist.
+Der \textbf{EscapeMenuManager} ist zuständig für das Event-Handling des Menüs und der Buttons. Das heißt, hier wird entschieden, ob das Menü sichtbar und was in dem Menü zu sehen ist.
 
 %% ==============================
 \section{Skripte}
