@@ -19,15 +19,15 @@ public class GameManager : MonoBehaviour
     public string mAIType;
     public int maxDepth;
     public int AIActive;
-    public Slider attackSlider;
-    public Slider threatSlider;
-    public Slider hideSlider;
+   // public Slider attackSlider;
+    //public Slider threatSlider;
+    //public Slider hideSlider;
     private Task t;
     private bool moving = false;
     //public bool secondAI;
     public Toggle secondAIActive;
     public Toggle firstAIActive;
-
+    private int difficulty;
     /* private float pointAttacked = 100f;
      private float pointThreat = 50f;
      private float pointHide = -2f;*/
@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public Dropdown DDX;
     public Dropdown DDY;
+    public Dropdown DDDiff;
 
     public InputField InputX;
     public InputField InputY;
@@ -120,6 +121,7 @@ public class GameManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("StartButton").SetActive(false);
         GameObject.FindGameObjectWithTag("DDX").SetActive(false);
         GameObject.FindGameObjectWithTag("DDY").SetActive(false);
+        GameObject.FindGameObjectWithTag("DDDiff").SetActive(false);
 
         if (firstAIActive.isOn == false)
         {
@@ -186,19 +188,19 @@ public class GameManager : MonoBehaviour
                 sizeY = 12;
                 break;
         }
+        switch (DDDiff.value)
+        {
+            case 0:
+                difficulty = 0;
+                break;
+            case 1:
+                difficulty = 1;
+                break;
+            case 2:
+                difficulty = 2;
+                break;
+        }
 
-        /*  if (InputX.text == "")
-              sizeX = 8;
-
-          else
-              sizeX = System.Int32.Parse(InputX.text);
-
-          if (InputY.text == "")
-              sizeY = 8;
-          else
-              sizeY = System.Int32.Parse(InputY.text);
-
-          */
         mBoard.Create(sizeX, sizeY);
 
 
@@ -212,7 +214,7 @@ public class GameManager : MonoBehaviour
         mPieceManager.SwitchSides(Color.black);
     }
 
-    public float getPoints(string type)
+   /* public float getPoints(string type)
     {
         if (type=="attack")
         {
@@ -241,7 +243,7 @@ public class GameManager : MonoBehaviour
             }
         else
         return 0;
-    }
+    }*/
 
     public void ChangeAttackPoints(float newPoints)
     {
@@ -275,7 +277,25 @@ public class GameManager : MonoBehaviour
             List<Move> moves = new List<Move>();
             mPieceManager.setBoard(mBoard);
             string[,] boarddraught = mBoard.getDraughtAsStrings();
-            BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, 80);
+            BoardDraught b;
+            if (difficulty == 0 && !secondAIActive.isActiveAndEnabled)
+            {
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 0, 0, 0, 0);
+
+            }
+            else if (difficulty == 1 && !secondAIActive.isActiveAndEnabled)
+            {
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 20, 50, 80, 0);
+            }
+            else if (difficulty == 2 && !secondAIActive.isActiveAndEnabled)
+            {
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 20, 50, 80, 100);
+            }
+            else
+            {
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, 80);
+            }
+          //  BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, 80);
             float test;
             Move currentMove = new Move();
 

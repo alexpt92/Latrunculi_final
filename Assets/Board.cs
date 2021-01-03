@@ -33,12 +33,6 @@ public class Board : MonoBehaviour
     protected Vector3Int mMovement;
     Color currentColor = Color.clear;
 
-  /*  public float pointSimple = 1f;
-    public float pointSuccess = 250f;
-    public float pointAttacked = 100f;
-    public float pointThreat = 10f;
-    public float pointHide = 5f;*/
-
    /* private void Update()
     {
         Debug.Log("Attack: " + pointAttacked + " Hide: " + pointHide + " Threat: " + pointThreat);

@@ -19,8 +19,9 @@ public class EscapeMenuActivator : MonoBehaviour
     public Text hideText2;
     public Text threatText;
     public Text threatText2;
+    public Text diffText;
     public TextMeshPro gameOverMessage;
-
+    public Dropdown dddiff;
 
     public bool EscapeMenuOpen;
     public Slider attackSlider;
@@ -48,7 +49,9 @@ public class EscapeMenuActivator : MonoBehaviour
         RectTransform rectTransform = quit.GetComponent<RectTransform>();
         RectTransform rectTransformRestart = restart.GetComponent<RectTransform>();
         //GameObject.FindGameObjectWithTag("menuCanvas").GetComponent<RectTransform>().anchoredPosition = new Vector2((float)1,(float)1);
-        rectTransform.anchoredPosition = new Vector2((float)0.5, (float)0.5);
+      //  rectTransform.anchoredPosition = new Vector2((float)0.5, (float)1.5);
+       // rectTransform.anchoredPosition = new Vector2((float)0.5, (float)1.5);
+
         // rectTransformRestart.position = new Vector2((float)0.5, (float)0.25);
         quit.gameObject.SetActive(true);
         initialVectorBottomLeft = Camera.main.ScreenToWorldPoint(new Vector2(0, 0));
@@ -91,17 +94,20 @@ public class EscapeMenuActivator : MonoBehaviour
     public void resizeUI()
     {
 
-        float height = (Screen.height / 4) * 3;
+        float height = Screen.height / 10;
         float width = Screen.width/ 6;
 
-        attackSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        hideSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        threatSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        attackSlider2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        threatSlider2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        hideSlider2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+       // attackSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+       // hideSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+       // threatSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        //attackSlider2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        //threatSlider2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        //hideSlider2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
         quit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)(width*1.5));
         start.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)(width * 1.5));
+        start.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (float)(height * 1.5));
+        quit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (float)(height * 1.5));
+
         float uiScale = Screen.width / uiBaseWidth;
         int buttonFontSize = Mathf.RoundToInt(baseFontSize * uiScale);
         int sliderFontSize = Mathf.RoundToInt((float)((baseFontSize-1) * uiScale*1.5));
@@ -111,14 +117,19 @@ public class EscapeMenuActivator : MonoBehaviour
             sliderFontSize = 16;
         if (Screen.width < 2000 && Screen.width > 1500)
             sliderFontSize = 18;
-            quitText.fontSize = sliderFontSize;
-        startText.fontSize = sliderFontSize;
-        attackText.fontSize = sliderFontSize;
-        attackText2.fontSize = sliderFontSize; 
-        hideText.fontSize = sliderFontSize; 
-        hideText2.fontSize = sliderFontSize; 
-        threatText.fontSize = sliderFontSize; 
-        threatText2.fontSize = sliderFontSize;
+
+        if (buttonFontSize < 10)
+            buttonFontSize = 10;
+        quitText.fontSize = buttonFontSize;
+        startText.fontSize = buttonFontSize;
+        //diffText.fontSize = buttonFontSize -2;
+
+        // attackText.fontSize = sliderFontSize;
+        // attackText2.fontSize = sliderFontSize; 
+        // hideText.fontSize = sliderFontSize; 
+        // hideText2.fontSize = sliderFontSize; 
+        // threatText.fontSize = sliderFontSize; 
+        // threatText2.fontSize = sliderFontSize;
         GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().fontSize = buttonFontSize * 2;
 }
 
@@ -126,38 +137,38 @@ public class EscapeMenuActivator : MonoBehaviour
     {
         EscapeMenuOpen = false;
         quit.gameObject.SetActive(false);
-        attackSlider.gameObject.SetActive(false);
-        threatSlider.gameObject.SetActive(false);
-        hideSlider.gameObject.SetActive(false);
-        attackSlider2.gameObject.SetActive(false);
-        threatSlider2.gameObject.SetActive(false);
-        hideSlider2.gameObject.SetActive(false);
+      //  attackSlider.gameObject.SetActive(false);
+        //threatSlider.gameObject.SetActive(false);
+        //hideSlider.gameObject.SetActive(false);
+        //attackSlider2.gameObject.SetActive(false);
+        //threatSlider2.gameObject.SetActive(false);
+        //hideSlider2.gameObject.SetActive(false);
         secondAiToggle.gameObject.SetActive(false);
         firstAiToggle.gameObject.SetActive(false);
         //DDX.gameObject.SetActive(false);
-        setSliderValues();
+        //setSliderValues();
     }
 
     public void DisableFirstAIOptions()
     {
         if (firstAiToggle.isOn == false)//(attackSlider.IsActive() == true)
         {
-            attackSlider.gameObject.SetActive(false);
-            threatSlider.gameObject.SetActive(false);
-            hideSlider.gameObject.SetActive(false);
+           // attackSlider.gameObject.SetActive(false);
+            //threatSlider.gameObject.SetActive(false);
+            //hideSlider.gameObject.SetActive(false);
             secondAiToggle.isOn = false;
-            attackSlider2.gameObject.SetActive(false);
-            threatSlider2.gameObject.SetActive(false);
-            hideSlider2.gameObject.SetActive(false);
+            //attackSlider2.gameObject.SetActive(false);
+            //threatSlider2.gameObject.SetActive(false);
+            //hideSlider2.gameObject.SetActive(false);
             secondAiToggle.gameObject.SetActive(false);
 
 
         }
         else if (firstAiToggle.isOn)//(attackSlider.IsActive() == false)
         {
-            attackSlider.gameObject.SetActive(true);
-            threatSlider.gameObject.SetActive(true);
-            hideSlider.gameObject.SetActive(true);
+            //attackSlider.gameObject.SetActive(true);
+            //threatSlider.gameObject.SetActive(true);
+            //hideSlider.gameObject.SetActive(true);
 
             secondAiToggle.gameObject.SetActive(true);
           //  secondAiToggle.isOn = true;
@@ -170,15 +181,18 @@ public class EscapeMenuActivator : MonoBehaviour
     {
         if (secondAiToggle.isOn == false)//attackSlider2.IsActive() == true)
         {
-            attackSlider2.gameObject.SetActive(false);
-            threatSlider2.gameObject.SetActive(false);
-            hideSlider2.gameObject.SetActive(false);
+            //attackSlider2.gameObject.SetActive(false);
+            //threatSlider2.gameObject.SetActive(false);
+            //hideSlider2.gameObject.SetActive(false);
+            dddiff.gameObject.SetActive(true);
+
         }
         else if (secondAiToggle.isOn)//attackSlider2.IsActive() == false)
         {
-            attackSlider2.gameObject.SetActive(true);
-            threatSlider2.gameObject.SetActive(true);
-            hideSlider2.gameObject.SetActive(true);
+            dddiff.gameObject.SetActive(false);
+            //attackSlider2.gameObject.SetActive(true);
+            //threatSlider2.gameObject.SetActive(true);
+            //hideSlider2.gameObject.SetActive(true);
         }
     }
 
@@ -194,7 +208,7 @@ public class EscapeMenuActivator : MonoBehaviour
 
                 quit.gameObject.SetActive(true);
                 //restart.gameObject.SetActive(true);
-                setSliderValues();
+                //setSliderValues();
             //attackSlider.gameObject.SetActive(true);
             //hideSlider.gameObject.SetActive(true);
            // threatSlider.gameObject.SetActive(true);
@@ -202,15 +216,15 @@ public class EscapeMenuActivator : MonoBehaviour
             secondAiToggle.gameObject.SetActive(true);
             if (secondAiToggle.isOn)
             {
-                threatSlider2.gameObject.SetActive(true);
-                hideSlider2.gameObject.SetActive(true);
-                attackSlider2.gameObject.SetActive(true);
+               // threatSlider2.gameObject.SetActive(true);
+               // hideSlider2.gameObject.SetActive(true);
+               // attackSlider2.gameObject.SetActive(true);
             }
             if (firstAiToggle.isOn)
             {
-                threatSlider.gameObject.SetActive(true);
-                hideSlider.gameObject.SetActive(true);
-                attackSlider.gameObject.SetActive(true);
+               // threatSlider.gameObject.SetActive(true);
+               // hideSlider.gameObject.SetActive(true);
+               // attackSlider.gameObject.SetActive(true);
             }
 
         }
@@ -222,12 +236,12 @@ public class EscapeMenuActivator : MonoBehaviour
                 //GameObject.Find("Restart").SetActive(false);
                 quit.gameObject.SetActive(false);
               //  start.gameObject.SetActive(false);
-            attackSlider.gameObject.SetActive(false);
-            attackSlider2.gameObject.SetActive(false);
-            hideSlider.gameObject.SetActive(false);
-            hideSlider2.gameObject.SetActive(false);
-            threatSlider.gameObject.SetActive(false);
-            threatSlider2.gameObject.SetActive(false);
+           // attackSlider.gameObject.SetActive(false);
+           // attackSlider2.gameObject.SetActive(false);
+           // hideSlider.gameObject.SetActive(false);
+           // hideSlider2.gameObject.SetActive(false);
+           // threatSlider.gameObject.SetActive(false);
+           // threatSlider2.gameObject.SetActive(false);
             firstAiToggle.gameObject.SetActive(false);
             secondAiToggle.gameObject.SetActive(false);
         }
@@ -241,9 +255,9 @@ public class EscapeMenuActivator : MonoBehaviour
         referenceObject = GameObject.FindGameObjectWithTag("GameManager");
 
         referenceScript = referenceObject.GetComponent<GameManager>();
-        attackSlider.value = referenceScript.getPoints("attack");
-        threatSlider.value = referenceScript.getPoints("threat");
-        hideSlider.value = referenceScript.getPoints("hide");
+    //    attackSlider.value = referenceScript.getPoints("attack");
+    //    threatSlider.value = referenceScript.getPoints("threat");
+    //   hideSlider.value = referenceScript.getPoints("hide");
     }
 
     public void Escape()

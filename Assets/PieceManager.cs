@@ -77,56 +77,7 @@ public class PieceManager : MonoBehaviour
 
     void Update()
     {
-        /*
-        float height = (Screen.height / 4) * 3;
-        float width = Screen.width;
-        float midHeight = height / 2;
-        float midWidth = width / 2;
-        float sizePieceY;
-        if (board.sizeY < board.sizeX)
-        {
-            sizePieceY = height / board.sizeX;
 
-        }
-        else
-        {
-            sizePieceY = height / board.sizeY;
-        }
-        float offsetY = (Screen.height - height) / 2;
-        float offsetX = (Screen.width - (board.sizeX * sizePieceY)) / 2;
-        //float ratio = width / height;
-        //float sizePieceX = width / sizeX;
-        float sizePieceX = sizePieceY;//*ratio;
-
-        //float offset = (width - height) / 2;
-
-
-        for (int y = 0; y < this.board.sizeY; y++)
-        {
-            for (int x = 0; x < this.board.sizeX; x++)
-            {
-                board.mAllCells[x, y].GetComponent<RectTransform>().sizeDelta = new Vector2(sizePieceX, sizePieceX);
-                board.mAllCells[x, y].GetComponent<RectTransform>().anchoredPosition = new Vector2((board.mAllCells[x, y].GetComponent<RectTransform>().anchoredPosition.x * sizePieceX) + offsetX, (board.mAllCells[x, y].GetComponent<RectTransform>().anchoredPosition.y * sizePieceX) + offsetY);
-                // mCellPrefab.transform.
-               // GameObject newCell = Instantiate(board.mCellPrefab, transform);//Instantiate(mCellPrefab, new Vector3(x * newX, y*newY), Quaternion.identity);
-                                                                         //Instantiate(mCellPrefab, transform);
-
-
-                //Position
-
-
-               
-
-
-             //   rectTransform.sizeDelta = new Vector2(sizePieceX, sizePieceX);
-             //   rectTransform.anchoredPosition = new Vector2((x * sizePieceX) + offsetX, (y * sizePieceX) + offsetY);
-
-                //Setup
-               // board.mAllCells[x, y].Setup(new Vector2Int((int)(x), (int)y), this.board);
-              // board.simpleAllCells[x, y] = "empty";
-
-            }
-        }*/
     }
 
     internal void resizePieces()
@@ -278,16 +229,8 @@ public class PieceManager : MonoBehaviour
     
     private bool GameOver(Color color)
     {
-        //string[,] boarddraught = board.getDraughtAsStrings();
-        //GameObject.AddComponent<BoardDraught>();        
-       // BoardDraught b = board; 
-       // b.Create();
-       // b.simpleAllCells = board.getDraughtAsStrings();
-        //b.simpleAllCells = boarddraught;
-        //= new BoardDraught(boarddraught, 1, board.sizeX, board.sizeY);
-        //BoardDraught b2 = new BoardDraught(boarddraught, 2, board.sizeX, board.sizeY);
+
         board.simpleAllCells = board.getDraughtAsStrings();
-        //int player = board.GetCurrentPlayer();
         if (board.IsGameOver() == "Player 1" || board.IsGameOver() == "Player 2")
             return true;
         else 
@@ -382,10 +325,7 @@ public class PieceManager : MonoBehaviour
         bool isBlackTurn = color == Color.white ? true : false;
         if (isAIActive && isBlackTurn)
         {
-            /*   GameObject referenceObject;
-               GameManager referenceScript;
-               referenceObject = GameObject.FindGameObjectWithTag("GameManager");
-               referenceScript = referenceObject.GetComponent<GameManager>();*/
+
             if (referenceScript.getCurrentPlayer() == 1 && referenceScript.firstAIActive.isOn)
             {
                 DisableAllPieces();
@@ -411,10 +351,7 @@ public class PieceManager : MonoBehaviour
         else if (moveAgain)
         {
             moveAgain = false;
-           /*GameObject referenceObject;
-            GameManager referenceScript;
-            referenceObject = GameObject.FindGameObjectWithTag("GameManager");
-            referenceScript = referenceObject.GetComponent<GameManager>();*/
+
             referenceScript.MoveAgain();
         }
     }
@@ -428,7 +365,6 @@ public class PieceManager : MonoBehaviour
         //if (moveAgain == false)
             
         referenceScript.nextPlayer();
-        //Debug.Log(referenceScript.getCurrentPlayer());
 
     }
 
