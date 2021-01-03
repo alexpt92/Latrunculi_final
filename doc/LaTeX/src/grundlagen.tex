@@ -23,28 +23,39 @@ Der grundsätzliche Aufbau des Spiels beinhaltet ein Spielbrett mit beispielswei
 
 Das Spiel beginnt in dem die Spieler abwechselnd einen Stein horizontal oder vertikal über das Feld bewegen, ohne dabei einen anderen Stein zu überspringen oder auf einem besetzten Feld zu landen.
 \\
-TODO BILD BEWEGUNGEN
+
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/regeln_bewegung2}
 	\caption{Legitime Bewegungen}
 	\label{fig:Bewegungen}
 \end{figure}
-\\
+
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/regeln_nottodo}
 	\caption{nicht zulässige Bewegung}
 	\label{fig:nottodo}
 \end{figure}
-\\
+
 Um gegnerische Spielsteine zu erobern, müssen diese von eigenen Steinen auf zwei gegenüberliegenden Feldern umstellt sein.
 \\
-TODO: BILD EROBERN
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/regeln_erobern}
+	\caption{Erobern}
+	\label{fig:erobern}
+\end{figure}
+
 
 Wird ein Stein erobert, dann darf ein weiterer Stein sich bewegen. Hierbei gibt es auch Variationen bei denen nur der zuletzt bewegte Stein sich wieder bewegen darf.\\
 Bewegt sich ein eigener Stein zwischen zwei gegnerische und scheint somit umstellt zu sein, zählt dieser allerdings nicht als erobert.\\
-TODO: BILD BEWEGUNG ZWISCHEN GEGNER
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/regeln_nichterobert}
+	\caption{Keine Eroberung}
+	\label{fig:nichterobern}
+\end{figure}
 \\
 Das Ziel des Spiels ist es, dass der Gegenspieler keinen Zug mehr ausführen kann beziehungsweise keinen Spielstein mehr erobern kann.
 
@@ -110,7 +121,7 @@ Aufgrund von tendenziell hoher Laufzeit, vor Allem bei komplexeren Spielen, gibt
 In der Basis-Version des MiniMax enden die möglichen Verläufe im ungünstigsten Fall nach $d$ Zügen, wobei $d$ für die Suchtiefe im Baum steht. Im extremsten Fall können wir annehmen, dass aus jedem Zustand weitere $w$ Züge möglich sind. Daraus resultieren auf der untersten Ebene $ w ^d$ Knoten und es gilt \[ \sum_{i=1}^d  w^{d}\in O(w^d).\]\\
 Zur Optimierung existieren unterschiedliche Variationen von denen eine hier näher beschrieben wird.
 \paragraph{Alpha-Beta-Algorithmus}
-Aufgrund der hohen Komplexität wird auch der \textbf{Alpha-Beta-Algorithmus} verwendet. Dieser basiert auf dem MiniMax-Algorithmus, allerdings wird hier der Wert der möglichen Endzustände geschätzt und die Berechnnung eines Pfads abgeborchen, sobald klar ist, dass dieser Weg weniger zielführend ist. Dabei wird angenommen, dass Zweige ab einem Punkt in der Berechnung vernachlässigt werden können. Am nachfolgenden Beispiel wird die Idee deutlicher:
+Aufgrund der hohen Komplexität wird auch der \textbf{Alpha-Beta-Algorithmus} verwendet. Dieser basiert auf dem MiniMax-Algorithmus, allerdings wird hier der Wert der möglichen Endzustände geschätzt und die Berechnnung eines Pfads abgebrochen, sobald klar ist, dass dieser Weg weniger zielführend ist. Dabei wird angenommen, dass Zweige ab einem Punkt in der Berechnung vernachlässigt werden können. Am nachfolgenden Beispiel wird die Idee deutlicher:
 \subparagraph{Beispiel 2.2:}
 Nach der Durchsuchung des linken Teilbaums, sieht man, dass der der Ausgangsknoten mindestens den Wert 3 hat. Deshalb wird die Evaluation des rechten Teilbaums abgebrochen, sobald klar wird, dass der min-Knoten maximal einen Wert von 2 hat. Die Suche kann abgebrochen werde, da der rechte Teilbaum keine Auswirkungen auf den Startknoten hat\nocite{AlphaBeta}.
 \begin{figure}[h]

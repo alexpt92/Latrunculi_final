@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.25)  3 JAN 2021 17:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.25)  3 JAN 2021 20:58
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -964,21 +964,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--15
 
  []
 
-<img/regeln_startzustand.png, id=190, 271.76532pt x 234.1247pt>
+<img/regeln_startzustand.png, id=194, 271.76532pt x 234.1247pt>
 File: img/regeln_startzustand.png Graphic file (type png)
 
 <use img/regeln_startzustand.png>
 Package pdftex.def Info: img/regeln_startzustand.png used on input line 18.
 (pdftex.def)             Requested size: 271.76465pt x 234.12411pt.
 
-<img/regeln_bewegung2.png, id=192, 271.76532pt x 234.1247pt>
+Underfull \hbox (badness 10000) in paragraph at lines 24--26
+
+ []
+
+<img/regeln_bewegung2.png, id=196, 271.76532pt x 234.1247pt>
 File: img/regeln_bewegung2.png Graphic file (type png)
 
 <use img/regeln_bewegung2.png>
 Package pdftex.def Info: img/regeln_bewegung2.png used on input line 29.
 (pdftex.def)             Requested size: 271.76465pt x 234.12411pt.
 
-<img/regeln_nottodo.png, id=193, 274.02374pt x 234.8775pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/regeln_nottodo.png, id=197, 274.02374pt x 234.8775pt>
 File: img/regeln_nottodo.png Graphic file (type png)
 
 <use img/regeln_nottodo.png>
@@ -988,128 +995,148 @@ Package pdftex.def Info: img/regeln_nottodo.png used on input line 36.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+<img/regeln_erobern.png, id=198, 274.77657pt x 237.13594pt>
+File: img/regeln_erobern.png Graphic file (type png)
+
+<use img/regeln_erobern.png>
+Package pdftex.def Info: img/regeln_erobern.png used on input line 45.
+(pdftex.def)             Requested size: 274.77588pt x 237.13535pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+<img/regeln_nichterobert.png, id=199, 274.77657pt x 237.13594pt>
+File: img/regeln_nichterobert.png Graphic file (type png)
+
+<use img/regeln_nichterobert.png>
+Package pdftex.def Info: img/regeln_nichterobert.png used on input line 55.
+(pdftex.def)             Requested size: 274.77588pt x 237.13535pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
-[3
+(babel)             in language  on input line 61.
+ [3
 
 
 
  <./img/regeln_startzustand.png>]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 53.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 53.
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--72
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 64.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 64.
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--83
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 72.
+(babel)             in language  on input line 83.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 72.
+(babel)             in language  on input line 83.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 72.
+(babel)             in language  on input line 83.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 72.
+(babel)             in language  on input line 83.
 [4 <./img/regeln_bewegung2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 75--79
+Underfull \hbox (badness 10000) in paragraph at lines 86--90
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 79.
+(babel)             in language  on input line 90.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 79.
+(babel)             in language  on input line 90.
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--85
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 85.
+(babel)             in language  on input line 96.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 85.
+(babel)             in language  on input line 96.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 85.
+(babel)             in language  on input line 96.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 85.
+(babel)             in language  on input line 96.
 [5 <./img/regeln_nottodo.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 92--94
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 101.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 101.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 101.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 101.
+ [6 <./img/regeln_erobern.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 103--105
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+aer on input line 95.
+LaTeX Font Info:    Try loading font information for OMS+aer on input line 106.
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\omsaer.fd"
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 95.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
 
-<img/Baum.png, id=213, 406.51875pt x 281.55188pt>
+<img/Baum.png, id=223, 406.51875pt x 281.55188pt>
 File: img/Baum.png Graphic file (type png)
  <use img/Baum.png>
-Package pdftex.def Info: img/Baum.png used on input line 101.
+Package pdftex.def Info: img/Baum.png used on input line 112.
 (pdftex.def)             Requested size: 406.51775pt x 281.55118pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 107.
+(babel)             in language  on input line 121.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 107.
+(babel)             in language  on input line 121.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 107.
+(babel)             in language  on input line 121.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 107.
-[6] <img/AlphaBeta.png, id=224, 362.10281pt x 194.97844pt>
+(babel)             in language  on input line 121.
+[7 <./img/regeln_nichterobert.png>]
+<img/AlphaBeta.png, id=234, 362.10281pt x 194.97844pt>
 File: img/AlphaBeta.png Graphic file (type png)
-
-<use img/AlphaBeta.png>
-Package pdftex.def Info: img/AlphaBeta.png used on input line 118.
+ <use img/AlphaBeta.png>
+Package pdftex.def Info: img/AlphaBeta.png used on input line 129.
 (pdftex.def)             Requested size: 362.10191pt x 194.97795pt.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 124.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 124.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 124.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 124.
- [7 <./img/Baum.png>]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 124.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 124.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 134.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 134.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 134.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 134.
- [8 <./img/AlphaBeta.png>])
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 103.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 103.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 103.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 103.
 
-[9]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 135.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 135.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 141.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 141.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 141.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 141.
+[8 <./img/Baum.png>])
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 103.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 103.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 103.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 103.
+ [9 <./img/AlphaBeta.png>]
 \openout2 = `src/analyse.aux'.
 
  (src/analyse.tex
@@ -1159,7 +1186,7 @@ g-li-chen Pro-to-ty-pen des Spiels,
  []
 
 
-Overfull \hbox (4.34132pt too wide) in paragraph at lines 33--34
+Overfull \hbox (4.34132pt too wide) in paragraph at lines 34--35
 []\T1/aer/m/n/12 Touch-Unterstützung, da beim Lan-des-mu-se-um ein Touch-s-cree
 n ver-wen-det wird,
  []
@@ -1177,7 +1204,7 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 ]
-Overfull \hbox (7.28242pt too wide) in paragraph at lines 65--66
+Overfull \hbox (7.28242pt too wide) in paragraph at lines 66--67
 []\T1/aer/m/n/12 Um das Spie-len auch al-lei-ne zu er-mög-li-chen wur-de auf Ba
 -sis des MiniMax-Algorithmus
  []
@@ -1200,7 +1227,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 5.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 5.
-<img/Unity-Editor.png, id=268, 393.72093pt x 213.04594pt>
+<img/Unity-Editor.png, id=273, 393.72093pt x 213.04594pt>
 File: img/Unity-Editor.png Graphic file (type png)
 
 <use img/Unity-Editor.png>
@@ -1211,7 +1238,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 19.
 
-<img/Prototyp.png, id=270, 271.0125pt x 203.25937pt>
+<img/Prototyp.png, id=275, 271.0125pt x 203.25937pt>
 File: img/Prototyp.png Graphic file (type png)
  <use img/Prototyp.png>
 Package pdftex.def Info: img/Prototyp.png used on input line 27.
@@ -1332,17 +1359,17 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 4.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 12.
+(babel)             in language  on input line 13.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 12.
+(babel)             in language  on input line 13.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 19.
+(babel)             in language  on input line 20.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 19.
+(babel)             in language  on input line 20.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 26.
+(babel)             in language  on input line 27.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 26.
+(babel)             in language  on input line 27.
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 107.
@@ -1438,10 +1465,10 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 151.
  ) 
 Here is how much of TeX's memory you used:
- 9840 strings out of 493323
- 135452 string characters out of 3139066
- 257358 words of memory out of 3000000
- 12903 multiletter control sequences out of 15000+200000
+ 9854 strings out of 493323
+ 135778 string characters out of 3139066
+ 257432 words of memory out of 3000000
+ 12913 multiletter control sequences out of 15000+200000
  39677 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,12n,50p,2022b,1745s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1456,9 +1483,9 @@ m/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss17
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Progr
 am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (27 pages, 491424 bytes).
+Output written on thesis.pdf (27 pages, 603091 bytes).
 PDF statistics:
- 530 PDF objects out of 1000 (max. 8388607)
- 212 named destinations out of 1000 (max. 500000)
- 252 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 534 PDF objects out of 1000 (max. 8388607)
+ 214 named destinations out of 1000 (max. 500000)
+ 262 words of extra memory for PDF output out of 10000 (max. 10000000)
 
