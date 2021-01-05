@@ -6,22 +6,23 @@
 \BOOKMARK [1][-]{section.1.4}{1.4 Gliederung/Aufbau der Arbeit}{chapter.1}% 6
 \BOOKMARK [0][]{chapter.2}{2 Grundlagen}{}% 7
 \BOOKMARK [1][-]{section.2.1}{2.1 Spielregeln}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.2}{2.2 K\374nstliche Intelligenz}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 K\374nstliche Intelligenz in Videospielen}{section.2.2}% 10
-\BOOKMARK [1][-]{section.2.3}{2.3 Unity Engine}{chapter.2}% 11
-\BOOKMARK [0][]{chapter.3}{3 Analyse}{}% 12
-\BOOKMARK [1][-]{section.3.1}{3.1 Technische Anforderungen}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{3.2 Weitere Anforderungen}{chapter.3}% 14
-\BOOKMARK [0][]{chapter.4}{4 Entwurf / Konzeption}{}% 15
-\BOOKMARK [1][-]{section.4.1}{4.1 Konzept und Ideen}{chapter.4}% 16
-\BOOKMARK [0][]{chapter.5}{5 Implementierung}{}% 17
-\BOOKMARK [1][-]{section.5.1}{5.1 Unity}{chapter.5}% 18
-\BOOKMARK [1][-]{section.5.2}{5.2 GameObjects}{chapter.5}% 19
-\BOOKMARK [1][-]{section.5.3}{5.3 Skripte}{chapter.5}% 20
-\BOOKMARK [1][-]{section.5.4}{5.4 MiniMaxing}{chapter.5}% 21
-\BOOKMARK [0][]{chapter.6}{6 Evaluation}{}% 22
-\BOOKMARK [1][-]{section.6.1}{6.1 Launch beim Kunden}{chapter.6}% 23
-\BOOKMARK [1][-]{section.6.2}{6.2 Leistungsmessung?}{chapter.6}% 24
-\BOOKMARK [1][-]{section.6.3}{6.3 Zusammenfassung}{chapter.6}% 25
-\BOOKMARK [0][]{chapter.7}{7 Diskussion und Ausblick}{}% 26
-\BOOKMARK [0][]{section*.26}{Literaturverzeichnis}{}% 27
+\BOOKMARK [1][-]{section.2.2}{2.2 Unity Engine}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.3}{2.3 K\374nstliche Intelligenz}{chapter.2}% 10
+\BOOKMARK [0][]{chapter.3}{3 Analyse}{}% 11
+\BOOKMARK [1][-]{section.3.1}{3.1 Technische Anforderungen}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{3.2 Weitere Anforderungen}{chapter.3}% 13
+\BOOKMARK [0][]{chapter.4}{4 Entwurf / Konzeption}{}% 14
+\BOOKMARK [1][-]{section.4.1}{4.1 Konzept und Ideen}{chapter.4}% 15
+\BOOKMARK [0][]{chapter.5}{5 Implementierung}{}% 16
+\BOOKMARK [1][-]{section.5.1}{5.1 Unity}{chapter.5}% 17
+\BOOKMARK [1][-]{section.5.2}{5.2 GameObjects}{chapter.5}% 18
+\BOOKMARK [1][-]{section.5.3}{5.3 Skripte}{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.4}{5.4 MiniMaxing}{chapter.5}% 20
+\BOOKMARK [0][]{chapter.6}{6 Evaluation}{}% 21
+\BOOKMARK [1][-]{section.6.1}{6.1 Launch beim Kunden}{chapter.6}% 22
+\BOOKMARK [1][-]{section.6.2}{6.2 Leistungsmessung?}{chapter.6}% 23
+\BOOKMARK [1][-]{section.6.3}{6.3 Zusammenfassung}{chapter.6}% 24
+\BOOKMARK [0][]{chapter.7}{7 M\366gliche Erweiterungen}{}% 25
+\BOOKMARK [1][-]{section.7.1}{7.1 Alpha-Beta-Algorithmus}{chapter.7}% 26
+\BOOKMARK [0][]{chapter.8}{8 Diskussion und Ausblick}{}% 27
+\BOOKMARK [0][]{section*.17}{Literaturverzeichnis}{}% 28

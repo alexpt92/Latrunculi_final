@@ -6,43 +6,35 @@
 \contentsline {section}{\numberline {1.4}Gliederung/Aufbau der Arbeit}{2}{section.1.4}
 \contentsline {chapter}{\numberline {2}Grundlagen}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Spielregeln}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}K\IeC {\"u}nstliche Intelligenz}{4}{section.2.2}
-\contentsline {paragraph}{Typ 1: Reaktive Maschinen}{4}{section*.5}
-\contentsline {paragraph}{Typ 2: Begrenzter Speicher}{5}{section*.6}
-\contentsline {paragraph}{Typ 3: Native Theorie}{5}{section*.7}
-\contentsline {paragraph}{Typ 4: Selbsterkenntnis}{5}{section*.8}
-\contentsline {subsection}{\numberline {2.2.1}K\IeC {\"u}nstliche Intelligenz in Videospielen}{5}{subsection.2.2.1}
-\contentsline {paragraph}{MiniMax-Algorithmus}{6}{section*.9}
-\contentsline {subparagraph}{Beispiel 2.1:}{7}{section*.10}
-\contentsline {paragraph}{Analyse \& Variationen}{7}{section*.11}
-\contentsline {paragraph}{Alpha-Beta-Algorithmus}{8}{section*.12}
-\contentsline {subparagraph}{Beispiel 2.2:}{8}{section*.13}
-\contentsline {section}{\numberline {2.3}Unity Engine}{9}{section.2.3}
-\contentsline {paragraph}{Prefab System}{9}{section*.14}
-\contentsline {chapter}{\numberline {3}Analyse}{10}{chapter.3}
-\contentsline {section}{\numberline {3.1}Technische Anforderungen}{10}{section.3.1}
-\contentsline {section}{\numberline {3.2}Weitere Anforderungen}{10}{section.3.2}
-\contentsline {chapter}{\numberline {4}Entwurf / Konzeption}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Konzept und Ideen}{11}{section.4.1}
-\contentsline {paragraph}{Grundlegende Features}{11}{section*.15}
-\contentsline {paragraph}{Erweiterte Features nach Testen der Logik}{11}{section*.16}
-\contentsline {paragraph}{Zus\IeC {\"a}tzliche Features bei \IeC {\"U}bergabe an Kunden}{11}{section*.17}
-\contentsline {paragraph}{Ben\IeC {\"o}tigte Grafiken}{12}{section*.18}
-\contentsline {paragraph}{N\IeC {\"o}tige Technologien}{12}{section*.19}
-\contentsline {paragraph}{K\IeC {\"u}nstliche Intelligenz}{12}{section*.20}
-\contentsline {chapter}{\numberline {5}Implementierung}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Unity}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}GameObjects}{14}{section.5.2}
-\contentsline {paragraph}{Main Camera}{14}{section*.21}
-\contentsline {paragraph}{Board}{14}{section*.22}
-\contentsline {paragraph}{PieceManager}{14}{section*.23}
-\contentsline {paragraph}{GameManager}{14}{section*.24}
-\contentsline {paragraph}{EscapeMenuManager}{15}{section*.25}
-\contentsline {section}{\numberline {5.3}Skripte}{15}{section.5.3}
-\contentsline {section}{\numberline {5.4}MiniMaxing}{15}{section.5.4}
-\contentsline {chapter}{\numberline {6}Evaluation}{19}{chapter.6}
-\contentsline {section}{\numberline {6.1}Launch beim Kunden}{19}{section.6.1}
-\contentsline {section}{\numberline {6.2}Leistungsmessung?}{19}{section.6.2}
-\contentsline {section}{\numberline {6.3}Zusammenfassung}{19}{section.6.3}
-\contentsline {chapter}{\numberline {7}Diskussion und Ausblick}{20}{chapter.7}
-\contentsline {chapter}{Literaturverzeichnis}{21}{section*.26}
+\contentsline {section}{\numberline {2.2}Unity Engine}{4}{section.2.2}
+\contentsline {paragraph}{Prefab System}{5}{section*.5}
+\contentsline {section}{\numberline {2.3}K\IeC {\"u}nstliche Intelligenz}{5}{section.2.3}
+\contentsline {chapter}{\numberline {3}Analyse}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Technische Anforderungen}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Weitere Anforderungen}{7}{section.3.2}
+\contentsline {chapter}{\numberline {4}Entwurf / Konzeption}{8}{chapter.4}
+\contentsline {section}{\numberline {4.1}Konzept und Ideen}{8}{section.4.1}
+\contentsline {paragraph}{Grundlegende Features}{8}{section*.6}
+\contentsline {paragraph}{Erweiterte Features nach Testen der Logik}{8}{section*.7}
+\contentsline {paragraph}{Zus\IeC {\"a}tzliche Features bei \IeC {\"U}bergabe an Kunden}{8}{section*.8}
+\contentsline {paragraph}{Ben\IeC {\"o}tigte Grafiken}{9}{section*.9}
+\contentsline {paragraph}{N\IeC {\"o}tige Technologien}{9}{section*.10}
+\contentsline {paragraph}{K\IeC {\"u}nstliche Intelligenz}{9}{section*.11}
+\contentsline {chapter}{\numberline {5}Implementierung}{10}{chapter.5}
+\contentsline {section}{\numberline {5.1}Unity}{10}{section.5.1}
+\contentsline {section}{\numberline {5.2}GameObjects}{11}{section.5.2}
+\contentsline {paragraph}{Main Camera}{11}{section*.12}
+\contentsline {paragraph}{Board}{11}{section*.13}
+\contentsline {paragraph}{PieceManager}{11}{section*.14}
+\contentsline {paragraph}{GameManager}{11}{section*.15}
+\contentsline {paragraph}{EscapeMenuManager}{12}{section*.16}
+\contentsline {section}{\numberline {5.3}Skripte}{12}{section.5.3}
+\contentsline {section}{\numberline {5.4}MiniMaxing}{12}{section.5.4}
+\contentsline {chapter}{\numberline {6}Evaluation}{16}{chapter.6}
+\contentsline {section}{\numberline {6.1}Launch beim Kunden}{16}{section.6.1}
+\contentsline {section}{\numberline {6.2}Leistungsmessung?}{16}{section.6.2}
+\contentsline {section}{\numberline {6.3}Zusammenfassung}{16}{section.6.3}
+\contentsline {chapter}{\numberline {7}M\IeC {\"o}gliche Erweiterungen}{17}{chapter.7}
+\contentsline {section}{\numberline {7.1}Alpha-Beta-Algorithmus}{17}{section.7.1}
+\contentsline {chapter}{\numberline {8}Diskussion und Ausblick}{18}{chapter.8}
+\contentsline {chapter}{Literaturverzeichnis}{19}{section*.17}

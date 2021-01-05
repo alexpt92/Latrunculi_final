@@ -61,76 +61,76 @@ Das Ziel des Spiels ist es, dass der Gegenspieler keinen Zug mehr ausführen kan
 
 
 %% ==============================
-\section{Künstliche Intelligenz}
+%\section{Künstliche Intelligenz}
 %% ==============================
-\label{ch:Grundlagen:sec:Abschnitt2}
-\nocite{computerweekly}
-\nocite{barr2014handbook}
+%\label{ch:Grundlagen:sec:Abschnitt2}
+%\nocite{computerweekly}
+%\nocite{barr2014handbook}
 
-Der amerikanische Informatiker John McCarthy prägte 1956 den Begriff künstliche Intelligenz (KI) auf der Dartmouth Conference.
-Künstliche Intelligenz findet heutzutage in vielen Bereichen Anwendung und ist eine immer wichtigere Entwicklung, um menschliche Arbeit zu vereinfachen und auch auf Computer zu übertragen. Seit der Begriff geprägt wurde, haben sich die dazugehörigen Bereiche erweitert. Heute definiert KI die Automatisierung von Prozessen bis hin zur Robotik.
-Hierbei geht es vor allem um den Zusammenhang zwischen Berechnung und Wahrnehmung.
-Aufgrund der riesigen Datenmengen (Big Data), die ein Mensch alleine nicht bearbeiten oder analysieren kann, wird dieser Bereich immer wichtiger. Maschinen können viel effizienter Daten analysieren und Muster erkennen, als ein Mensch es könnte.\\
-Um die unterschiedlichen Typen zu kategorisieren, kann man sich die vier verschiedenen Typen, die von Arend Hintze, Assistenzprofessor für Integrative Biologie und Informatik der Michigan State University klassifiziert wurden, betrachten:
+%Der amerikanische Informatiker John McCarthy prägte 1956 den Begriff künstliche Intelligenz (KI) auf der Dartmouth Conference.
+%Künstliche Intelligenz findet heutzutage in vielen Bereichen Anwendung und ist eine immer wichtigere Entwicklung, um menschliche Arbeit zu vereinfachen und auch auf Computer zu übertragen. Seit der Begriff geprägt wurde, haben sich die dazugehörigen Bereiche erweitert. Heute definiert KI die Automatisierung von Prozessen bis hin zur Robotik.
+%Hierbei geht es vor allem um den Zusammenhang zwischen Berechnung und Wahrnehmung.
+%Aufgrund der riesigen Datenmengen (Big Data), die ein Mensch alleine nicht bearbeiten oder analysieren kann, wird dieser Bereich immer wichtiger. Maschinen können viel effizienter Daten analysieren und Muster erkennen, als ein Mensch es könnte.\\
+%Um die unterschiedlichen Typen zu kategorisieren, kann man sich die vier verschiedenen Typen, die von Arend Hintze, Assistenzprofessor für Integrative Biologie und Informatik der Michigan State University klassifiziert wurden, betrachten:
 
-\paragraph{Typ 1: Reaktive Maschinen}
-Zu den Reaktiven Maschinen zählen solche, die den aktuellen Zustand kennen und zukünftige Entscheidungen analysieren und bewerten können. Als Beispiel kann man sich hier Deep Blue anschauen. Deep Blue ist ein von IBM entwickeltes Schachprogramm und ist in der Lage die Figuren auf dem Spielbrett zu erkennen  und mögliche Züge beider Spieler analysieren. Da Deep Blue keine lernende Komponente enthält, werden vergangenen Spielsituationen nicht betrachtet und haben keinen Einfluss auf zukünftige Züge.
+%\paragraph{Typ 1: Reaktive Maschinen}
+%Zu den Reaktiven Maschinen zählen solche, die den aktuellen Zustand kennen und zukünftige Entscheidungen analysieren und bewerten können. Als Beispiel kann man sich hier Deep Blue anschauen. Deep Blue ist ein von IBM entwickeltes Schachprogramm und ist in der Lage die Figuren auf dem Spielbrett zu erkennen  und mögliche Züge beider Spieler analysieren. Da Deep Blue keine lernende Komponente enthält, werden vergangenen Spielsituationen nicht betrachtet und haben keinen Einfluss auf zukünftige Züge.
 
-\paragraph{Typ 2: Begrenzter Speicher}
-Zum zweiten Typen zählt man Systeme, die vergangene Erfahrungen nutzen können, allerdings werden hier Beobachtungen aus naher Zukunft nicht gespeichert. Als Beispiel können hier autonome Fahrzeuge betrachtet werden, die den Wechsel der Fahrspur eines Autos nicht dauerhaft speichern.\\
-\newline
-Die nachfolgenden beiden Typen existieren in der beschriebenen Form noch nicht:
-\paragraph{Typ 3: Native Theorie}
-Die Native Theorie ist ein psychologischer Begriff und bezeichnet Systeme, die verstehen, dass andere eigene Überzeugungen, Wünsche und Absichten haben, die ihre Entscheidungen beeinflussen.
-\paragraph{Typ 4: Selbsterkenntnis}
-Diese Kategorie umfasst Maschinen die ein Bewusstsein haben.Die sollen in der Lage sein ihren aktuellen Zustand zu verstehen und daraus Erkenntnisse über das Gefühl anderer zu ziehen.\\
-\newline
-In dieser Ausarbeitung wurde im Zusammenhang mit dem Spiel Latrunculi eine künstliche Intelligenz des Typ 1 entwickelt, die ihren aktuellen Zustand kennt und daraus Berechnungen für zukünftige Züge treffen kann.
+%\paragraph{Typ 2: Begrenzter Speicher}
+%Zum zweiten Typen zählt man Systeme, die vergangene Erfahrungen nutzen können, allerdings werden hier Beobachtungen aus naher Zukunft nicht gespeichert. Als Beispiel können hier autonome Fahrzeuge betrachtet werden, die den Wechsel der Fahrspur eines Autos nicht dauerhaft speichern.\\
+%\newline
+%Die nachfolgenden beiden Typen existieren in der beschriebenen Form noch nicht:
+%\paragraph{Typ 3: Native Theorie}
+%Die Native Theorie ist ein psychologischer Begriff und bezeichnet Systeme, die verstehen, dass andere eigene Überzeugungen, Wünsche und Absichten haben, die ihre Entscheidungen beeinflussen.
+%\paragraph{Typ 4: Selbsterkenntnis}
+%Diese Kategorie umfasst Maschinen die ein Bewusstsein haben.Die sollen in der Lage sein ihren aktuellen Zustand zu verstehen und daraus Erkenntnisse über das Gefühl anderer zu ziehen.\\
+%\newline
+%In dieser Ausarbeitung wurde im Zusammenhang mit dem Spiel Latrunculi eine künstliche Intelligenz des Typ 1 entwickelt, die ihren aktuellen Zustand kennt und daraus Berechnungen für zukünftige Züge treffen kann.
 %% ==============================
-\subsection{Künstliche Intelligenz in Videospielen}
+%\subsection{Künstliche Intelligenz in Videospielen}
 %% ==============================
-\label{ch:Grundlagen:sec:Abschnitt3}
-\nocite{tecchannel}
-In Videospielen werden in der Regel Reaktive Maschinen verwendet. Hierbei werden mögliche Bewegungen entweder vorher definiert und abgearbeitet oder aber die Aktionen werden mit einem Punktesystem bewertet und abhängig von der Punktzahl ausgeführt. Dabei lässt sich festhalten, dass je mehr Bewertungskriterien die Aktionen bekommen, desto intelligenter wirkt die Künstliche Intelligenz. Betrachtet man die Entwicklung der Videospiele der letzten Jahre im Allgemeinen, fällt auf, dass vor Allem die Grafik weite Sprünge gemacht hat, im Vergleich dazu aber die eingesetzte KI sich nicht wesentlich verändert hat.\\
-Als Beispiel kann man sich das Strategiespiel Command \& Conquer aus dem Jahre 1996 anschauen, sowie den Nachfolger Command \& Conquer (2007) erkennt man das Problem das sich hier abzeichnet. Während sich die Grafik innerhalb der 11 Jahre wesentlich verbessert hat, verhält sich die KI noch immer ähnlich und es passieren die selben Fehler wie schon beim ersten Teil. Spieler müssen in diesem Spiel ein Hauptquartier aufbauen und von diesem aus die gegnerischen Spieler ausschalten, dabei müssen Rohstoffe gesammelt werden um die Basis weiter auszubauen. Zur Rohstoffgewinnung verfügt man über so genannte Ernter, welche automatisch den Rohstoff Tiberium suchen. Bei der Suche fahren diese teilweise ins gegnerische Hauptquartier und werden dort zerstört. Im Nachfolger, elf Jahre später, verhalten sich die Ernter noch immer ähnlich und die Fehler passieren hier ebenfalls, allerdings mit dem Unterschied, dass das Spiel, der Ernter und die Explosions-Animation grafisch realistischer aussehen. Wenn man hier eine lernende Komponente implementieren würde, dann könnten solche Probleme der KI zwar noch passieren, aber auf Dauer wäre Sie in der Lage, das als Fehler zu erkennen. \\
+%\label{ch:Grundlagen:sec:Abschnitt3}
+%\nocite{tecchannel}
+%In Videospielen werden in der Regel Reaktive Maschinen verwendet. Hierbei werden mögliche Bewegungen entweder vorher definiert und abgearbeitet oder aber die Aktionen werden mit einem Punktesystem bewertet und abhängig von der Punktzahl ausgeführt. Dabei lässt sich festhalten, dass je mehr Bewertungskriterien die Aktionen bekommen, desto intelligenter wirkt die Künstliche Intelligenz. Betrachtet man die Entwicklung der Videospiele der letzten Jahre im Allgemeinen, fällt auf, dass vor Allem die Grafik weite Sprünge gemacht hat, im Vergleich dazu aber die eingesetzte KI sich nicht wesentlich verändert hat.\\
+%Als Beispiel kann man sich das Strategiespiel Command \& Conquer aus dem Jahre 1996 anschauen, sowie den Nachfolger Command \& Conquer (2007) erkennt man das Problem das sich hier abzeichnet. Während sich die Grafik innerhalb der 11 Jahre wesentlich verbessert hat, verhält sich die KI noch immer ähnlich und es passieren die selben Fehler wie schon beim ersten Teil. Spieler müssen in diesem Spiel ein Hauptquartier aufbauen und von diesem aus die gegnerischen Spieler ausschalten, dabei müssen Rohstoffe gesammelt werden um die Basis weiter auszubauen. Zur Rohstoffgewinnung verfügt man über so genannte Ernter, welche automatisch den Rohstoff Tiberium suchen. Bei der Suche fahren diese teilweise ins gegnerische Hauptquartier und werden dort zerstört. Im Nachfolger, elf Jahre später, verhalten sich die Ernter noch immer ähnlich und die Fehler passieren hier ebenfalls, allerdings mit dem Unterschied, dass das Spiel, der Ernter und die Explosions-Animation grafisch realistischer aussehen. Wenn man hier eine lernende Komponente implementieren würde, dann könnten solche Probleme der KI zwar noch passieren, aber auf Dauer wäre Sie in der Lage, das als Fehler zu erkennen. \\
 
-\paragraph{MiniMax-Algorithmus}
-Der Minimax-Algorithmus dient der Entscheidungsfindung eines optimalen Spielzuges vor allem in Zwei-Spieler Spielen wie Schach oder Backgammon bei denen sich die Spieler mit ihren Zügen abwechseln. Effizient angewendet werden kann der Algorithmus vor Allem in \textbf{Nullsummenspielen}.\\
-Ein Spiel ist ein \textbf{Nullsummenspiel}, wenn die Summe aus Gewinnn und Verlust aller Spieler nach Spielende Null ergibt, das heißt der Gewinn eines Spielers ist der Verlust beziehungsweise die Niederlage eines anderen.\cite{AlphaBeta}.\\
-Diesen Algorithmus kann man sich als Spielbaum vorstellen, der mit jedem Pfad einen denkbaren Spielverlauf darstellt. Dabei repräsentiert jeder Knoten des Baumes einen Spielzustand und enthält Informationen über die Verteilung der Figuren auf dem Spielbrett, welcher Spieler am Zug ist und über mögliche weitere Spielzüge. Jeder dieser Züge ist ebenfalls wieder ein Knoten und Kind der vorherigen Aktion.
+%\paragraph{MiniMax-Algorithmus}
+%Der Minimax-Algorithmus dient der Entscheidungsfindung eines optimalen Spielzuges vor allem in Zwei-Spieler Spielen wie Schach oder Backgammon bei denen sich die Spieler mit ihren Zügen abwechseln. Effizient angewendet werden kann der Algorithmus vor Allem in \textbf{Nullsummenspielen}.\\
+%Ein Spiel ist ein \textbf{Nullsummenspiel}, wenn die Summe aus Gewinnn und Verlust aller Spieler nach Spielende Null ergibt, das heißt der Gewinn eines Spielers ist der Verlust beziehungsweise die Niederlage eines anderen.\cite{AlphaBeta}.\\
+%Diesen Algorithmus kann man sich als Spielbaum vorstellen, der mit jedem Pfad einen denkbaren Spielverlauf darstellt. Dabei repräsentiert jeder Knoten des Baumes einen Spielzustand und enthält Informationen über die Verteilung der Figuren auf dem Spielbrett, welcher Spieler am Zug ist und über mögliche weitere Spielzüge. Jeder dieser Züge ist ebenfalls wieder ein Knoten und Kind der vorherigen Aktion.
 
-\subparagraph{Beispiel 2.1:}
-Am einfachsten kann man sich die Funktionsweise am Beispiel von TicTacToe klar machen:\\
-Dabei repräsentiert wieder jeder Knoten, der hier als Abbildung des Spielbretts dargestellt wird, einen Zustand des Spiels. Die Bewertung der Zustände ist in diesem Spiel vergleichsweise simpel:\\
-\begin{itemize}
-	\item Spieler 1 gewinnt: +1 Punkt,
-	\item Unentschieden: 0 Punkte,
-	\item Spieler 2 gewinnt: -1 Punkt
-\end{itemize}
-\begin{figure}[h]
-	\centering
-	\includegraphics{img/Baum}
-	\caption{TicTacToe Spielbaum}
-	\cite{AlphaBeta}
-	\label{fig:Suchbaum}
-\end{figure}
-Der Algorithmus basiert auf der Idee, anhand dieses Baumes den Verlauf mit dem höchsten Wert zu verfolgen und so das Spiel zu gewinnnen. Dabei wird wie in Abbildung \ref{fig:Suchbaum} zu sehen, jedem Knoten ein Wert zugeordnet und versucht immer den höchstmöglichen Wert zu erzielen, wenn der Spieler gewinnen soll.
+%\subparagraph{Beispiel 2.1:}
+%Am einfachsten kann man sich die Funktionsweise am Beispiel von TicTacToe klar machen:\\
+%Dabei repräsentiert wieder jeder Knoten, der hier als Abbildung des Spielbretts dargestellt wird, einen Zustand des Spiels. Die Bewertung der Zustände ist in diesem Spiel vergleichsweise simpel:\\
+%\begin{itemize}
+%	\item Spieler 1 gewinnt: +1 Punkt,
+%	\item Unentschieden: 0 Punkte,
+%	\item Spieler 2 gewinnt: -1 Punkt
+%\end{itemize}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics{img/Baum}
+%	\caption{TicTacToe Spielbaum}
+%	\cite{AlphaBeta}
+%	\label{fig:Suchbaum}
+%\end{figure}
+%Der Algorithmus basiert auf der Idee, anhand dieses Baumes den Verlauf mit dem höchsten Wert zu verfolgen und so das Spiel zu gewinnnen. Dabei wird wie in Abbildung \ref{fig:Suchbaum} zu sehen, jedem Knoten ein Wert zugeordnet und versucht immer den höchstmöglichen Wert zu erzielen, wenn der Spieler gewinnen soll.
 
-\paragraph{Analyse \& Variationen}
-Aufgrund von tendenziell hoher Laufzeit, vor Allem bei komplexeren Spielen, gibt es verschiedene Variationen dieses Algorithmus.
-In der Basis-Version des MiniMax enden die möglichen Verläufe im ungünstigsten Fall nach $d$ Zügen, wobei $d$ für die Suchtiefe im Baum steht. Im extremsten Fall können wir annehmen, dass aus jedem Zustand weitere $w$ Züge möglich sind. Daraus resultieren auf der untersten Ebene $ w ^d$ Knoten und es gilt \[ \sum_{i=1}^d  w^{d}\in O(w^d).\]\\
-Zur Optimierung existieren unterschiedliche Variationen von denen eine hier näher beschrieben wird.
-\paragraph{Alpha-Beta-Algorithmus}
-Aufgrund der hohen Komplexität wird auch der \textbf{Alpha-Beta-Algorithmus} verwendet. Dieser basiert auf dem MiniMax-Algorithmus, allerdings wird hier der Wert der möglichen Endzustände geschätzt und die Berechnnung eines Pfads abgebrochen, sobald klar ist, dass dieser Weg weniger zielführend ist. Dabei wird angenommen, dass Zweige ab einem Punkt in der Berechnung vernachlässigt werden können. Am nachfolgenden Beispiel wird die Idee deutlicher:
-\subparagraph{Beispiel 2.2:}
-Nach der Durchsuchung des linken Teilbaums, sieht man, dass der der Ausgangsknoten mindestens den Wert 3 hat. Deshalb wird die Evaluation des rechten Teilbaums abgebrochen, sobald klar wird, dass der min-Knoten maximal einen Wert von 2 hat. Die Suche kann abgebrochen werde, da der rechte Teilbaum keine Auswirkungen auf den Startknoten hat\nocite{AlphaBeta}.
-\begin{figure}[h]
-	\centering
-	\includegraphics{img/AlphaBeta}
-	\caption{Alpha-Beta Spielbaum}
-	\cite{AlphaBeta}
-	\label{fig:AlphaBeta}
-\end{figure}
+%\paragraph{Analyse \& Variationen}
+%Aufgrund von tendenziell hoher Laufzeit, vor Allem bei komplexeren Spielen, gibt es verschiedene Variationen dieses Algorithmus.
+%In der Basis-Version des MiniMax enden die möglichen Verläufe im ungünstigsten Fall nach $d$ Zügen, wobei $d$ für die Suchtiefe im Baum steht. Im extremsten Fall können wir annehmen, dass aus jedem Zustand weitere $w$ Züge möglich sind. Daraus resultieren auf der untersten Ebene $ w ^d$ Knoten und es gilt \[ \sum_{i=1}^d  w^{d}\in O(w^d).\]\\
+%Zur Optimierung existieren unterschiedliche Variationen von denen eine hier näher beschrieben wird.
+%\paragraph{Alpha-Beta-Algorithmus}
+%Aufgrund der hohen Komplexität wird auch der \textbf{Alpha-Beta-Algorithmus} verwendet. Dieser basiert auf dem MiniMax-Algorithmus, allerdings wird hier der Wert der möglichen Endzustände geschätzt und die Berechnnung eines Pfads abgebrochen, sobald klar ist, dass dieser Weg weniger zielführend ist. Dabei wird angenommen, dass Zweige ab einem Punkt in der Berechnung vernachlässigt werden können. Am nachfolgenden Beispiel wird die Idee deutlicher:
+%\subparagraph{Beispiel 2.2:}
+%Nach der Durchsuchung des linken Teilbaums, sieht man, dass der der Ausgangsknoten mindestens den Wert 3 hat. Deshalb wird die Evaluation des rechten Teilbaums abgebrochen, sobald klar wird, dass der min-Knoten maximal einen Wert von 2 hat. Die Suche kann abgebrochen werde, da der rechte Teilbaum keine Auswirkungen auf den Startknoten hat\nocite{AlphaBeta}.
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics{img/AlphaBeta}
+%	\caption{Alpha-Beta Spielbaum}
+%	\cite{AlphaBeta}
+%	\label{fig:AlphaBeta}
+%\end{figure}
 %% ==============================
 \section{Unity Engine}
 %% ==============================
@@ -142,6 +142,13 @@ Die Unity Engine ist eine von Unity Technologies entwickelte Laufzeit- und Entwi
 \paragraph{Prefab System}
 \nocite{UPrefabs}
 Unitys Prefab System ermöglicht es Spielobjekte zu erstellen und als Prefab zu speichern. Diese Prefabs können wiederverwendet werden und fungieren wie ein Vorlage(Template) eines Objektes. Dadurch können wiederkehrende Spielobjekte einmalig definiert werden und durch das Prefab in der selben Form oder aber auch verändert mehrfach genutzt werden. Das heißt es können dadurch zur Laufzeit Spielobjekte instanziiert und zur Szene hinzugefügt werden ohne jedes einzelne Objekt neu zu definieren. Weiterhin können diese so erstellten Objekte trotzdem noch separat verändert werden.
+
+%% ==============================
+\section{Künstliche Intelligenz}
+%% ==============================
+\label{ch:Grundlagen:sec:Künstliche Intelligenz}
+
+
 
 %% ==============================
 %%\section{State of the Art}
