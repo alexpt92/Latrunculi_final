@@ -119,10 +119,12 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         GameObject.FindGameObjectWithTag("StartButton").SetActive(false);
-        GameObject.FindGameObjectWithTag("DDX").SetActive(false);
-        GameObject.FindGameObjectWithTag("DDY").SetActive(false);
-        GameObject.FindGameObjectWithTag("DDDiff").SetActive(false);
-
+        //GameObject.FindGameObjectWithTag("DDX").SetActive(false);
+      //  GameObject.FindGameObjectWithTag("DDY").SetActive(false);
+       // GameObject.FindGameObjectWithTag("DDDiff").SetActive(false);
+        DDDiff.gameObject.SetActive(false);
+        DDX.gameObject.SetActive(false);
+        DDY.gameObject.SetActive(false);
         if (firstAIActive.isOn == false)
         {
             //secondAIActive. = false;
