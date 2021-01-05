@@ -346,6 +346,8 @@ public class BoardDraught : Board
             simpleAllCells[m.removeX2, m.removeY2] = null;
         }
         //BoardDraught b = new BoardDraught(copy, nextPlayer, sizeX, sizeY);
+        currentMove = m;
+
         return this;
     }
 
@@ -483,12 +485,12 @@ public class BoardDraught : Board
                         eval += pointThreat;
                     if (currentMove.hide)
                         eval += pointHide;
-                    if (eval == 1f)
-                        eval += pointSimple;
-                    if (currentMove.success)
-                        eval += pointSuccess;
-        if (currentMove.highThreat)
-            eval += pointHighThreat;
+            //        if (eval == 1f)
+             //           eval += pointSimple;
+                    //if (currentMove.success)
+                      //  eval += pointSuccess;
+                    if (currentMove.highThreat)
+                        eval += pointHighThreat;
                     if (IsGameOver())
                         eval += pointSuccess;
                         currentMove.mScore += eval;
@@ -531,8 +533,8 @@ public class BoardDraught : Board
                         eval += pointHide;
                     if (eval == 1f)
                         eval += pointSimple;
-                    if (m.success)
-                        eval += pointSuccess;
+                   // if (m.success)
+                     //   eval += pointSuccess;
                     m.mScore += eval;
                 }
             }

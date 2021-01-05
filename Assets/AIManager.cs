@@ -16,8 +16,8 @@ public static float Minimax(
     {
         if (board.IsGameOver() || currentDepth == maxDepth)
         {
-            board.SetCurrentMove(bestMove);
-            return board.Evaluate(player);//board.Evaluate(player);
+            //board.SetCurrentMove(bestMove);
+            return 0;
         }
 
         bestMove = null;
@@ -37,7 +37,7 @@ public static float Minimax(
             allMoves = board.GetMoves(player);
             nextPlayer = 2;
         }
-        BoardDraught bTest = board;
+       // BoardDraught bTest = board;
         Move currentMove;
         if (currentDepth == 0)
         {
@@ -45,7 +45,7 @@ public static float Minimax(
         }
         foreach (Move m in allMoves)//board.GetMoves())
         {
-            bTest = board.MakeMove(m);
+            board.MakeMove(m);
             float currentScore;
             //Evaluate Moves
             currentMove = m;// null;//= m;//m; ??
@@ -56,9 +56,9 @@ public static float Minimax(
                 else
                     nextPlayer = 2;
             } 
-            currentScore = Minimax(bTest, nextPlayer, maxDepth, currentDepth + 1, ref currentMove);
+            currentScore = Minimax(board, nextPlayer, maxDepth, currentDepth + 1, ref currentMove);
 
-            board.SetCurrentMove(m);
+            //board.SetCurrentMove(m);
             float newScore = board.Evaluate(player);
             //Evaluierung aktueller Move
             
@@ -85,7 +85,7 @@ public static float Minimax(
                     m.mScore = bestScore;
                 }
             }
-            bTest.StepBack();
+            board.StepBack();
         }
         List<Move> bestMoves = new List<Move>();
         if (currentDepth == 0)

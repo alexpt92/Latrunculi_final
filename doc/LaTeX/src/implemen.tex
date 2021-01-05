@@ -20,7 +20,8 @@ Aufgrund der unterstützenden Funktionen, wie das Portieren auf verschiedene Sys
 %% ==============================
 \label{ch:Implementierung:sec:Unity}
 
-Wie zuvor bereits erwähnt, habe ich die Unity Engine genutzt um das Spiel zu implementieren. Die ersten Versuche einer lauffähigen Umsetzung habe ich mit einem vorgefertigten Spielbrett umgesetzt. Dabei habe ich das Brett durch 8x8 einzelne Zellen beziehungsweise Quadrate dargestellt, die jeweils ein eigenes Spielobjekt sind. Auf diesen Quadraten habe ich die Spielsteine als schwarze und graue Kreise platziert und diesen via Skript Funktionen gegeben. Dieser erste Entwurf \ref{fig:Prototyp} reagierte auf das OnClick() Event, sodass beim Anklicken eines Kreises der mögliche Weg hervorgehoben wurde und beim Klick auf das gewünschte Feld, wurde der Kreis auf diesem neuen Feld platziert.
+Die ersten Versuche einer lauffähigen Umsetzung habe ich mit einem vorgefertigten Spielbrett umgesetzt. Dabei habe ich das Brett durch 8x8 einzelne Zellen beziehungsweise Quadrate dargestellt%, die jeweils ein eigenes Spielobjekt sind
+. Auf diesen Quadraten habe ich die Spielsteine als schwarze und graue Kreise platziert und diesen via Skript Funktionen gegeben. Dieser erste Entwurf (Abbildung \ref{fig:Prototyp}) reagierte auf das OnClick() Event, sodass beim Anklicken eines Kreises der mögliche Weg hervorgehoben wurde und beim Klick auf das gewünschte Feld, wurde der Kreis auf diesem neuen Feld platziert.
 
 \begin{figure}[h]
 	\centering
@@ -29,7 +30,7 @@ Wie zuvor bereits erwähnt, habe ich die Unity Engine genutzt um das Spiel zu im
 	\label{fig:Prototyp}
 \end{figure}
 
-Da dieser Entwurf sehr statisch und die Größe fest verankert war, habe ich mir Informationen gesucht um das Spiel dynamisch zu erstellen und die Größe des Spielfelds variabel zu machen. Dazu habe ich sowohl für die Zellen, als auch die Spielsteine Prefabs erstellt und somit mittels Skript in der Start-Funktion die Prefabs abrufen und je nach angegebener Größe das Spielfeld zur Laufzeit erstellen.
+Da dieser Entwurf sehr statisch und die Größe fest verankert war, habe ich mir Informationen gesucht um das Spiel dynamisch zu erstellen und die Größe des Spielfelds variabel zu machen. Dazu habe ich sowohl für die Zellen, als auch die Spielsteine Prefabs erstellt und somit mittels Skript in der Start-Funktion die Prefabs abgerufen und je nach angegebener Größe das Spielfeld zur Laufzeit erstellt.
 Außerdem wurde das OnClick()-Event durch Drag \& Drop ersetzt, sodass es auf einem Touchscreen intuitiver zu bedienen ist.
 %% ==============================
 \section{GameObjects}
@@ -66,38 +67,22 @@ Im \textbf{AIManager} befindet sich der MiniMaxing-Algorithmus, der die Berechnu
 \section{MiniMaxing}
 %% ==============================
 \label{ch:Implementierung:sec:MiniMaxing}
-Für die Implementierung des MiniMaxing habe ich die Klasse AIManager entworfen. Diese enthält die Funktion Minimax, die das aktuelle Spielbrett als Board, die maximale Suchtiefe, die aktuelle Tiefe und den Spieler der am Zug ist annimmt. Die Berechnungen und Evaluation der möglichen Züge werden anschließend hier rekursiv durchgeführt und es wird die maximal erreichte Punktzahl zurückgegeben, sowie die Referenzierung des zugeordneten Zuges.\\
+Für die Implementierung des MiniMaxing habe ich die Klasse AIManager entworfen. Diese enthält die Funktion \textbf{Minimax()}, die das aktuelle Spielbrett als Board, die maximale Suchtiefe, die aktuelle Tiefe und den Spieler der am Zug ist übernimmt. Die Berechnungen und Evaluation der möglichen Züge werden anschließend hier rekursiv durchgeführt und es wird die maximal erreichte Punktzahl zurückgegeben, sowie die Referenzierung des zugeordneten Zuges.\\
 
-\begin{lstlisting}
-public static float Minimax(
-BoardDraught board,
-int player,
-int maxDepth,
-int currentDepth,
-ref Move bestMove)
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily, numbers=left, stepnumber=1, numberstyle = \tiny]
+public static float Minimax(BoardDraught board, int player, int maxDepth,
+int currentDepth, ref Move bestMove)
 {
 	if (board.IsGameOver() || currentDepth == maxDepth)
 	{
-		board.SetCurrentMove(bestMove);
-		return board.Evaluate(player);//board.Evaluate(player);
+		return 0;
 	}
-...
-}
-\end{lstlisting}
-
-Der Algorithmus beginnt mit der Prüfung, ob das Spiel beendet ist oder die maximal festgelegte Suchtiefe erreicht wurde. Trifft einer der beiden Fälle zu, dann wird die Punktzahl des aktuell betrachteten Zuges zurückgegeben, ansonsten wird die Abfrage übersprungen und es geht weiter im Code.\\
-
-\begin{lstlisting}
-public static float Minimax(...)
-{
-		...
 	bestMove = null;
 	float bestScore = Mathf.Infinity;
 	if (board.GetCurrentPlayer() == player)
 	bestScore = Mathf.NegativeInfinity;
 	List<Move> allMoves = new List<Move>();
 	int nextPlayer = 0;
-
 	if (player == 2)
 	{
 		allMoves = board.GetMoves(player);
@@ -108,23 +93,10 @@ public static float Minimax(...)
 		allMoves = board.GetMoves(player);
 		nextPlayer = 2;
 	}
-	BoardDraught bTest = board;
 	Move currentMove;
-	if (currentDepth == 0)
+	foreach (Move m in allMoves)
 	{
-		float maxScore = 0;
-	}
-		...
-}
-\end{lstlisting}
-Anschließend werden die möglichen Züge des gerade betrachteten Spielers berechnet. Dabei wird die Funktion GetMoves(player) aus der BoardDraught-Klasse aufgerufen, die die entsprechenden Züge als Liste zurückgibt.\\
-\begin{lstlisting}
-public static float Minimax(...)
-{
-	...
-	foreach (Move m in allMoves)//board.GetMoves())
-	{
-		bTest = board.MakeMove(m);
+		board.MakeMove(m);
 		float currentScore;
 		currentMove = m;
 		if (m.attacked)
@@ -134,53 +106,31 @@ public static float Minimax(...)
 			else
 			nextPlayer = 2;
 		} 
-		currentScore = Minimax(bTest, nextPlayer, maxDepth, currentDepth + 1, ref currentMove);
-	...
-	}
-...
-}
-\end{lstlisting}
-
-In der Schleife werden die vom aktuellen Zustand machbaren Züge betrachtet und entsprechend wieder die Minimax-Funktion aufgerufen um die Rekursion zu starten. Falls der gerade betrachtete Zug einen Spieler angegriffen hat, wird der Spieler beibehalten um die zweite Bewegung des Spielers ebenfalls zu betrachten.\\
-
-\begin{lstlisting}
-public static float Minimax(...)
-{
-	...   
-    board.SetCurrentMove(m);
-	float newScore = board.Evaluate(player);
-	if (board.GetCurrentPlayer() == player)
-	{
-		currentScore += newScore;
-	
-		if (currentScore > bestScore)
+		currentScore = Minimax(board, nextPlayer, maxDepth, 
+				currentDepth + 1, ref currentMove);
+		float newScore = board.Evaluate(player);
+		if (board.GetCurrentPlayer() == player)
 		{
-			bestScore = currentScore;
-			bestMove = m;
-			m.mScore = bestScore;
+			currentScore += newScore;
+			if (currentScore > bestScore)
+			{
+				bestScore = currentScore;
+				bestMove = m;
+				m.mScore = bestScore;
+			}
 		}
-	}
-	else
-	{
-		currentScore -= newScore;
-		if (currentScore < bestScore)
+		else
 		{
-			bestScore = currentScore;
-			bestMove = m;
-			m.mScore = bestScore;
+			currentScore -= newScore;
+			if (currentScore < bestScore)
+			{
+				bestScore = currentScore;
+				bestMove = m;
+				m.mScore = bestScore;
+			}
 		}
+		board.StepBack();
 	}
-	bTest.StepBack();
-	}
-	...
-}
-\end{lstlisting}
-Die aktuelle Bewegung wird auf dem Board zwischengespeichert um den Schritt für weitere Evaluationen rückgängig machen zu können. Anschließend wird die Bewegung evaluiert und die Punktzahl entweder auf die Gesamtpunktzahl addiert oder subtrahiert, je nachdem welcher Spieler betrachtet wird. Zum Schluss wird die Bewegung rückgängig gemacht und es kann der nächste Zug betrachtet werden. Nach der Rekursion sollten alle Aktionen eine Bewertung erhalten haben.\\
-
-\begin{lstlisting}
-public static float Minimax(...)
-{
-	...  
 	List<Move> bestMoves = new List<Move>();
 	if (currentDepth == 0)
 	{
@@ -192,16 +142,38 @@ public static float Minimax(...)
 			}
 		}
 		System.Random rnd = new System.Random();
-		
 		int index = rnd.Next(bestMoves.Count);
 		bestMove = bestMoves.ToArray()[index];
 	}
-return bestScore;
+	return bestScore;
 }
 \end{lstlisting}
 
-Da die Punktzahl teilweise identisch war, wurde immer der erste betrachtete Zug mit der maximal erreichten Punktzahl gewählt. Daher habe ich noch einen Zufallsgenerator implementiert, der eine zufällige Bewegung aus denen mit der höchsten Punktzahl auswählt und zurückgibt.
+Die rekursive Funktion \textbf{Minimax()} wird aufgerufen und bekommt den momentanen Spielzustand, sowie die maximale und aktuelle Suchtiefe, als auch eine Referenzierung auf einen Zug, der nachher der beste zugeordnet wird, übergeben. Somit sind alle nötigen Informationen zur Berechnung vorhanden und es kann in Zeile 4 die Startbedingung geprüft werden. Falls das Spiel beendet ist oder die maximale Suchtiefe erreicht wurde wird eine 0 zurückgegeben. Anschließend werden die möglichen Züge des gerade betrachteten Spielers innerhalb der \textbf{BoardDraught}-Klasse berechnet. Zeile 14 prüft ob es sich um den ersten oder zweiten Spieler handelt und ruft dementsprechend die Züge des Spielers ab und speichert diese in der Variablen allMoves. In der ForEach-Schleife wird über die von diesem Zustand aus möglichen Züge iteriert. Dabei wird zuerst die Bewegung auf dem Spielbrett simuliert und auf dem Spielbrett gespeichert, um nach jeder Iteration den Schritt rückgängig machen zu können. In Zeile 30 wird geprüft, ob der Spieler einen gegnerischen Stein erobern würde. Falls ein Angriff stattgefunden hat wird der nächste Spieler auf den aktuellen Spieler gesetzt, sodass dieser in der darauffolgenden Suchtiefe wieder betrachtet wird. Zeile 37 startet die Rekursion mit dem neuen Spielzustand und speichert die Punktzahl in currentScore. Anschließend wird die aktuelle Bewegung evaluiert und die entsprechenden Punkte zurückgegeben und in newScore zwischengespeichert. Zum Schluss werden die Punkte aus newScore auf die aktuelle Punktzahl addiert, falls der betrachtete Spieler auch derjenige ist, der am Zug ist, oder subtrahiert, wenn der Gegenspieler dran wäre. Schließlich wird in Zeile 60 mit der Board-Funktion \textbf{StepBack()} der letzte Zug rückgängig gemacht und die Iteration wird fortgesetzt. Nach der Rekursion sollte alle Aktionen eine Bewertung erhalten haben. Da die Punktzahl teilweise identisch war, wurde immer der erste betrachtete Zug mit der maximal erreichten Punktzahl gewählt. Daher habe ich noch einen Zufallsgenerator implementiert, der eine zufällige Bewegung aus denen mit der höchsten Punktzahl auswählt und zurückgibt.\\
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily, numbers=left, stepnumber=1, numberstyle = \tiny]
+public float Evaluate(string color)
+{
+	float eval = 1f;
+	int rows = sizeX;
+	int cols = sizeY;
+	if (currentMove.attacked)
+		eval += pointAttacked;
+	if (currentMove.attacked2)
+		eval += pointAttacked;
+	if (currentMove.threaten)
+		eval += pointThreat;
+	if (currentMove.highThreat)
+		eval += pointHighThreat;
+	if (currentMove.hide)
+		eval += pointHide;
+	if (IsGameOver())
+		eval += pointSuccess;
+	currentMove.mScore += eval;
+	return eval;
+}
+\end{lstlisting}
 
+Die Funktion \textbf{Evaluate()}-Funktionen sind für die Bewertung der Züge zuständig. Dabei ruft \textbf{Evaluate(int player)} nach der Entscheidung, welche Farbe dem Spieler zugeordnet wurde, die \textbf{Evaluate(string color)}-Funktion auf. Hier findet die eigentliche Punkteverteilung statt. Jeder Zug hat zuvor für verschiedene Spielsituationen Flags zugeordnet bekommen. Diese werden bei der Suche nach möglichen Bewegungen auf \textit{true} gesetzt, wenn die definierte Bedingung zutrifft. Beispielsweise wird das \textit{Attacked}-Flag gesetzt, wenn der Zug zu einer Eroberung führt und die Aktion erhält die vorher festgelegte Punktzahl für Angriffe. Das Flag \textit{attacked2} wird gesetzt, wenn zwei Steine in diesem Zug erobert werden können. \textit{Threaten} wird \textit{true}, wenn die Aktion zu einer Bedrohung für den Gegenspieler führt. \textit{HighThreat} wurde eingeführt um Bedrohungen, die im nächsten Zug zur Eroberung führen, besser bewerten zu können. Das \textit{Hide}-Flag steht für den Abzug aus einer eigenen Bedrohung, also werden hier Punkte für ein Defensives Verhalten verteilt. Zum Schluss wird geprüft ob das Spiel nach dem Zug beendet wäre und dementsprechend die Punktzahl dazu addiert. Die Punkteverteilung bestimmt auch den Schwierigkeitsgrad. Um die KI noch intelligenter zu machen, könnte die Evaluierung noch um eine beliebige Anzahl an Flags erweitert werden, sodass die Spielsituation immer präziser bewertet wird.
 
 %%% Local Variables: 
 %%% mode: latex
