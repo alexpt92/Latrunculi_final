@@ -15,7 +15,6 @@ public class Move
 
     public int x; // x & y as TargetLocation
     public int y;
-    public bool success;
     public bool threaten;
     public bool hide; //??
     public bool highThreat;

@@ -234,8 +234,8 @@ public class Board : MonoBehaviour
                         eval += pointThreat;
                     if (m.hide)
                         eval += pointHide;
-                    if (m.success)
-                        eval += pointSuccess;
+                   // if (m.success)
+                     //   eval += pointSuccess;
                     if (eval == 1f)
                         eval += pointSimple;
 
