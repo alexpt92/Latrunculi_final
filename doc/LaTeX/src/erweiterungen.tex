@@ -3,17 +3,18 @@
 %%
 
 \chapter{Mögliche Erweiterungen}
-\label{ch:Entwurf}
+\label{ch:Erweiterungen}
 %% ==============================
 %In diesem Kapitel erfolgt die ausführliche Beschreibung des eigenen
 %Lösungsansatzes. Dabei sollten Lösungsalternativen diskutiert und
 %Entwurfsentscheidungen dargelegt werden.
-
+Um den Algorithmus effizienter zu gestalten, gibt es unterschiedliche Verfahren. Der Alpha-Beta-Algorithmus ist so eine Möglichkeit, eine geringere Laufzeit zu erzielen indem frühzeitig Suchen abgebrochen werden, sobald absehbar ist dass es eine bessere Alternative gibt. Außerdem kann eine Verbesserung im Spielverhalten erzielt werden, wenn man mehr Bewertungskriterien einführt und so die Zustände präziser einordnen kann.
 %% ==============================
 \section{Alpha-Beta-Algorithmus}
 %% ==============================
 \label{ch:Entwurf:sec:1.AB-Algo}
-
+Der Alpha-Beta-Algorithmus ist eine Verbesserung des MinMax-Suchverfahrens. Dabei funktionieren beide prinzipiell ähnlich, allerdings soll ersterer schneller in der Suche sein.\\
+Diese Verbesserung wird dadurch erzielt, dass die Suche eines Pfades abgebrochen wird, sobald klar wird, dass das Ergebnis nicht beeinflusst wird.
 
 
 
