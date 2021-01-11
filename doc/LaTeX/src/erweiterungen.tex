@@ -14,7 +14,66 @@ Um den Algorithmus effizienter zu gestalten, gibt es unterschiedliche Verfahren.
 %% ==============================
 \label{ch:Entwurf:sec:1.AB-Algo}
 Der Alpha-Beta-Algorithmus ist eine Verbesserung des MinMax-Suchverfahrens. Dabei funktionieren beide prinzipiell ähnlich, allerdings soll ersterer schneller in der Suche sein.\\
-Diese Verbesserung wird dadurch erzielt, dass die Suche eines Pfades abgebrochen wird, sobald klar wird, dass das Ergebnis nicht beeinflusst wird.
+Dabei entspricht Alpha dem besten bereits gefundenen Zug des maximierenden Spielers. Beta dem besten bisher gefundenen Zuges des minimierenden Spielers. Im Beispiel der Abbildungen \ref{fig:ab1} bis \ref{fig:ab8} kann das Prinzip leicht verständlich gemacht werden. Dabei entspricht der Spieler mit den Steinen dem maximierenden Spieler und der andere dem minimierenden. Alpha wird zu Beginn mit -$\infty$ und Beta mit $\infty$  festgelegt. Abbildung \ref{fig:ab1} zeigt der ersten Schritt. Dabei wird der linke Teilbaum zuerst durchsucht. Der betrachtete Spielzug des minimierenden Spielers hat eine Wertung von -30, deshalb wird in Abbildung \ref{fig:ab2} Beta mit -30 belegt. Nun wird das nächste Kind mit der Wertung -40 betrachtet und mit $\beta$ verglichen. -40 ist kleiner als -30, deshalb erhält $\beta$ in Abbildung \ref{fig:ab3} den kleineren Wert. Dies entspricht dem kleinsten erreichbaren Wert in dieser Situation und wird deshalb den Pfad entlang weitergereicht. In Abbildung \ref{fig:ab4} wird $\alpha$ dementsprechend mit -40 als Höchstpunktzahl des maximierenden Spielers gespeichert. Auf dem nächsten Ausschnitt \ref{fig:ab5} sieht man das $\alpha$ mit -40 als Vergleichswert und $\beta$ wird wieder mit $\infty$ weitergereicht. Der Zug des maximierenden Spielers hat eine Punktzahl von +30 erhalten und der betrachtete Folgezug des Gegenspielers eine -40, daraus ergibt sich für $\beta$ -10. Wird der nächste mögliche Zug betrachtet, erreicht der minimierende Spieler eine -100 und wir erhalten ein $\beta$ von -70. Da -70 kleiner als $\alpha$ ist, kann wie in Abbildung \ref{fig:ab7} zu sehen ist der restliche Teilbaum gestrichen werden. Der Algorithmus geht immer von den bestmöglichen Zügen aus, daher ist es nicht mehr nötig die weiteren Zustände aus diesem Teilbaum zu betrachten. Die letzte Abbildung \ref{fig:ab8} zeigt die Betrachtung des dritten Baums. Hier erreicht $\beta$ wieder den Wert -70 sodass hier ebenfalls frühzeitig abgebrochen werden kann und wir erhalten -40 als maximale Punktzahl.
+
+
+ %Die Durchsuchung des linken Teilbaums liefert eine -40 und wird als untere Schranke festgelegt. Als nächstes wird der mittlere Baum betrachtet. Hier erreicht der minimierende Spieler den Wert -100 im besten Fall und der maximierende erzielt +30 das in der Summe -70 ergibt. Also wird die Durchsuchung des Teilbaums abgebrochen, sobald die -100 gefunden wurden. Da immer vom besten Zug ausgegangen wird, kann in diesem Teilbaum kein besserer Score als im linken  erreicht werden. Der rechte Baum wird ähnlich behandelt. Hier kann der minimierende Spieler wieder die Punktzahl -100 erreichen und somit wird die Gesamtpunktzahl -40 nicht mehr erreichbar und die Durchsuchung kann ab diesem Punkt wieder beendet werden.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/ab1}
+	\caption{Schritt 1: Alpha-Beta Pruning}
+	\label{fig:ab1}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/ab2}
+	\caption{Schritt 2: Alpha-Beta Pruning}
+	\label{fig:ab2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/ab3}
+	\caption{Schritt 3: Alpha-Beta Pruning}
+	\label{fig:ab3}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/ab4}
+	\caption{Schritt 4: Alpha-Beta Pruning}
+	\label{fig:ab4}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/ab5}
+	\caption{Schritt 5: Alpha-Beta Pruning}
+	\label{fig:ab5}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/ab6}
+	\caption{Schritt 6: Alpha-Beta Pruning}
+	\label{fig:ab6}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/ab7}
+	\caption{Schritt 7: Alpha-Beta Pruning}
+	\label{fig:ab7}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/ab8}
+	\caption{Schritt 8: Alpha-Beta Pruning}
+	\label{fig:ab8}
+\end{figure}
+%Diese Verbesserung wird dadurch erzielt, dass die Suche eines Pfades abgebrochen wird, sobald klar wird, dass das Ergebnis nicht beeinflusst wird. Als Beispiel kann die Abbildung 2.6 wieder betrachtet werden. Hier wird der linke Teilbaum zuerst durchsucht. Da jeweils vom besten Zug der Spieler ausgegangen wird, wird dieser Teilbaum durchsucht und beta wird anschließend auf -40 gesetzt (bester Zug der Muscheln). Anschließend wird der mittlere Teilbaum betrachtet. Hier wird der beste Zug der Muscheln mit -100 bewertet und somit eine neue untere Schranke von -100 festgelegt und die Durchsuchung der anderen Pfade abgebrochen, da eine bessere Wertung nicht erreichbar ist. Außerdem wird alpha mit +30 belegt. der letzte Teilbaum wird ebenfalls durchsucht bis die -100 getroffen wird und hier abgebrochen. Dadurch wird die Laufzeit verringert aber das selbe Endergebnis erzielt.
 
 
 

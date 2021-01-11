@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.25)  10 JAN 2021 19:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.25)  11 JAN 2021 22:08
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -958,14 +958,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--15
 
  []
 
-<img/regeln_startzustand2.png, id=215, 217.5628pt x 187.45032pt>
+<img/regeln_startzustand2.png, id=231, 217.5628pt x 187.45032pt>
 File: img/regeln_startzustand2.png Graphic file (type png)
 
 <use img/regeln_startzustand2.png>
 Package pdftex.def Info: img/regeln_startzustand2.png used on input line 18.
 (pdftex.def)             Requested size: 217.56227pt x 187.44984pt.
 
-<img/regeln_bewegung22.png, id=219, 217.5628pt x 187.45032pt>
+<img/regeln_bewegung22.png, id=235, 217.5628pt x 187.45032pt>
 File: img/regeln_bewegung22.png Graphic file (type png)
 
 <use img/regeln_bewegung22.png>
@@ -975,7 +975,7 @@ Package pdftex.def Info: img/regeln_bewegung22.png used on input line 28.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<img/regeln_nottodo2.png, id=220, 219.82124pt x 188.20313pt>
+<img/regeln_nottodo2.png, id=236, 219.82124pt x 188.20313pt>
 File: img/regeln_nottodo2.png Graphic file (type png)
 
 <use img/regeln_nottodo2.png>
@@ -985,7 +985,7 @@ Package pdftex.def Info: img/regeln_nottodo2.png used on input line 35.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<img/regeln_erobern2.png, id=222, 219.82124pt x 189.70876pt>
+<img/regeln_erobern2.png, id=238, 219.82124pt x 189.70876pt>
 File: img/regeln_erobern2.png Graphic file (type png)
 
 <use img/regeln_erobern2.png>
@@ -995,7 +995,7 @@ Package pdftex.def Info: img/regeln_erobern2.png used on input line 45.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<img/regeln_nichterobert2.png, id=224, 219.82124pt x 189.70876pt>
+<img/regeln_nichterobert2.png, id=240, 219.82124pt x 189.70876pt>
 File: img/regeln_nichterobert2.png Graphic file (type png)
 
 <use img/regeln_nichterobert2.png>
@@ -1058,12 +1058,12 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 156.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 156.
-<img/Spielbaum_latrun3.png, id=244, 374.90062pt x 320.69812pt>
-File: img/Spielbaum_latrun3.png Graphic file (type png)
+<img/Spielbaum_latrun4.png, id=260, 313.9228pt x 268.75406pt>
+File: img/Spielbaum_latrun4.png Graphic file (type png)
 
-<use img/Spielbaum_latrun3.png>
-Package pdftex.def Info: img/Spielbaum_latrun3.png used on input line 165.
-(pdftex.def)             Requested size: 374.8997pt x 320.69733pt.
+<use img/Spielbaum_latrun4.png>
+Package pdftex.def Info: img/Spielbaum_latrun4.png used on input line 165.
+(pdftex.def)             Requested size: 313.92203pt x 268.7534pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1094,7 +1094,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 102.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 102.
- [7 <./img/Spielbaum_latrun3.png>]
+ [7 <./img/Spielbaum_latrun4.png>]
 \openout2 = `src/analyse.aux'.
 
  (src/analyse.tex
@@ -1191,7 +1191,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 5.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 5.
-<img/Unity-Editor.png, id=278, 393.72093pt x 213.04594pt>
+<img/Unity-Editor.png, id=294, 393.72093pt x 213.04594pt>
 File: img/Unity-Editor.png Graphic file (type png)
 
 <use img/Unity-Editor.png>
@@ -1202,7 +1202,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 19.
 
-<img/Prototyp.png, id=280, 271.0125pt x 203.25937pt>
+<img/Prototyp.png, id=296, 271.0125pt x 203.25937pt>
 File: img/Prototyp.png Graphic file (type png)
  <use img/Prototyp.png>
 Package pdftex.def Info: img/Prototyp.png used on input line 28.
@@ -1340,6 +1340,78 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 13.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 13.
+<img/ab1.png, id=444, 188.20313pt x 268.75406pt>
+File: img/ab1.png Graphic file (type png)
+ <use img/ab1.png>
+Package pdftex.def Info: img/ab1.png used on input line 24.
+(pdftex.def)             Requested size: 188.20265pt x 268.7534pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/ab2.png, id=445, 185.94469pt x 266.49562pt>
+File: img/ab2.png Graphic file (type png)
+ <use img/ab2.png>
+Package pdftex.def Info: img/ab2.png used on input line 31.
+(pdftex.def)             Requested size: 185.94421pt x 266.49496pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/ab3.png, id=446, 185.94469pt x 266.49562pt>
+File: img/ab3.png Graphic file (type png)
+ <use img/ab3.png>
+Package pdftex.def Info: img/ab3.png used on input line 38.
+(pdftex.def)             Requested size: 185.94421pt x 266.49496pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/ab4.png, id=447, 188.95593pt x 269.50688pt>
+File: img/ab4.png Graphic file (type png)
+ <use img/ab4.png>
+Package pdftex.def Info: img/ab4.png used on input line 45.
+(pdftex.def)             Requested size: 188.95546pt x 269.50621pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/ab5.png, id=448, 200.24812pt x 271.0125pt>
+File: img/ab5.png Graphic file (type png)
+ <use img/ab5.png>
+Package pdftex.def Info: img/ab5.png used on input line 52.
+(pdftex.def)             Requested size: 200.24763pt x 271.01183pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/ab6.png, id=449, 200.24812pt x 269.50688pt>
+File: img/ab6.png Graphic file (type png)
+ <use img/ab6.png>
+Package pdftex.def Info: img/ab6.png used on input line 59.
+(pdftex.def)             Requested size: 200.24763pt x 269.50621pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/ab7.png, id=450, 223.58531pt x 267.24844pt>
+File: img/ab7.png Graphic file (type png)
+ <use img/ab7.png>
+Package pdftex.def Info: img/ab7.png used on input line 66.
+(pdftex.def)             Requested size: 223.58475pt x 267.24779pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/ab8.png, id=451, 315.42844pt x 271.0125pt>
+File: img/ab8.png Graphic file (type png)
+ <use img/ab8.png>
+Package pdftex.def Info: img/ab8.png used on input line 72.
+(pdftex.def)             Requested size: 315.42766pt x 271.01183pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 107.
@@ -1354,9 +1426,46 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 ]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 107.
+ [19 <./img/ab1.png> <./img/ab2.png>]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 107.
+ [20 <./img/ab3.png> <./img/ab4.png>]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 107.
+ [21 <./img/ab5.png> <./img/ab6.png>]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 107.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 107.
+ [22 <./img/ab7.png> <./img/ab8.png>]
 \openout2 = `src/fazit.aux'.
 
- (src/fazit.tex
+
+(src/fazit.tex
 Kapitel 8.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 5.
@@ -1371,7 +1480,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 108.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 108.
- [19
+ [23
 
 
 
@@ -1389,7 +1498,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 143.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 143.
- [20
+ [24
 
 
 
@@ -1406,7 +1515,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 18.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 18.
- [21
+ [25
 
 
 
@@ -1424,25 +1533,26 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 151.
  ) 
 Here is how much of TeX's memory you used:
- 9865 strings out of 493323
- 136058 string characters out of 3139066
- 276080 words of memory out of 3000000
- 12930 multiletter control sequences out of 15000+200000
+ 9925 strings out of 493323
+ 136798 string characters out of 3139066
+ 276528 words of memory out of 3000000
+ 12970 multiletter control sequences out of 15000+200000
  44176 words of font info for 81 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,12n,50p,2263b,1799s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmss17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
-i12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on thesis.pdf (26 pages, 611253 bytes).
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmss17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
+y10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on thesis.pdf (30 pages, 747422 bytes).
 PDF statistics:
- 518 PDF objects out of 1000 (max. 8388607)
- 192 named destinations out of 1000 (max. 500000)
- 289 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 581 PDF objects out of 1000 (max. 8388607)
+ 204 named destinations out of 1000 (max. 500000)
+ 329 words of extra memory for PDF output out of 10000 (max. 10000000)
 

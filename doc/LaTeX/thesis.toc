@@ -42,5 +42,5 @@
 \contentsline {section}{\numberline {6.3}Zusammenfassung}{17}{section.6.3}
 \contentsline {chapter}{\numberline {7}M\IeC {\"o}gliche Erweiterungen}{18}{chapter.7}
 \contentsline {section}{\numberline {7.1}Alpha-Beta-Algorithmus}{18}{section.7.1}
-\contentsline {chapter}{\numberline {8}Diskussion und Ausblick}{19}{chapter.8}
-\contentsline {chapter}{Literaturverzeichnis}{20}{section*.20}
+\contentsline {chapter}{\numberline {8}Diskussion und Ausblick}{23}{chapter.8}
+\contentsline {chapter}{Literaturverzeichnis}{24}{section*.20}
