@@ -9,24 +9,18 @@ A level-1 auxiliary file: src/implemen.aux
 A level-1 auxiliary file: src/eval.aux
 A level-1 auxiliary file: src/erweiterungen.aux
 A level-1 auxiliary file: src/fazit.aux
-White space in argument---line 34 of file thesis.aux
- : \citation{Ulrich
- :                  Schadler. Latrunculi ein verlorenes strategisches Brettspiel der Rmer. HOMO LUDENS Der spielende Mensch}
-I'm skipping whatever remains of this command
 The style file: itmabbrv.bst
 A level-1 auxiliary file: src/erklaerung.aux
 Database file #1: thesis.bib
-Warning--entry type for "computerweekly" isn't style-file defined
---line 13 of file thesis.bib
-Warning--entry type for "tecchannel" isn't style-file defined
---line 21 of file thesis.bib
-Warning--entry type for "ConceptArt" isn't style-file defined
---line 31 of file thesis.bib
-I was expecting a `,' or a `}'---line 40 of file thesis.bib
+I was expecting a `,' or a `}'---line 54 of file thesis.bib
  : 
  : year =         2018}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for ""
+Repeated entry---line 68 of file thesis.bib
+ : @book{palacios2016unity
+ :                        ,
+I'm skipping whatever remains of this entry
 Warning--to sort, need author, organization, or key in UPrefabs
+Warning--empty journal in edwards1961alpha
 (There were 2 error messages)

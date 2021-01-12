@@ -1,26 +1,19 @@
-\begin{thebibliography}{BaFe14}
+\begin{thebibliography}{EdHa61}
 
-\bibitem[BaFe14]{barr2014handbook}
-A.~Barr und E.~A. Feigenbaum.
-\newblock {\em The Handbook of Artificial Intelligence: Volume 2}, Band~2.
-\newblock Butterworth-Heinemann.
-\newblock 2014.
+\bibitem[EdHa61]{edwards1961alpha}
+D.~J. Edwards und T.~Hart.
+\newblock The alpha-beta heuristic.
+\newblock 1961.
 
 \bibitem[Hart17]{AlphaBeta}
 M.~Hartmann.
 \newblock Der Alpha-Beta-Algorithmus, 2017.
 
-\bibitem[Klin08]{tecchannel}
-H.~Klinge.
-\newblock Warum Künstliche Intelligenz (KI) in Spielen stagniert, 1 2008.
-
-\bibitem[Pett]{ConceptArt}
-J.~Petty.
-\newblock What is Unity 3D \& What is it Used For?
-
-\bibitem[Rous18]{computerweekly}
-M.~Rouse.
-\newblock Künstliche Intelligenz (KI), 2018.
+\bibitem[Pala16]{palacios2016unity}
+J.~Palacios.
+\newblock {\em Unity 5. x Game AI Programming Cookbook}.
+\newblock Packt Publishing Ltd.
+\newblock 2016.
 
 \bibitem[UPr]{UPrefabs}
 {\em Unity Documentation, Prefabs}.
