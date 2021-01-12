@@ -14,8 +14,8 @@
 \BOOKMARK [0][]{chapter.3}{3 Anforderungen}{}% 14
 \BOOKMARK [1][-]{section.3.1}{3.1 Technische Anforderungen}{chapter.3}% 15
 \BOOKMARK [1][-]{section.3.2}{3.2 Weitere Anforderungen}{chapter.3}% 16
-\BOOKMARK [0][]{chapter.4}{4 Entwurf / Konzeption}{}% 17
-\BOOKMARK [1][-]{section.4.1}{4.1 Konzept und Ideen}{chapter.4}% 18
+\BOOKMARK [0][]{chapter.4}{4 Entwurf}{}% 17
+\BOOKMARK [1][-]{section.4.1}{4.1 Ideen}{chapter.4}% 18
 \BOOKMARK [0][]{chapter.5}{5 Implementierung}{}% 19
 \BOOKMARK [1][-]{section.5.1}{5.1 Unity}{chapter.5}% 20
 \BOOKMARK [1][-]{section.5.2}{5.2 GameObjects}{chapter.5}% 21
@@ -24,8 +24,7 @@
 \BOOKMARK [0][]{chapter.6}{6 Evaluation}{}% 24
 \BOOKMARK [1][-]{section.6.1}{6.1 Launch beim Kunden}{chapter.6}% 25
 \BOOKMARK [1][-]{section.6.2}{6.2 Verhalten in der Simulation}{chapter.6}% 26
-\BOOKMARK [1][-]{section.6.3}{6.3 Zusammenfassung}{chapter.6}% 27
-\BOOKMARK [0][]{chapter.7}{7 M\366gliche Erweiterungen}{}% 28
-\BOOKMARK [1][-]{section.7.1}{7.1 Alpha-Beta-Algorithmus}{chapter.7}% 29
-\BOOKMARK [0][]{chapter.8}{8 Diskussion und Ausblick}{}% 30
-\BOOKMARK [0][]{section*.20}{Literaturverzeichnis}{}% 31
+\BOOKMARK [0][]{chapter.7}{7 M\366gliche Erweiterungen}{}% 27
+\BOOKMARK [1][-]{section.7.1}{7.1 Alpha-Beta-Algorithmus}{chapter.7}% 28
+\BOOKMARK [0][]{chapter.8}{8 Diskussion und Ausblick}{}% 29
+\BOOKMARK [0][]{section*.25}{Literaturverzeichnis}{}% 30

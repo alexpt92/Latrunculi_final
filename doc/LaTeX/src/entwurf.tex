@@ -2,30 +2,34 @@
 %% $Id: entwurf.tex 61 2012-05-03 13:58:03Z bless $
 %%
 
-\chapter{Entwurf / Konzeption}
+\chapter{Entwurf}
 \label{ch:Entwurf}
 %% ==============================
 %In diesem Kapitel erfolgt die ausführliche Beschreibung des eigenen
 %Lösungsansatzes. Dabei sollten Lösungsalternativen diskutiert und
 %Entwurfsentscheidungen dargelegt werden.
-
-
+In diesem Kapitel werden die Features erklärt, die grundlegend notwendig sind, sowie die, die sich während der Entwicklung ergeben haben und vom Kunden gewünscht wurden.
 
 %% ==============================
-\section{Konzept und Ideen}
+\section{Ideen}
 %% ==============================
 \label{ch:Entwurf:sec:1.Konzept}
 \paragraph{Grundlegende Features}
- Diese grundsätzlichen Features entsprechen dem ursprünglichen Prototypen des Spiels, dadurch konnten die implementierten Regeln getestet und durch weitere Ideen erweitert werden
+ Diese grundsätzlichen Features entsprechen dem ursprünglichen Prototypen, der in der Abbildung \ref{fig:Prototyp} zu sehen ist, des Spiels, dadurch konnten die implementierten Regeln getestet und durch weitere Ideen erweitert werden.
  	\begin{itemize}
  		\item Spielbrett, mit einer Größe von 8x8 und fix in der Szene verankert
  		\item Schwarze und weiße/graue Kreise als Spielsteine
  		\item Zwei Spieler können per Klick auf einen Stein und auf ein Feld Spielsteine bewegen
  		\item Hervorheben der möglichen Positionen
  	\end{itemize}
-
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/Prototyp}
+	\caption{Prototyp}
+	\label{fig:Prototyp}
+\end{figure}
  \paragraph{Erweiterte Features nach Testen der Logik}
- Die erweiterten Features wurden nach ausgiebigem Testen der Grundsätzlichen Features und der implementierten Logik hinzugefügt.
+ Die erweiterten Features wurden nach ausgiebigem Testen der grundsätzlichen Features und der implementierten Logik hinzugefügt.
  \begin{itemize}
  \item Künstliche Intelligenz als Gegenspieler
  \item Pausenmenü mit Neustart-, Beenden- und Start-Button
@@ -39,7 +43,7 @@
 \paragraph{Zusätzliche Features bei Übergabe an Kunden}
 Nachdem das zuvor konzeptionierte Spiel dem Landesmuseum Birkenfeld zugeschickt wurde, haben sich die folgenden noch zusätzlich benötigten Features herausgestellt:
 \begin{itemize}
-	\item Unterschiedliche Schwierigkeitsgrade anstatt Slider, da diese nicht so intuitiv verstanden wurden, im Spiel gegen die KI
+	\item Unterschiedliche Schwierigkeitsgrade anstatt Slider im Spiel gegen die KI, da diese nicht so intuitiv verstanden wurden
 	\item Zweite KI soll zuschaltbar sein um Spiel zu simulieren
 	\item Neustart- und Beenden-Buttons auf den Spielbildschirm verschieben	
 \end{itemize}

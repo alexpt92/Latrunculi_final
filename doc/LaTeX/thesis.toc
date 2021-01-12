@@ -11,36 +11,40 @@
 \contentsline {section}{\numberline {2.3}K\IeC {\"u}nstliche Intelligenz}{6}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Strategische KIs}{6}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Deterministische KIs}{6}{subsection.2.3.2}
-\contentsline {paragraph}{MinMax}{6}{section*.6}
+\contentsline {paragraph}{MiniMax}{6}{section*.6}
 \contentsline {subsection}{\numberline {2.3.3}Machine Learning}{7}{subsection.2.3.3}
-\contentsline {paragraph}{Supervised Learning}{7}{section*.7}
-\contentsline {paragraph}{Unsupervised Learning}{7}{section*.8}
 \contentsline {chapter}{\numberline {3}Anforderungen}{8}{chapter.3}
 \contentsline {section}{\numberline {3.1}Technische Anforderungen}{8}{section.3.1}
 \contentsline {section}{\numberline {3.2}Weitere Anforderungen}{8}{section.3.2}
-\contentsline {chapter}{\numberline {4}Entwurf / Konzeption}{9}{chapter.4}
-\contentsline {section}{\numberline {4.1}Konzept und Ideen}{9}{section.4.1}
-\contentsline {paragraph}{Grundlegende Features}{9}{section*.9}
-\contentsline {paragraph}{Erweiterte Features nach Testen der Logik}{9}{section*.10}
-\contentsline {paragraph}{Zus\IeC {\"a}tzliche Features bei \IeC {\"U}bergabe an Kunden}{9}{section*.11}
-\contentsline {paragraph}{Ben\IeC {\"o}tigte Grafiken}{10}{section*.12}
-\contentsline {paragraph}{N\IeC {\"o}tige Technologien}{10}{section*.13}
-\contentsline {paragraph}{K\IeC {\"u}nstliche Intelligenz}{10}{section*.14}
-\contentsline {chapter}{\numberline {5}Implementierung}{11}{chapter.5}
-\contentsline {section}{\numberline {5.1}Unity}{11}{section.5.1}
+\contentsline {chapter}{\numberline {4}Entwurf}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Ideen}{9}{section.4.1}
+\contentsline {paragraph}{Grundlegende Features}{9}{section*.7}
+\contentsline {paragraph}{Erweiterte Features nach Testen der Logik}{10}{section*.8}
+\contentsline {paragraph}{Zus\IeC {\"a}tzliche Features bei \IeC {\"U}bergabe an Kunden}{10}{section*.9}
+\contentsline {paragraph}{Ben\IeC {\"o}tigte Grafiken}{10}{section*.10}
+\contentsline {paragraph}{N\IeC {\"o}tige Technologien}{10}{section*.11}
+\contentsline {paragraph}{K\IeC {\"u}nstliche Intelligenz}{11}{section*.12}
+\contentsline {chapter}{\numberline {5}Implementierung}{12}{chapter.5}
+\contentsline {section}{\numberline {5.1}Unity}{12}{section.5.1}
 \contentsline {section}{\numberline {5.2}GameObjects}{12}{section.5.2}
-\contentsline {paragraph}{Main Camera}{12}{section*.15}
-\contentsline {paragraph}{Board}{12}{section*.16}
-\contentsline {paragraph}{PieceManager}{12}{section*.17}
-\contentsline {paragraph}{GameManager}{12}{section*.18}
-\contentsline {paragraph}{EscapeMenuManager}{13}{section*.19}
+\contentsline {paragraph}{Main Camera}{12}{section*.13}
+\contentsline {paragraph}{Board}{12}{section*.14}
+\contentsline {paragraph}{PieceManager}{13}{section*.15}
+\contentsline {paragraph}{GameManager}{13}{section*.16}
+\contentsline {paragraph}{EscapeMenuManager}{13}{section*.17}
 \contentsline {section}{\numberline {5.3}Skripte}{13}{section.5.3}
-\contentsline {section}{\numberline {5.4}MiniMaxing}{13}{section.5.4}
+\contentsline {section}{\numberline {5.4}MiniMaxing}{14}{section.5.4}
 \contentsline {chapter}{\numberline {6}Evaluation}{17}{chapter.6}
 \contentsline {section}{\numberline {6.1}Launch beim Kunden}{17}{section.6.1}
 \contentsline {section}{\numberline {6.2}Verhalten in der Simulation}{17}{section.6.2}
-\contentsline {section}{\numberline {6.3}Zusammenfassung}{17}{section.6.3}
-\contentsline {chapter}{\numberline {7}M\IeC {\"o}gliche Erweiterungen}{18}{chapter.7}
-\contentsline {section}{\numberline {7.1}Alpha-Beta-Algorithmus}{18}{section.7.1}
-\contentsline {chapter}{\numberline {8}Diskussion und Ausblick}{23}{chapter.8}
-\contentsline {chapter}{Literaturverzeichnis}{24}{section*.20}
+\contentsline {paragraph}{Spieler 1 (Steine:}{17}{section*.18}
+\contentsline {paragraph}{Spieler 2 (Muscheln):}{18}{section*.19}
+\contentsline {paragraph}{Suchtiefe: 10}{18}{section*.20}
+\contentsline {paragraph}{Erh\IeC {\"o}hte Verteidigungspunkte und verminderte Angriffspunkte mit Suchtiefe 3}{18}{section*.21}
+\contentsline {paragraph}{Spieler 1 (Steine):}{18}{section*.22}
+\contentsline {paragraph}{Spieler 2 (Muscheln):}{19}{section*.23}
+\contentsline {paragraph}{Suchtiefe 10}{19}{section*.24}
+\contentsline {chapter}{\numberline {7}M\IeC {\"o}gliche Erweiterungen}{20}{chapter.7}
+\contentsline {section}{\numberline {7.1}Alpha-Beta-Algorithmus}{20}{section.7.1}
+\contentsline {chapter}{\numberline {8}Diskussion und Ausblick}{25}{chapter.8}
+\contentsline {chapter}{Literaturverzeichnis}{26}{section*.25}

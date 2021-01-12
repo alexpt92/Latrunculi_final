@@ -8,27 +8,22 @@
 
 Aufgrund der unterstützenden Funktionen, wie das Portieren auf verschiedene Systeme, habe ich mich für die Unity Engine in der Version 2019.3.14f entschieden um Latrunculi digital umzusetzen. Die Erklärung zu Unity befindet sich im Abschnitt \ref{ch:Grundlagen:sec:Unity}. Weiterhin habe ich mich in C\# eingearbeitet und damit die verwendeteten Skripte geschrieben und genutzt. Da ich vorher noch nicht mit Unity und C\# gearbeitet habe, benötigte ich etwas Einarbeitungszeit um den ersten Prototypen zu erstellen.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics{img/Unity-Editor}
-	\caption{Unity-Editor}
-	\label{fig:Editor}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics{img/Unity-Editor}
+%	\caption{Unity-Editor}
+%	\label{fig:Editor}
+%\end{figure}
 
 %% ==============================
 \section{Unity}
 %% ==============================
 \label{ch:Implementierung:sec:Unity}
 
-Die ersten Versuche einer lauffähigen Umsetzung habe ich mit einem vorgefertigten Spielbrett umgesetzt. Dabei habe ich das Brett durch 8x8 einzelne Zellen beziehungsweise Quadrate dargestellt%, die jeweils ein eigenes Spielobjekt sind
-. Auf diesen Quadraten habe ich die Spielsteine als schwarze und graue Kreise platziert und diesen via Skript Funktionen gegeben. Dieser erste Entwurf (Abbildung \ref{fig:Prototyp}) reagierte auf das OnClick() Event, sodass beim Anklicken eines Kreises der mögliche Weg hervorgehoben wurde und beim Klick auf das gewünschte Feld, wurde der Kreis auf diesem neuen Feld platziert.
+Die ersten Versuche einer lauffähigen Umsetzung habe ich mit einem vorgefertigten Spielbrett umgesetzt. Dabei habe ich das Brett durch 8x8 einzelne Zellen beziehungsweise Quadrate dargestellt.%, die jeweils ein eigenes Spielobjekt sind
+ Auf diesen Quadraten habe ich die Spielsteine als schwarze und graue Kreise platziert und diesen via Skript Funktionen gegeben. Dieser erste Entwurf (Abbildung \ref{fig:Prototyp}) reagierte auf das OnClick()-Event, sodass beim Anklicken eines Kreises der mögliche Weg hervorgehoben wurde und beim Klick auf das gewünschte Feld, wurde der Kreis auf diesem neuen Feld platziert.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics{img/Prototyp}
-	\caption{Prototyp}
-	\label{fig:Prototyp}
-\end{figure}
+
 
 Da dieser Entwurf sehr statisch und die Größe fest verankert war, habe ich mir Informationen gesucht um das Spiel dynamisch zu erstellen und die Größe des Spielfelds variabel zu machen. Dazu habe ich sowohl für die Zellen, als auch die Spielsteine Prefabs erstellt und somit mittels Skript in der Start-Funktion die Prefabs abgerufen und je nach angegebener Größe das Spielfeld zur Laufzeit erstellt.
 Außerdem wurde das OnClick()-Event durch Drag \& Drop ersetzt, sodass es auf einem Touchscreen intuitiver zu bedienen ist.
@@ -53,21 +48,21 @@ Der \textbf{EscapeMenuManager} ist zuständig für das Event-Handling des Menüs
 %% ==============================
 \label{ch:Implementierung:sec:Skripte}
 Damit die einzelnen Objekte auch Funktionen und Informationen bekommen, musste jedem Objekt ein Skript hinzugefügt werden.
-Beispielsweise hat jeder Spielstein das Skript \textbf{SimplePiece} zugeordnet bekommen. Dieses ermöglicht dem Spielstein die Bewegungen auf dem Spielbrett durchzuführen. Es enthält Funktionen die auf das Ein- und Austreten des Drag\&Drop-Events reagieren. Des weiteren werden hier Informationen über die Ursprungszelle, sowie die aktuelle Zelle gespeichert um das Zurücksetzen des Spiels zu vereinfachen. \\
+Beispielsweise hat jeder Spielstein das Skript \textbf{SimplePiece} zugeordnet bekommen. Dieses ermöglicht dem Spielstein die Bewegungen auf dem Spielbrett durchzuführen. Es enthält Funktionen die auf das Ein- und Austreten des Drag\&Drop-Events reagieren. Des Weiteren werden hier Informationen über die Ursprungszelle, sowie die aktuelle Zelle gespeichert um das Zurücksetzen des Spiels zu vereinfachen. \\
 Das \textbf{PieceManager}-Skript ist für die Spielsteine insgesamt zuständig, das heißt hier werden die Prefabs und Skripte der Spielsteine instanziiert und der Szene hinzugefügt beziehungsweise auf dem Spielbrett platziert. Außerdem kann dieser Manager die Funktionen der Spielsteine ein und ausschalten, sodass nur mit den Steinen interagiert werden kann, die auch gerade am Zug sind, vorausgesetzt das Spiel befindet sich nicht im Simulations-Modus.\\
 Der \textbf{EscapeMenuActivator} ist für das Ein- und Ausschalten des Menüs zuständig.\\
 Der \textbf{GameManager} stößt jeden Spiel-relevanten Prozess an, speichert ob eine oder zwei KIs aktiviert sind und lenkt dementsprechend das Spielgeschehen. Das Spiel wird hier auch gestartet und beendet.\\
 Das Spielbrett erhält das \textbf{Board}-Skript und initiiert den Aufbau des Spielbretts. Außerdem werden hier alle Zellen und deren Anordnung gespeichert, sodass das Board mögliche Züge validieren kann.\\
 Für die Berechnungen der KI erbt das Skript \textbf{BoardDraught} die Funktionen und Variablen des Board-Skriptes, übernimmt aber nur die wichtigen Informationen.\\
 Jede Zelle erhält ebenfalls ein eigenes Skript (\textbf{Cell}), dass die Position der Zelle beinhaltet und den Spielstein, der sich auf der Position befindet. Außerdem wird hier das Hervorheben der Zellen durchgeführt.\\
-Die Klasse \textbf{Move} enthält Informationen für eine mögliche Bewegung, das heißt hier wird die aktuelle Position des gerade betrachteten Spielsteins gespeichert, sowie die Zelle auf welche sich der Stein bewegen kann. Weiterhin enthält diese verschiedene Flags die zur Bewertung der Aktion dienen.\\
-Im \textbf{AIManager} befindet sich der MiniMaxing-Algorithmus, der die Berechnungen und Bewertungen der möglichen Züge durchführt. Wie genau der Algorithmus funktioniert wird im nachfolgenden Abschnitt erklärt.
+Die Klasse \textbf{Move} enthält Informationen für eine mögliche Bewegung, das heißt hier wird die aktuelle Position des gerade betrachteten Spielsteins gespeichert, sowie die Zelle auf welche sich der Stein bewegen kann. Weiterhin enthält diese verschiedene Flags, die zur Bewertung der Aktion dienen.\\
+Im \textbf{AIManager} befindet sich der MiniMax-Algorithmus, der die Berechnungen und Bewertungen der möglichen Züge durchführt. Wie genau der Algorithmus funktioniert wird im nachfolgenden Abschnitt erklärt.
 
 %% ==============================
 \section{MiniMaxing}
 %% ==============================
 \label{ch:Implementierung:sec:MiniMaxing}
-Für die Implementierung des MiniMaxing habe ich die Klasse AIManager entworfen. Diese enthält die Funktion \textbf{Minimax()}, die das aktuelle Spielbrett als Board, die maximale Suchtiefe, die aktuelle Tiefe und den Spieler der am Zug ist übernimmt. Die Berechnungen und Evaluation der möglichen Züge werden anschließend hier rekursiv durchgeführt und es wird die maximal erreichte Punktzahl zurückgegeben, sowie die Referenzierung des zugeordneten Zuges.\\
+Für die Implementierung des MiniMaxing habe ich die Klasse AIManager entworfen. Diese enthält die Funktion \textbf{Minimax()}, die das aktuelle Spielbrett als Board, die maximale Suchtiefe, die aktuelle Tiefe und den Spieler der am Zug ist übernimmt. Die Berechnungen und Evaluation der möglichen Züge werden anschließend hier rekursiv durchgeführt und es wird die maximal erreichte Punktzahl zurückgegeben, sowie die Referenzierung des zugeordneten Zuges (vgl. \cite{palacios2016unity}).\\
 
 \begin{lstlisting}[basicstyle=\scriptsize\ttfamily, numbers=left, stepnumber=1, numberstyle = \tiny]
 public static float Minimax(BoardDraught board, int player, int maxDepth,
@@ -149,7 +144,7 @@ int currentDepth, ref Move bestMove)
 }
 \end{lstlisting}
 
-Die rekursive Funktion \textbf{Minimax()} wird aufgerufen und bekommt den momentanen Spielzustand, sowie die maximale und aktuelle Suchtiefe, als auch eine Referenzierung auf einen Zug, der nachher der beste zugeordnet wird, übergeben. Somit sind alle nötigen Informationen zur Berechnung vorhanden und es kann in Zeile 4 die Startbedingung geprüft werden. Falls das Spiel beendet ist oder die maximale Suchtiefe erreicht wurde wird eine 0 zurückgegeben. Anschließend werden die möglichen Züge des gerade betrachteten Spielers innerhalb der \textbf{BoardDraught}-Klasse berechnet. Zeile 14 prüft ob es sich um den ersten oder zweiten Spieler handelt und ruft dementsprechend die Züge des Spielers ab und speichert diese in der Variablen allMoves. In der ForEach-Schleife wird über die von diesem Zustand aus möglichen Züge iteriert. Dabei wird zuerst die Bewegung auf dem Spielbrett simuliert und auf dem Spielbrett gespeichert, um nach jeder Iteration den Schritt rückgängig machen zu können. In Zeile 30 wird geprüft, ob der Spieler einen gegnerischen Stein erobern würde. Falls ein Angriff stattgefunden hat wird der nächste Spieler auf den aktuellen Spieler gesetzt, sodass dieser in der darauffolgenden Suchtiefe wieder betrachtet wird. Zeile 37 startet die Rekursion mit dem neuen Spielzustand und speichert die Punktzahl in currentScore. Anschließend wird die aktuelle Bewegung evaluiert und die entsprechenden Punkte zurückgegeben und in newScore zwischengespeichert. Zum Schluss werden die Punkte aus newScore auf die aktuelle Punktzahl addiert, falls der betrachtete Spieler auch derjenige ist, der am Zug ist, oder subtrahiert, wenn der Gegenspieler dran wäre. Schließlich wird in Zeile 60 mit der Board-Funktion \textbf{StepBack()} der letzte Zug rückgängig gemacht und die Iteration wird fortgesetzt. Nach der Rekursion sollte alle Aktionen eine Bewertung erhalten haben. Da die Punktzahl teilweise identisch war, wurde immer der erste betrachtete Zug mit der maximal erreichten Punktzahl gewählt. Daher habe ich noch einen Zufallsgenerator implementiert, der eine zufällige Bewegung aus denen mit der höchsten Punktzahl auswählt und zurückgibt.\\
+Die rekursive Funktion \textbf{Minimax()} wird aufgerufen und bekommt den momentanen Spielzustand, sowie die maximale und aktuelle Suchtiefe, als auch eine Referenzierung auf einen Zug, der nachher der beste zugeordnet wird, übergeben. Somit sind alle nötigen Informationen zur Berechnung vorhanden und es kann in Zeile 4 die Startbedingung geprüft werden. Falls das Spiel beendet ist oder die maximale Suchtiefe erreicht wurde wird eine 0 zurückgegeben. Anschließend werden die möglichen Züge des gerade betrachteten Spielers innerhalb der \textbf{BoardDraught}-Klasse berechnet. Zeile 14 prüft, ob es sich um den ersten oder zweiten Spieler handelt, ruft dementsprechend die Züge des Spielers ab und speichert diese in der Variablen allMoves. In der ForEach-Schleife wird über die von diesem Zustand aus möglichen Züge iteriert. Dabei wird zuerst die Bewegung auf dem Spielbrett simuliert und auf diesem gespeichert, um nach jeder Iteration den Schritt rückgängig machen zu können. In Zeile 30 wird geprüft, ob der Spieler einen gegnerischen Stein erobern würde. Falls ein Angriff stattgefunden hat, wird der nächste Spieler auf den aktuellen Spieler gesetzt, sodass dieser in der darauffolgenden Suchtiefe wieder betrachtet wird. Zeile 37 startet die Rekursion mit dem neuen Spielzustand und speichert die Punktzahl in currentScore. Anschließend wird die aktuelle Bewegung evaluiert und die entsprechenden Punkte zurückgegeben und in newScore zwischengespeichert. Zum Schluss werden die Punkte aus newScore auf die aktuelle Punktzahl addiert, falls der betrachtete Spieler auch derjenige ist, der am Zug ist, oder subtrahiert, wenn der Gegenspieler dran wäre. Schließlich wird in Zeile 60 mit der Board-Funktion \textbf{StepBack()} der letzte Zug rückgängig gemacht und die Iteration wird fortgesetzt. Nach der Rekursion sollten alle Aktionen eine Bewertung erhalten haben. Da die Punktzahl teilweise identisch war, wurde immer der erste betrachtete Zug mit der maximal erreichten Punktzahl gewählt. Daher habe ich noch einen Zufallsgenerator implementiert, der eine zufällige Bewegung aus denen mit der höchsten und selben Punktzahl auswählt und zurückgibt.\\
 \begin{lstlisting}[basicstyle=\scriptsize\ttfamily, numbers=left, stepnumber=1, numberstyle = \tiny]
 public float Evaluate(string color)
 {
@@ -173,7 +168,7 @@ public float Evaluate(string color)
 }
 \end{lstlisting}
 
-Die Funktion \textbf{Evaluate()}-Funktionen sind für die Bewertung der Züge zuständig. Dabei ruft \textbf{Evaluate(int player)} nach der Entscheidung, welche Farbe dem Spieler zugeordnet wurde, die \textbf{Evaluate(string color)}-Funktion auf. Hier findet die eigentliche Punkteverteilung statt. Jeder Zug hat zuvor für verschiedene Spielsituationen Flags zugeordnet bekommen. Diese werden bei der Suche nach möglichen Bewegungen auf \textit{true} gesetzt, wenn die definierte Bedingung zutrifft. Beispielsweise wird das \textit{Attacked}-Flag gesetzt, wenn der Zug zu einer Eroberung führt und die Aktion erhält die vorher festgelegte Punktzahl für Angriffe. Das Flag \textit{attacked2} wird gesetzt, wenn zwei Steine in diesem Zug erobert werden können. \textit{Threaten} wird \textit{true}, wenn die Aktion zu einer Bedrohung für den Gegenspieler führt. \textit{HighThreat} wurde eingeführt um Bedrohungen, die im nächsten Zug zur Eroberung führen, besser bewerten zu können. Das \textit{Hide}-Flag steht für den Abzug aus einer eigenen Bedrohung, also werden hier Punkte für ein Defensives Verhalten verteilt. Zum Schluss wird geprüft ob das Spiel nach dem Zug beendet wäre und dementsprechend die Punktzahl dazu addiert. Die Punkteverteilung bestimmt auch den Schwierigkeitsgrad. Um die KI noch intelligenter zu machen, könnte die Evaluierung noch um eine beliebige Anzahl an Flags erweitert werden, sodass die Spielsituation immer präziser bewertet wird.
+Die \textbf{Evaluate()}-Funktionen sind für die Bewertung der Züge zuständig. Dabei ruft \textbf{Evaluate(int player)} nach der Entscheidung, welche Farbe dem Spieler zugeordnet wurde, die \textbf{Evaluate(string color)}-Funktion auf. Hier findet die eigentliche Punkteverteilung statt. Jeder Zug hat zuvor für verschiedene Spielsituationen Flags zugeordnet bekommen. Diese werden bei der Suche nach möglichen Bewegungen auf \textit{true} gesetzt, wenn die definierte Bedingung zutrifft. Beispielsweise wird das \textit{Attacked}-Flag gesetzt, wenn der Zug zu einer Eroberung führt und die Aktion erhält die vorher festgelegte Punktzahl für Angriffe. Das Flag \textit{attacked2} wird gesetzt, wenn zwei Steine in diesem Zug erobert werden können. \textit{Threaten} wird \textit{true}, wenn die Aktion zu einer Bedrohung für den Gegenspieler führt. \textit{HighThreat} wurde eingeführt um Bedrohungen, die im nächsten Zug zur Eroberung führen, besser bewerten zu können. Das \textit{Hide}-Flag steht für den Abzug aus einer eigenen Bedrohung, also werden hier Punkte für ein defensives Verhalten verteilt. Zum Schluss wird geprüft ob das Spiel nach dem Zug beendet wäre und dementsprechend die Punktzahl dazu addiert. Die Punkteverteilung bestimmt auch den Schwierigkeitsgrad. Um die KI noch intelligenter zu machen, könnte die Evaluierung noch um eine beliebige Anzahl an Flags erweitert werden, sodass die Spielsituation immer präziser bewertet wird.
 
 %%% Local Variables: 
 %%% mode: latex

@@ -5,16 +5,16 @@
 \chapter{Grundlagen}
 \label{ch:Grundlagen}
 %% ==============================
-
+Dieses Kapitel beinhaltet grundlegende Informationen zu der Arbeit. Zuerst werden die Spielregeln erklärt, dann die verwendete Unity Engine und zum Schluss wird noch auf Formen der künstlichen Intelligenz eingegangen. Dabei wird unterschieden zwischen strategischen und deterministischen KIs, sowie dem Machine Learning.
 %% ==============================
 \section{Spielregeln}
 %% ==============================
 \label{ch:Grundlagen:sec:Abschnitt1}
-Der grundsätzliche Aufbau des Spiels beinhaltet ein Spielbrett mit beispielsweise 7x6 Feldern bis hin zu überlieferten 12x12 großen Brettern. Weiterhin gibt es zwei verschiedene Spielsteine, die entweder unterschiedliche Farben haben oder aus zum Beispiel einerseits Steinen und andererseits Muscheln, wie in dieser Ausarbeitung auch, bestehen. Dabei übernimmt ein Spieler die Steine und der Gegenspieler die Muscheln. Zu Beginn werden die eigenen Steine jeweils auf der ersten Reihe  platziert (Abbildung \ref{fig:startzustand}).
-\\
+Der grundsätzliche Aufbau des Spiels beinhaltet ein Spielbrett mit beispielsweise 7x6 Feldern bis hin zu überlieferten 12x12 großen Brettern. Weiterhin gibt es zwei verschiedene Spielsteine, die entweder unterschiedliche Farben haben oder aus zum Beispiel einerseits Steinen und andererseits Muscheln, wie in dieser Ausarbeitung auch, bestehen. Dabei übernimmt ein Spieler die Steine und der Gegenspieler die Muscheln. Zu Beginn werden die eigenen Steine jeweils auf der ersten Reihe platziert wie in Abbildung \ref{fig:startzustand} zu sehen ist.
+
 
 \begin{figure}[h]
-	\centering
+\centering
 \includegraphics{img/regeln_startzustand2}
 \caption{Startkonfiguration eines 7x6 Latrunculi Feldes}
 \label{fig:startzustand}
@@ -26,14 +26,14 @@ Das Spiel beginnt mit einem der beiden Spieler. Während des Spiels ziehen die S
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/regeln_bewegung22}
-	\caption{Legitime Bewegungen}
+	\caption{Legitime Bewegungen auf einem 7x6 Latrunculi-Feld}
 	\label{fig:Bewegungen}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/regeln_nottodo2}
-	\caption{nicht zulässige Bewegung}
+	\caption{Nicht zulässige Bewegung auf einem 7x6 Latrunculi-Feld}
 	\label{fig:nottodo}
 \end{figure}
 
@@ -43,7 +43,7 @@ Um gegnerische Spielsteine zu erobern, müssen diese wie in der Abbildung \ref{f
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/regeln_erobern2}
-	\caption{Erobern}
+	\caption{Eroberung eines Spielsteins}
 	\label{fig:erobern}
 \end{figure}
 
@@ -135,30 +135,28 @@ Das Ziel des Spiels ist es, dass der Gegenspieler keinen Zug mehr ausführen kan
 \section{Unity Engine}
 %% ==============================
 \label{ch:Grundlagen:sec:Unity}
-\nocite{ConceptArt}
-
-Die Unity Engine ist eine von Unity Technologies entwickelte Laufzeit- und Entwicklungsumgebung für Videospiele. Die Engine bietet dabei Portierungen für PCs, Spielkonsolen, mobile Geräte wie Android und Webbrowser. Bekannte Spiele wie Pokemon Go und Hearthstone wurden mit Unity entwickelt. Weiterhin bietet Unity die Möglichkeit sowohl in 2D als auch in 3D Spiele umzusetzen und bietet Funktionen, wie den Eventhandler für Gameobjects um die Entwicklung zu vereinfachen. Um selbstgeschriebene Scripte einzubinden unterstützt Unity unter anderem C\#, wie ich es in dieser Arbeit auch verwendet habe. Unity wurde hier vor allem wegen der einfachen Portierung und Wiederverwendbarkeit von vorgefertigt erstellten Prefabs genutzt. Ausserdem bietet Unity eine große Anzahl an Libraries zur Unterstützung der Spielentwicklung. \\Unity bietet die Möglichkeit einerseits per Drag \& Drop Spielobjekte im Editor zu platzieren und diesen Objekten so ihren Ausgangszustand zu geben. Außerdem besteht die Möglichkeit die Szene dynamisch via Skript zu erstellen. Entwickelt man in der 2D Umgebung, hat man die Möglichkeit seinen Objekten Sprites mitzugeben. Diese Sprites sind Grafikobjekte die als Darstellung der Spielobjekte im Editor platziert werden. In einem Unity Projekt befindet sich ein Ordner ,,Assets'' in dem alle selbst erstellten Skripte, Sprites und Szenen enthalten sind, sowie andere genutzte Ressourcen wie zuvor erstellte Prefabs für eine dynamische Generierung.
+Die Unity Engine ist eine von Unity Technologies entwickelte Laufzeit- und Entwicklungsumgebung für Videospiele. Die Engine bietet dabei Portierungen für PCs, Spielkonsolen, mobile Geräte wie Android und Webbrowser. Bekannte Spiele wie Pokemon Go und Hearthstone wurden mit Unity entwickelt. Weiterhin bietet Unity die Möglichkeit sowohl in 2D als auch in 3D Spiele umzusetzen und bietet Funktionen, wie den Eventhandler für Gameobjects um die Entwicklung zu vereinfachen. Um selbstgeschriebene Scripte einzubinden unterstützt Unity unter anderem C\#, wie ich es in dieser Arbeit auch verwendet habe. Unity wurde hier vor allem wegen der einfachen Portierung und Wiederverwendbarkeit von vorher erstellten Prefabs genutzt. Ausserdem bietet Unity eine große Anzahl an Libraries zur Unterstützung der Spielentwicklung. \\Unity bietet die Möglichkeit einerseits per Drag \& Drop Spielobjekte im Editor zu platzieren und diesen Objekten so ihren Ausgangszustand zu geben, andererseits gibt es Mittel die Szene dynamisch via Skript zu erstellen. Entwickelt man in der 2D Umgebung, hat man die Möglichkeit seinen Objekten Sprites mitzugeben. Diese Sprites sind Grafikobjekte, die als Darstellung der Spielobjekte im Editor platziert werden. Selbst erstellte Skripte, Sprites und Szenen, sowie andere genutzte Ressourcen wie zuvor erstellte Prefabs für eine dynamische Generierung, befinden sich bei Unity-Projekten im Assets-Verzeichniss.%In einem Unity Projekt befindet sich ein Ordner ,,Assets'' in dem alle selbst erstellten Skripte, Sprites und Szenen enthalten sind, sowie andere genutzte Ressourcen wie zuvor erstellte Prefabs für eine dynamische Generierung.
 
 \paragraph{Prefab System}
 \nocite{UPrefabs}
-Unitys Prefab System ermöglicht es Spielobjekte zu erstellen und als Prefab zu speichern. Diese Prefabs können wiederverwendet werden und fungieren wie ein Vorlage(Template) eines Objektes. Dadurch können wiederkehrende Spielobjekte einmalig definiert werden und durch das Prefab in der selben Form oder aber auch verändert mehrfach genutzt werden. Das heißt es können dadurch zur Laufzeit Spielobjekte instanziiert und zur Szene hinzugefügt werden ohne jedes einzelne Objekt neu zu definieren. Weiterhin können diese so erstellten Objekte trotzdem noch separat verändert werden.
+Unitys Prefab System ermöglicht es Spielobjekte zu erstellen und als Prefabs zu speichern. Diese können wiederverwendet werden und fungieren wie eine Vorlage(Template) eines Objektes. Dadurch können wiederkehrende Spielobjekte einmalig definiert werden und durch das Prefab in der selben Form oder aber auch verändert mehrfach genutzt werden. Das heißt es können dadurch zur Laufzeit Spielobjekte instanziiert und zur Szene hinzugefügt werden, ohne jedes einzelne Objekt neu zu definieren. Weiterhin können diese so erstellten Objekte trotzdem noch separat verändert werden(vgl. \cite{UPrefabs}).
 
 %% ==============================
 \section{Künstliche Intelligenz}
 %% ==============================#
 \label{ch:Grundlagen:sec:Künstliche Intelligenz}
-Allgemein kann man sagen, dass es drei Formen der künstlichen Intelligenz gibt. Zum einen sollte man zwischen deterministischen und strategischen KIs unterscheiden, andererseits kann man diese vom Machine und Deep Lerning abgrenzen.
+Allgemein kann man sagen, dass es drei Formen der künstlichen Intelligenz gibt. Zum einen sollte man zwischen deterministischen und strategischen KIs unterscheiden, andererseits kann man diese vom Machine Learning abgrenzen.
 
 \subsection{Strategische KIs}
 \label{ch:Grundlagen:sec:strategisch}
-\textbf{Strategische KIs} werden in Videospielen zum Beispiel zur Wegfindung oder für die Atmosphäre genutzt. Am Beispiel von sogenannten Non-Player-Character (kurz:NPC) in Rollenspielen wie Gothic kann diese Form  gut erklärt werden. NPCs sind Figuren innerhalb eines Spiels mit denen in der Regel interagiert werden kann oder die für die Atmosphäre eingesetzt werden und nur einen Weg ablaufen, der via Wegfinde-Algorithmus berechnet wird. Außerdem kann auch das Verhalten beeinflusst werden, indem die Spielfiguren auf Aktionen reagieren können und in einen entsprechenden Zustand versetzt werden. Betrachtet man das Spiel Gothic, erkennt man sehr leicht dieses Prinzip. Hier ist es möglich, dass der Spieler durch sein Verhalten die NPCs beeinflusst. Es existieren Figuren, die einem aggressiv gegenübertreten, falls man zum Beispiel zuvor aus seinem Haus etwas geklaut hat. Für diese NPCs werden strategische KIs eingesetzt, um vor allem die Handlung zu unterstützen.
+\textbf{Strategische KIs} werden in Videospielen zum Beispiel zur Wegfindung oder für die Atmosphäre genutzt. Am Beispiel von sogenannten Non-Player-Character (kurz:NPC) in Rollenspielen wie Gothic kann diese Form  gut erklärt werden. NPCs sind Figuren innerhalb eines Spiels mit denen in der Regel interagiert werden kann oder die für die Atmosphäre eingesetzt werden und nur einen Weg ablaufen, der via Wegfinde-Algorithmus berechnet wird. Außerdem kann auch das Verhalten beeinflusst werden, indem die Spielfiguren auf Aktionen reagieren können und in einen entsprechenden Zustand versetzt werden. Betrachtet man das Spiel Gothic, erkennt man sehr leicht dieses Prinzip. Hier ist es möglich, dass der Spieler durch sein Verhalten die NPCs beeinflusst. Es existieren Figuren, die einem aggressiv gegenübertreten, falls man zum Beispiel zuvor aus seinem Haus etwas gestohlen hat. Für diese NPCs werden strategische KIs eingesetzt, um vor allem die Handlung zu unterstützen.
 
 \subsection{Deterministische KIs}
 \label{ch:Grundlagen:sec:deterministisch}
-\textbf{Deterministische KIs} können Anwendung in Brettspielen finden. Hier werden Algorithmen verwendet um den Spielzustand und zukünftige zu bewerten und daraus die optimale Aktion zu finden. Diese Systeme können als Baumstruktur dargestellt werden. In dieser Arbeit wurde beispielsweise der MinMax-Algorithmus implementiert.
+\textbf{Deterministische KIs} können Anwendung in Brettspielen finden. Hier werden Algorithmen verwendet um den Spielzustand und zukünftige zu bewerten und daraus die optimale Aktion zu finden. Diese Systeme können als Baumstruktur dargestellt werden. In dieser Arbeit wurde beispielsweise der MiniMax-Algorithmus implementiert.
 
-\paragraph{MinMax}
-Beim MinMax-Algorithmus entspricht der Ausgangsknoten dem aktuellen Zustand und jedes Kind steht für einen zukünftigen. Diese Zustände werden nach verschiedenen Kriterien bewertet und so eine Punktzahl für jeden Zustand errechnet. An der Abbildung \ref{fig:Spielbaum} wird das Prinzip deutlicher. Dabei ist im Ausgangszustand Spieler 1 an der Reihe gewesen. Die drei abgebildeten Kinder sind jeweils mögliche Züge des zweiten Spielers. Der linke Zustand hat die Wertung 0, da hier weder eine Bedrohung oder ein Abzug aus einer Bedrohung, noch ein Angriff stattfindet. Die beiden anderen Kinder haben eine Wertung von +30, da diese Zustände zu einer Bedrohung der Muscheln führen. Die nächste Reihe zeigt mögliche Züge der Steine, die aus den vorherigen Situationen resultieren. Dabei werden Züge mit 40 bewertet, falls eine Muschel sich neben die bedrohte Muschel stellt und diese dadurch vor einer Eroberung schützt. Die höchste Bewertung 100 erhalten die Züge, die den gegnerischen Stein erobern. Diese Bewertungen werden von den höchsten Punktzahlen ausgehend bis zum Ausgangsknoten aufsummiert und ergeben dabei eine Höchstpunktzahl von -40 bei einer Suchtiefe von 2. %In diesem Fall gibt es zwei mögliche Pfade mit der höchsten Wertung. %Also muss für eine Entscheidung noch ein Zufallsgenerator eingesetzt werden der zwischen den beiden möglichen Zügen entscheidet.
+\paragraph{MiniMax}
+Beim MiniMax-Algorithmus entspricht der Ausgangsknoten dem aktuellen Zustand und jedes Kind steht für einen zukünftigen. Diese Zustände werden nach verschiedenen Kriterien bewertet und so eine Punktzahl für jeden errechnet. An der Abbildung \ref{fig:Spielbaum} wird das Prinzip deutlicher. Dabei ist im Ausgangszustand Spieler 1 an der Reihe gewesen. Die drei abgebildeten Kinder sind jeweils mögliche Züge des zweiten Spielers. Der linke Zustand hat die Wertung 0, da hier weder eine Bedrohung oder ein Abzug aus einer Bedrohung, noch ein Angriff stattfindet. Die beiden anderen Kinder haben eine Wertung von +30, da diese Zustände zu einer Bedrohung der Muscheln führen. Die nächste Reihe zeigt mögliche Züge der Steine, die aus den vorherigen Situationen resultieren. Dabei werden Züge mit 40 bewertet, falls eine Muschel sich neben die bedrohte Muschel stellt und diese dadurch vor einer Eroberung schützt. Die höchste Bewertung 100 erhalten die Züge, die den gegnerischen Stein erobern. Diese Bewertungen werden von den höchsten Punktzahlen ausgehend bis zum Ausgangsknoten aufsummiert und ergeben dabei eine Höchstpunktzahl von -40 bei einer Suchtiefe von 2. %In diesem Fall gibt es zwei mögliche Pfade mit der höchsten Wertung. %Also muss für eine Entscheidung noch ein Zufallsgenerator eingesetzt werden der zwischen den beiden möglichen Zügen entscheidet.
 
 \begin{figure}[h]
 	\centering
@@ -169,10 +167,10 @@ Beim MinMax-Algorithmus entspricht der Ausgangsknoten dem aktuellen Zustand und 
 
 \subsection{Machine Learning}
 \label{ch:Grundlagen:sec:Learning}
-Beim Machine Learning wird eine statistische Wissenbasis aufgebaut indem das System mit Daten trainiert wird. Es ist ein Verfahren, dass Algorithmen nutzt um Daten zu analysieren und zu kategorisieren. Als Beispiel kann die Gesichtserkennung genannt werden. Hier werden die Systeme mit unterschiedlichen Gesichtern trainiert um anschließend diese erkennen und zuordnen zu können. Generell kann man festhalten, dass diese Verfahren eher nicht in Videospielen angewendet werden. Es lässt sich zwischen dem Supervised Learning (überwachtes Lernen) und dem unsupervised Learning (nicht überwachtes Lernen).
-\paragraph{Supervised Learning}
-Das überwachte Lernen funktioniert so, dass ein Algorithmus Trainingsdaten erhält, sowie die Bedeutung der Daten. Dadurch soll der Algorithmus Muster erkennen und in einer Funktion speichern um anschließend diese Muster auf neuen Daten erkennen zu können. Diese Funktion wird abhängig von der Trefferquote vom System angepasst.
-\paragraph{Unsupervised Learning}
+Beim Machine Learning wird eine statistische Wissenbasis aufgebaut, indem das System mit Daten trainiert wird. Es ist ein Verfahren, dass Algorithmen nutzt um Daten zu analysieren und zu kategorisieren. Als Beispiel kann die Gesichtserkennung genannt werden. Hier werden die Systeme mit unterschiedlichen Gesichtern trainiert, um anschließend diese erkennen und zuordnen zu können. Generell kann man festhalten, dass diese Verfahren eher nicht in Videospielen angewendet werden. Es lässt sich zwischen dem Supervised Learning (überwachtes Lernen) und dem Unsupervised Learning (nicht überwachtes Lernen) unterscheiden.
+%\paragraph{Supervised Learning}
+Das überwachte Lernen funktioniert so, dass ein Algorithmus Trainingsdaten erhält, sowie die Bedeutung der Daten. Dadurch soll der Algorithmus Muster erkennen und in einer Funktion speichern, um anschließend diese Muster auf neuen Daten erkennen zu können. Diese Funktion wird abhängig von der Trefferquote vom System angepasst.
+%\paragraph{Unsupervised Learning}
 Beim nicht überwachten Lernen werden nicht kategorisierte Daten dem Algorithmus übergeben, sodass dieser Cluster erkennen soll und zukünftige Daten einordnen kann.\\
 
 %\paragraph{Reinforcement Learning}
