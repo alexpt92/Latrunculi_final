@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Value: 2
   m_Options:
     m_Options:
-    - m_Text: 6
+    - m_Text: 3
       m_Image: {fileID: 0}
     - m_Text: 7
       m_Image: {fileID: 0}
@@ -9606,7 +9606,7 @@ MonoBehaviour:
   m_Value: 2
   m_Options:
     m_Options:
-    - m_Text: 6
+    - m_Text: 3
       m_Image: {fileID: 0}
     - m_Text: 7
       m_Image: {fileID: 0}
@@ -10030,7 +10030,7 @@ PrefabInstance:
     - target: {fileID: 1607702622103916803, guid: 8b3d8d6be5f700d4c9bdab1e49ee5015,
         type: 3}
       propertyPath: maxDepth
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1607702622103916803, guid: 8b3d8d6be5f700d4c9bdab1e49ee5015,
         type: 3}

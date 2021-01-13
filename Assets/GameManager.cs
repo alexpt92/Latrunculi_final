@@ -31,10 +31,10 @@ public class GameManager : MonoBehaviour
     /* private float pointAttacked = 100f;
      private float pointThreat = 50f;
      private float pointHide = -2f;*/
-    private float pointAttacked = 100f;
+    private float pointAttacked = 20f;
     private float pointThreat = 50f;
-    private float pointHide = 20f;
-    private float pointHighThreat = 0f;
+    private float pointHide = 100f;
+    private float pointHighThreat = 80f;
 
     public Dropdown DDX;
     public Dropdown DDY;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     private float pointAttacked2 = 80f;
     private float pointThreat2 = 50f;
     private float pointHide2 = 20f;
-    private float pointHighThreat2 = 0f;
+    private float pointHighThreat2 = 70f;
     public EscapeMenuActivator EscapeMenu;
 
     private bool gameRunning;// = false;
@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         switch (DDX.value)
         {
             case 0:
-                sizeX = 6;
+                sizeX = 3;
                 break;
             case 1:
                 sizeX = 7;
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
         switch (DDY.value)
         {
             case 0:
-                sizeY = 6;
+                sizeY = 3;
                 break;
             case 1:
                 sizeY = 7;
@@ -280,22 +280,22 @@ public class GameManager : MonoBehaviour
             mPieceManager.setBoard(mBoard);
             string[,] boarddraught = mBoard.getDraughtAsStrings();
             BoardDraught b;
-            if (difficulty == 0 && !secondAIActive.isActiveAndEnabled)
+            if (difficulty == 0 && !secondAIActive.isOn)//isActiveAndEnabled)
             {
                 b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 0, 0, 0, 0);
 
             }
-            else if (difficulty == 1 && !secondAIActive.isActiveAndEnabled)
+            else if (difficulty == 1 && !secondAIActive.isOn)// isActiveAndEnabled)
             {
                 b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 20, 50, 80, 0);
             }
-            else if (difficulty == 2 && !secondAIActive.isActiveAndEnabled)
+            else if (difficulty == 2 && !secondAIActive.isOn)//isActiveAndEnabled)
             {
                 b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 20, 50, 80, 100);
             }
             else
             {
-                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, 80);
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat);
             }
           //  BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, 80);
             float test;

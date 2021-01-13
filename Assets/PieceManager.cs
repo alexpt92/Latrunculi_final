@@ -244,6 +244,12 @@ public class PieceManager : MonoBehaviour
 
     }
 
+    public void activateALL()
+    {
+        SetInteractive(mWPieces, true);
+        SetInteractive(mBPieces, true);
+    }
+
     public void SwitchSides(Color color)
     {
         Piece[] wPieces = mWPieces.ToArray();

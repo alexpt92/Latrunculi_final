@@ -43,10 +43,11 @@ public static float Minimax(
         {
            float maxScore = 0;
         }
+        float score = 0;
         foreach (Move m in allMoves)//board.GetMoves())
         {
             board.MakeMove(m);
-            float currentScore;
+            float currentScore = 0;
             //Evaluate Moves
             currentMove = m;// null;//= m;//m; ??
             if (m.attacked)
@@ -86,9 +87,18 @@ public static float Minimax(
                 }
             }
             board.StepBack();
+            if (m.attacked)
+            {
+                if (nextPlayer == 2)
+                    nextPlayer = 1;
+                else
+                    nextPlayer = 2;
+            }
         }
         List<Move> bestMoves = new List<Move>();
-        if (currentDepth == 0)
+            score += bestScore;
+        
+            if (currentDepth == 0)
         {
             foreach (Move m in allMoves)
             {
@@ -106,7 +116,7 @@ public static float Minimax(
 
 
         //   bestMove.mScore = bestScore;
-        return bestScore;
+        return score;//bestScore;
     }
 }
 

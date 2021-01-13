@@ -498,6 +498,7 @@ public class BoardDraught : Board
 
         //    }
         //  }
+      //  return 1;
         return eval;
     }
     public float Evaluate_old(string color)
