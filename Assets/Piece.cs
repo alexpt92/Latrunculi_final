@@ -199,15 +199,7 @@ public class Piece : EventTrigger
 
     protected virtual void Move()
     {
-        // if enemy piece -> back to currentCell
-        //if (mTargetCell.mCurrentPiece != null)
-      //  {
-          //  transform.position = mCurrentCell.transform.position;
-          //  mTargetCell = null;
 
-           // return;
-      //  }
-    //
         Color color = mColor;
         
         //check neighbors for Enemys & Allys
@@ -241,8 +233,8 @@ public class Piece : EventTrigger
 
         transform.position = mCurrentCell.transform.position;
         mTargetCell = null;
-        
 
+       // mPieceManager.activateALL();
         mPieceManager.SwitchSides(color);
 
     }
