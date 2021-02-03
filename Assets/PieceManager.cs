@@ -332,7 +332,7 @@ public class PieceManager : MonoBehaviour
         if (isAIActive && isBlackTurn)
         {
 
-            if (referenceScript.getCurrentPlayer() == 1 && referenceScript.firstAIActive.isOn)
+            if (referenceScript.getCurrentPlayer() == 1 && (referenceScript.firstAIActive.isOn))// || referenceScript.secondAIActive.isOn))
             {
                 DisableAllPieces();
             }

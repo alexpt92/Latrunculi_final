@@ -9,18 +9,24 @@ A level-1 auxiliary file: src/implemen.aux
 A level-1 auxiliary file: src/eval.aux
 A level-1 auxiliary file: src/erweiterungen.aux
 A level-1 auxiliary file: src/fazit.aux
-The style file: itmabbrv.bst
+The style file: plain.bst
 A level-1 auxiliary file: src/erklaerung.aux
 Database file #1: thesis.bib
-I was expecting a `,' or a `}'---line 54 of file thesis.bib
+Warning--entry type for "mastersgames" isn't style-file defined
+--line 21 of file thesis.bib
+Warning--entry type for "comscigate" isn't style-file defined
+--line 31 of file thesis.bib
+I was expecting a `,' or a `}'---line 45 of file thesis.bib
  : 
- : year =         2018}
+ : year = {2011}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 68 of file thesis.bib
- : @book{palacios2016unity
- :                        ,
+Repeated entry---line 113 of file thesis.bib
+ : @article{DBLP:journals/tc/Griffith76
+ :                                     ,
 I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in mastersgames
 Warning--to sort, need author, organization, or key in UPrefabs
-Warning--empty journal in edwards1961alpha
+Warning--empty institution in edwards1961alpha
+Warning--empty year in uebel
 (There were 2 error messages)

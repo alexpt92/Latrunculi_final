@@ -1,25 +1,33 @@
 \select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Startkonfiguration eines 7x6 Latrunculi Feldes}}{3}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Legitime Bewegungen auf einem 7x6 Latrunculi-Feld}}{4}{figure.2.2}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Nicht zul\IeC {\"a}ssige Bewegung auf einem 7x6 Latrunculi-Feld}}{4}{figure.2.3}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Eroberung eines Spielsteins}}{5}{figure.2.4}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Keine Eroberung}}{5}{figure.2.5}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Ausschnitt: MinMax-Spielbaum eines 6x6 Latrunculi Feldes}}{7}{figure.2.6}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Startkonfiguration eines 7x6 Latrunculi Feldes}}{4}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Legitime Bewegungen auf einem 7x6 Latrunculi-Feld(links) \& nicht erlaubte Z\IeC {\"u}ge (rechts)}}{4}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Eroberung eines Spielsteins(links) und keine Eroberung(rechts)}}{5}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Ausschnitt: MinMax-Spielbaum eines 6x6 Latrunculi Feldes}}{7}{figure.2.4}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Prototyp}}{9}{figure.4.1}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Prototyp}}{10}{figure.4.1}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces MiniMax}}{15}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Evaluierungs-Funktion Version 1}}{16}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Vierer-Formation und L-Form}}{17}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Evaluierungs-Funktion Version 2}}{18}{figure.5.4}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Spielende wird nicht erkannt}}{19}{figure.6.1}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Spielende wird nicht erkannt}}{21}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Steine und Muscheln mit der gleichen defensiven Konfiguration:\newline Links mit Suchtiefe 10 und rechts mit Suchtiefe 3}}{24}{figure.6.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Steine und Muscheln mit der gleichen aggressiven Konfiguration und Suchtiefe 10: Links: Reihenformation \& rechts: Endsituation.}}{25}{figure.6.3}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Steine und Muscheln mit der gleichen aggressiven Konfiguration und Suchtiefe 3: Endsituation.}}{25}{figure.6.4}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Steine und Muscheln mit der gleichen Konfiguration und Suchtiefe erkennen m\IeC {\"o}gliche Eroberung sp\IeC {\"a}t.}}{26}{figure.6.5}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Hohe Angriffspunkte bei Suchtiefe 3. KI weicht in die Ecken aus.}}{28}{figure.6.6}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces KI l\IeC {\"a}sst sich einfach einkesseln.}}{28}{figure.6.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Schritt 1: Alpha-Beta Pruning}}{21}{figure.7.1}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Schritt 2: Alpha-Beta Pruning}}{21}{figure.7.2}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Schritt 3: Alpha-Beta Pruning}}{22}{figure.7.3}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Schritt 4: Alpha-Beta Pruning}}{22}{figure.7.4}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Schritt 5: Alpha-Beta Pruning}}{23}{figure.7.5}
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Schritt 6: Alpha-Beta Pruning}}{23}{figure.7.6}
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Schritt 7: Alpha-Beta Pruning}}{24}{figure.7.7}
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Schritt 8: Alpha-Beta Pruning}}{24}{figure.7.8}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Alpha-Beta Pruning: Schritt 1}}{30}{figure.7.1}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Alpha-Beta Pruning: Schritt 2}}{30}{figure.7.2}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Alpha-Beta Pruning: Schritt 3}}{31}{figure.7.3}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Alpha-Beta Pruning: Schritt 4}}{31}{figure.7.4}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Alpha-Beta Pruning: Schritt 5}}{32}{figure.7.5}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Alpha-Beta Pruning: Schritt 6}}{32}{figure.7.6}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Alpha-Beta Pruning: Schritt 7}}{33}{figure.7.7}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Alpha-Beta Pruning: Schritt 8}}{33}{figure.7.8}
 \addvspace {10\p@ }

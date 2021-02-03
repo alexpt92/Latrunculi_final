@@ -2,7 +2,7 @@
 %% $Id: entwurf.tex 61 2012-05-03 13:58:03Z bless $
 %%
 
-\chapter{Entwurf}
+\chapter{Ideen}
 \label{ch:Entwurf}
 %% ==============================
 %In diesem Kapitel erfolgt die ausführliche Beschreibung des eigenen
@@ -11,11 +11,11 @@
 In diesem Kapitel werden die Features erklärt, die grundlegend notwendig sind, sowie die, die sich während der Entwicklung ergeben haben und vom Kunden gewünscht wurden.
 
 %% ==============================
-\section{Ideen}
+%\section{Ideen}
 %% ==============================
 \label{ch:Entwurf:sec:1.Konzept}
 \paragraph{Grundlegende Features}
- Diese grundsätzlichen Features entsprechen dem ursprünglichen Prototypen, der in der Abbildung \ref{fig:Prototyp} zu sehen ist, des Spiels, dadurch konnten die implementierten Regeln getestet und durch weitere Ideen erweitert werden.
+ Diese grundsätzlichen Features entsprechen dem ursprünglichen Prototypen des Spiels, der in der Abbildung \ref{fig:Prototyp} zu sehen ist, dadurch konnten die implementierten Regeln getestet und durch  zusätzliche Ideen erweitert werden.
  	\begin{itemize}
  		\item Spielbrett, mit einer Größe von 8x8 und fix in der Szene verankert
  		\item Schwarze und weiße/graue Kreise als Spielsteine
@@ -24,7 +24,7 @@ In diesem Kapitel werden die Features erklärt, die grundlegend notwendig sind, 
  	\end{itemize}
 \begin{figure}[h]
 	\centering
-	\includegraphics{img/Prototyp}
+	\includegraphics{img/Prototyp2}
 	\caption{Prototyp}
 	\label{fig:Prototyp}
 \end{figure}
@@ -44,7 +44,7 @@ In diesem Kapitel werden die Features erklärt, die grundlegend notwendig sind, 
 Nachdem das zuvor konzeptionierte Spiel dem Landesmuseum Birkenfeld zugeschickt wurde, haben sich die folgenden noch zusätzlich benötigten Features herausgestellt:
 \begin{itemize}
 	\item Unterschiedliche Schwierigkeitsgrade anstatt Slider im Spiel gegen die KI, da diese nicht so intuitiv verstanden wurden
-	\item Zweite KI soll zuschaltbar sein um Spiel zu simulieren
+	\item Zweite KI soll zuschaltbar sein, um Spiel zu simulieren
 	\item Neustart- und Beenden-Buttons auf den Spielbildschirm verschieben	
 \end{itemize}
 
@@ -67,7 +67,7 @@ Zur Umsetzung von Latrunculi wurden folgende Sprites genutzt:
 \end{itemize}
 
 \paragraph{Künstliche Intelligenz}
-Um das Spielen auch alleine zu ermöglichen wurde auf Basis des MiniMax-Algorithmus eine künstliche Intelligenz entwickelt gegen die ein Spieler antreten kann. Hierbei können unterschiedliche Schwierigkeitsgrade ausgewählt werden, indem die Punkteverteilung des Algorithmus und die Tiefe, die dieser berechnen soll, angepasst werden. Außerdem wurde für Vorführungen im Museum eine zweite KI mit einer eigenen Punkteverteilung hinzugefügt um das Spiel auch als Simulation laufen lassen zu können.
+Um das Spielen auch alleine zu ermöglichen wurde auf Basis des MiniMax-Algorithmus eine künstliche Intelligenz entwickelt gegen die ein Spieler antreten kann. Hierbei können 3 verschiedene Schwierigkeitsgrade ausgewählt werden, indem die Punkteverteilung des Algorithmus und die Tiefe, die dieser berechnen soll, angepasst werden. Außerdem wurde für Vorführungen im Museum eine zweite KI mit einer eigenen Punkteverteilung hinzugefügt um das Spiel auch als Simulation laufen lassen zu können.
 
 %% ==============================
 %%\section{Abschnitt 2}

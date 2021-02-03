@@ -27,14 +27,16 @@ public class GameManager : MonoBehaviour
     //public bool secondAI;
     public Toggle secondAIActive;
     public Toggle firstAIActive;
+    public Toggle noAIActive;
+
     private int difficulty;
     /* private float pointAttacked = 100f;
      private float pointThreat = 50f;
      private float pointHide = -2f;*/
-    private float pointAttacked = 20f;
-    private float pointThreat = 50f;
-    private float pointHide = 100f;
-    private float pointHighThreat = 80f;
+    private float pointAttacked = 200f;
+    private float pointThreat = 100f;
+    private float pointHide = 20f;
+    private float pointHighThreat = 120f;
 
     public Dropdown DDX;
     public Dropdown DDY;
@@ -46,10 +48,10 @@ public class GameManager : MonoBehaviour
     public TextMesh loseText;
     public Text WinText;
 
-    private float pointAttacked2 = 80f;
-    private float pointThreat2 = 50f;
+    private float pointAttacked2 = 100f;
+    private float pointThreat2 = 100f;
     private float pointHide2 = 20f;
-    private float pointHighThreat2 = 70f;
+    private float pointHighThreat2 = 120f;
     public EscapeMenuActivator EscapeMenu;
 
     private bool gameRunning;// = false;
@@ -135,17 +137,18 @@ public class GameManager : MonoBehaviour
         {
             AIActive = 2;
         }
-        else if (firstAIActive.isOn)
+        else if (firstAIActive.isOn && !noAIActive.isOn)
             AIActive = 1;
         else 
             AIActive = 0;
 
         secondAIActive.interactable = false;
         firstAIActive.interactable = false;
+        noAIActive.interactable = false;
         switch (DDX.value)
         {
             case 0:
-                sizeX = 3;
+                sizeX = 6;
                 break;
             case 1:
                 sizeX = 7;
@@ -169,7 +172,7 @@ public class GameManager : MonoBehaviour
         switch (DDY.value)
         {
             case 0:
-                sizeY = 3;
+                sizeY = 6;
                 break;
             case 1:
                 sizeY = 7;
@@ -274,7 +277,7 @@ public class GameManager : MonoBehaviour
 
     public void MovePiece()
     {
-        if (currentPlayer == 2 && firstAIActive.isOn)
+        if (currentPlayer == 2 && (firstAIActive.isOn || secondAIActive.isOn))
         {
             List<Move> moves = new List<Move>();
             mPieceManager.setBoard(mBoard);
@@ -282,20 +285,60 @@ public class GameManager : MonoBehaviour
             BoardDraught b;
             if (difficulty == 0 && !secondAIActive.isOn)//isActiveAndEnabled)
             {
-                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 0, 0, 0, 0);
+                //  b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 0, 0, 0, 0);
+                pointAttacked = 50f;
+                pointThreat = 50f;
+                pointHide = 50f; //BOTH
+                pointHighThreat = 50f;
+                float pointSquareHide = 40f;
+                float pointHighAlert = -50f;
+                float pointCorner = 50f;
+                float pointPrepSquad = 50f;
+
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
 
             }
             else if (difficulty == 1 && !secondAIActive.isOn)// isActiveAndEnabled)
             {
-                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 20, 50, 80, 0);
+                pointAttacked = 100f;
+                pointThreat = 70f;
+                pointHide = 10f; //Aggro
+                pointHighThreat = 80f;
+                float pointSquareHide = 20f;
+                float pointHighAlert = -100f;
+                float pointCorner = 10f;
+                float pointPrepSquad = 10f;
+
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
             }
             else if (difficulty == 2 && !secondAIActive.isOn)//isActiveAndEnabled)
             {
-                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 20, 50, 80, 100);
+                // b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, 20, 50, 80, 100);
+                //Defensiv
+                pointAttacked = 100f;
+                pointThreat = 10f;
+                pointHide = 20f;
+                pointHighThreat = 60f;
+                float pointSquareHide = 40f;
+                float pointHighAlert = -100f;
+                float pointCorner = 100f;
+                float pointPrepSquad = 20f;
+
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
             }
             else
             {
-                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat);
+                 //Defensiv
+                 pointAttacked = 100f;
+                 pointThreat = 10f;
+                 pointHide = 20f;
+                 pointHighThreat = 60f;
+                float pointSquareHide = 40f;
+                float pointHighAlert = -100f;
+                float pointCorner = 100f;
+                float pointPrepSquad = 20f;
+
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
             }
           //  BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, 80);
             float test;
@@ -321,7 +364,15 @@ public class GameManager : MonoBehaviour
             List<Move> moves = new List<Move>();
             mPieceManager.setBoard(mBoard);
             string[,] boarddraught = mBoard.getDraughtAsStrings();
-            BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked2, pointHide2, pointThreat2, pointHighThreat2);
+            pointAttacked = 100f;
+            pointThreat = 80f;
+            pointHide = 10f; //Aggro
+            pointHighThreat = 60f;
+            float pointSquareHide = 20f;
+            float pointHighAlert = -50f;
+            float pointCorner = 10f;
+            float pointPrepSquad = 10f;
+            BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked2, pointHide2, pointThreat2, pointHighThreat2, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
             float test;
             Move currentMove = new Move();
 
@@ -434,7 +485,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log(GameOver() + "wins.");
             }
         }
-        if (currentPlayer == 2 && firstAIActive.isOn)
+        if (currentPlayer == 2 && (firstAIActive.isOn || secondAIActive.isOn))
         {
            // StartCoroutine(Move());
              MovePiece();
@@ -472,7 +523,7 @@ public class GameManager : MonoBehaviour
             moving = false;
 
         }
-        else if (currentPlayer == 2 && firstAIActive.isOn)
+        else if (currentPlayer == 2 && (firstAIActive.isOn || secondAIActive.isOn))
         {
             List<Piece> blist = mPieceManager.getBPieces();
             blist.ToArray()[idx].ShowCells();
@@ -514,7 +565,7 @@ public class GameManager : MonoBehaviour
                     MovePiece();
                 }
             }
-            else if (currentPlayer == 1 && firstAIActive.isOn)
+            else if (currentPlayer == 1 && (firstAIActive.isOn || secondAIActive.isOn))
             {
                 currentPlayer = 2;
                 MovePiece();
