@@ -6,7 +6,7 @@
 \label{ch:Implementierung}
 %% ==============================
 
-Aufgrund der unterstützenden Funktionen, wie das Portieren auf verschiedene Systeme, habe ich mich für die Unity Engine in der Version 2019.3.14f entschieden um Latrunculi digital umzusetzen. Die Erklärung zu Unity befindet sich im Abschnitt \ref{ch:Grundlagen:sec:Unity}. Weiterhin habe ich mich in C\# eingearbeitet und damit die verwendeteten Skripte geschrieben und genutzt. Da ich vorher noch nicht mit Unity und C\# gearbeitet habe, benötigte ich etwas Einarbeitungszeit um den ersten Prototypen zu erstellen.
+Aufgrund der unterstützenden Funktionen, wie das Portieren auf verschiedene Systeme, habe ich mich für die Unity Engine in der Version 2019.3.14f entschieden, um Latrunculi digital umzusetzen. Die Erklärung zu Unity befindet sich im Abschnitt \ref{ch:Grundlagen:sec:Unity}. Weiterhin habe ich mich in C\# eingearbeitet und damit die verwendeteten Skripte geschrieben und genutzt. Da ich vorher noch nicht mit Unity und C\# gearbeitet habe, benötigte ich etwas Einarbeitungszeit um den ersten Prototypen zu erstellen.
 
 %\begin{figure}[h]
 %	\centering
@@ -20,11 +20,7 @@ Aufgrund der unterstützenden Funktionen, wie das Portieren auf verschiedene Sys
 %% ==============================
 \label{ch:Implementierung:sec:Unity}
 
-Die ersten Versuche einer lauffähigen Umsetzung habe ich mit einem vorgefertigten Spielbrett umgesetzt. Dabei habe ich das Brett durch 8x8 einzelne Zellen beziehungsweise Quadrate dargestellt.%, die jeweils ein eigenes Spielobjekt sind
- Auf diesen Quadraten habe ich die Spielsteine als schwarze und graue Kreise platziert und diesen via Skript Funktionen gegeben. Dieser erste Entwurf (Abbildung \ref{fig:Prototyp}) reagierte auf das OnClick()-Event, sodass beim Anklicken eines Kreises der mögliche Weg hervorgehoben wurde und beim Klick auf das gewünschte Feld, wurde der Kreis auf diesem neuen Feld platziert.
-
-
-
+Die ersten Versuche einer lauffähigen Umsetzung habe ich mit einem vorgefertigten Spielbrett umgesetzt. Dabei habe ich das Brett durch 8x8 einzelne Zellen beziehungsweise Quadrate dargestellt. Auf diesen Quadraten habe ich die Spielsteine als schwarze und graue Kreise platziert und diesen via Skript Funktionen gegeben. Dieser erste Entwurf (Abbildung \ref{fig:Prototyp}) reagierte auf das OnClick()-Event, sodass beim Anklicken eines Kreises der mögliche Weg hervorgehoben wurde und beim Klick auf das gewünschte Feld, wurde der Kreis auf diesem neuen Feld platziert.
 Da dieser Entwurf sehr statisch und die Größe fest verankert war, habe ich mir Informationen gesucht um das Spiel dynamisch zu erstellen und die Größe des Spielfelds variabel zu machen. Dazu habe ich sowohl für die Zellen, als auch die Spielsteine Prefabs erstellt und somit mittels Skript in der Start-Funktion die Prefabs abgerufen und je nach angegebener Größe das Spielfeld zur Laufzeit erstellt.
 Außerdem wurde das OnClick()-Event durch Drag \& Drop ersetzt, sodass es auf einem Touchscreen intuitiver zu bedienen ist.
 %% ==============================
@@ -62,41 +58,35 @@ Im \textbf{AIManager} befindet sich der MiniMax-Algorithmus, der die Berechnunge
 \section{MiniMaxing}
 %% ==============================
 \label{ch:Implementierung:sec:MiniMaxing}
-Für die Implementierung des MiniMaxing habe ich die Klasse AIManager entworfen. Diese enthält die Funktion \textbf{Minimax()}, die das aktuelle Spielbrett als Board, die maximale Suchtiefe, die aktuelle Tiefe und den Spieler der am Zug ist übernimmt. Die Berechnungen und Evaluation der möglichen Züge werden anschließend hier rekursiv durchgeführt und es wird die maximal erreichte Punktzahl zurückgegeben, sowie die Referenzierung des zugeordneten Zuges (vgl. \cite{palacios2016unity}).\\
-
+Für die Implementierung des MiniMax-Algorithmus habe ich die Klasse AIManager entworfen. Diese enthält die Funktion \textbf{Minimax()}, die sich an der beschriebenen Umsetzung von Jorge Palacios\cite{palacios2016unity} orientiert. Diese übernimmt das aktuelle Spielbrett als Board, die maximale Suchtiefe, die aktuelle Tiefe und den Spieler der am Zug ist. Die Berechnungen und Evaluation der möglichen Züge werden anschließend hier rekursiv durchgeführt und es wird die maximal erreichte Punktzahl zurückgegeben, sowie die Referenzierung des zugeordneten Zuges.\\
+\begin{figure}
 \begin{lstlisting}[basicstyle=\scriptsize\ttfamily, numbers=left, stepnumber=1, numberstyle = \tiny]
 public static float Minimax(BoardDraught board, int player, int maxDepth,
 int currentDepth, ref Move bestMove)
 {
 	if (board.IsGameOver() || currentDepth == maxDepth)
-	{
 		return 0;
-	}
 	bestMove = null;
 	float bestScore = Mathf.Infinity;
 	if (board.GetCurrentPlayer() == player)
 	bestScore = Mathf.NegativeInfinity;
 	List<Move> allMoves = new List<Move>();
 	int nextPlayer = 0;
-	if (player == 2)
-	{
+	if (player == 2){
 		allMoves = board.GetMoves(player);
 		nextPlayer = 1;
 	}
-	else if (player == 1)
-	{
+	else if (player == 1){
 		allMoves = board.GetMoves(player);
 		nextPlayer = 2;
 	}
 	Move currentMove;
 	float score = 0;
-	foreach (Move m in allMoves)
-	{
+	foreach (Move m in allMoves){
 		board.MakeMove(m);
 		float currentScore = 0;
 		currentMove = m;
-		if (m.attacked)
-		{
+		if (m.attacked)	{
 			if (nextPlayer == 2)
 			nextPlayer = 1;
 			else
@@ -105,8 +95,7 @@ int currentDepth, ref Move bestMove)
 		currentScore = Minimax(board, nextPlayer, maxDepth, 
 				currentDepth + 1, ref currentMove);
 		float newScore = board.Evaluate(player);
-		if (board.GetCurrentPlayer() == player)
-		{
+		if (board.GetCurrentPlayer() == player)	{
 			currentScore += newScore;
 			if (currentScore > bestScore)
 			{
@@ -115,19 +104,16 @@ int currentDepth, ref Move bestMove)
 				m.mScore = bestScore;
 			}
 		}
-		else
-		{
+		else{
 			currentScore -= newScore;
-			if (currentScore < bestScore)
-			{
+			if (currentScore < bestScore){
 				bestScore = currentScore;
 				bestMove = m;
 				m.mScore = bestScore;
 			}
 		}
 		board.StepBack();
-		if (m.attacked)
-		{
+		if (m.attacked){
 			if (nextPlayer == 2)
 				nextPlayer = 1;
 			else
@@ -135,12 +121,9 @@ int currentDepth, ref Move bestMove)
 		} 
 	}
 	List<Move> bestMoves = new List<Move>();
-	if (currentDepth == 0)
-	{
-		foreach (Move m in allMoves)
-		{
-			if (m.mScore == bestScore)
-			{
+	if (currentDepth == 0){
+		foreach (Move m in allMoves){
+			if (m.mScore == bestScore){
 				bestMoves.Add(m);
 			}
 		}
@@ -151,8 +134,11 @@ int currentDepth, ref Move bestMove)
 	return score;
 }
 \end{lstlisting}
-
-Die rekursive Funktion \textbf{Minimax()} wird aufgerufen und bekommt den momentanen Spielzustand, sowie die maximale und aktuelle Suchtiefe, als auch eine Referenzierung auf einen Zug, der nachher der beste zugeordnet wird, übergeben. Somit sind alle nötigen Informationen zur Berechnung vorhanden und es kann in Zeile 4 die Startbedingung geprüft werden. Falls das Spiel beendet ist oder die maximale Suchtiefe erreicht wurde wird eine 0 zurückgegeben. Anschließend werden die möglichen Züge des gerade betrachteten Spielers innerhalb der \textbf{BoardDraught}-Klasse berechnet. Zeile 14 prüft, ob es sich um den ersten oder zweiten Spieler handelt, ruft dementsprechend die Züge des Spielers ab und speichert diese in der Variablen allMoves. In der ForEach-Schleife wird über die von diesem Zustand aus möglichen Züge iteriert. Dabei wird zuerst die Bewegung auf dem Spielbrett simuliert und auf diesem gespeichert, um nach jeder Iteration den Schritt rückgängig machen zu können. In Zeile 31 wird geprüft, ob der Spieler einen gegnerischen Stein erobern würde. Falls ein Angriff stattgefunden hat, wird der nächste Spieler auf den aktuellen Spieler gesetzt, sodass dieser in der darauffolgenden Suchtiefe wieder betrachtet wird. Zeile 38 startet die Rekursion mit dem neuen Spielzustand und speichert die Punktzahl in currentScore. Anschließend wird die aktuelle Bewegung evaluiert und die entsprechenden Punkte zurückgegeben und in newScore zwischengespeichert. Zum Schluss werden die Punkte aus newScore auf die aktuelle Punktzahl addiert, falls der betrachtete Spieler auch derjenige ist, der am Zug ist, oder subtrahiert, wenn der Gegenspieler dran wäre. Schließlich wird in Zeile 61 mit der Board-Funktion \textbf{StepBack()} der letzte Zug rückgängig gemacht und die Iteration wird fortgesetzt. Nach der Rekursion sollten alle Aktionen eine Bewertung erhalten haben. Da die Punktzahl teilweise identisch war, wurde immer der erste betrachtete Zug mit der maximal erreichten Punktzahl gewählt. Daher habe ich noch einen Zufallsgenerator implementiert, der eine zufällige Bewegung aus denen mit der höchsten und selben Punktzahl auswählt und zurückgibt.\\
+\label{fig:MiniMax}
+\caption{MiniMax}
+\end{figure}
+Die rekursive Funktion \textbf{Minimax()} wird aufgerufen und bekommt sowohl den momentanen Spielzustand, die maximale \& aktuelle Suchtiefe, als auch eine Referenzierung auf einen Zug, der nachher der beste zugeordnet wird, übergeben. Somit sind alle nötigen Informationen zur Berechnung vorhanden und es kann, wie in Abbildung 5.1 zu sehen ist, in Zeile 4 die Startbedingung geprüft werden. Falls das Spiel beendet ist oder die maximale Suchtiefe erreicht wurde, wird eine 0 zurückgegeben. Anschließend werden die möglichen Züge des gerade betrachteten Spielers innerhalb der \textbf{BoardDraught}-Klasse berechnet. Zeile 14 prüft, ob es sich um den ersten oder zweiten Spieler handelt, ruft dementsprechend die Züge des Spielers ab und speichert diese in der Variablen allMoves. In der ForEach-Schleife wird über die von diesem Zustand aus möglichen Züge iteriert. Dabei wird zuerst die Bewegung auf dem Spielbrett simuliert und auf diesem gespeichert, um nach jeder Iteration den Schritt rückgängig machen zu können. In Zeile 31 wird geprüft, ob der Spieler einen gegnerischen Stein erobern würde. Falls ein Angriff stattgefunden hat, wird der nächste Spieler auf den aktuellen Spieler gesetzt, sodass dieser in der darauffolgenden Suchtiefe wieder betrachtet wird. Zeile 38 startet die Rekursion mit dem neuen Spielzustand und speichert die Punktzahl in currentScore. Anschließend wird die aktuelle Bewegung evaluiert und die entsprechenden Punkte zurückgegeben und in newScore zwischengespeichert. Zum Schluss werden die Punkte aus newScore auf die aktuelle Punktzahl addiert, falls der betrachtete Spieler auch derjenige ist, der am Zug ist, oder subtrahiert, wenn der Gegenspieler dran wäre. Schließlich wird in Zeile 61 mit der Board-Funktion \textbf{StepBack()} der letzte Zug rückgängig gemacht und die Iteration wird fortgesetzt. Nach der Rekursion sollten alle Aktionen eine Bewertung erhalten haben. Da die Punktzahl teilweise identisch war, wurde immer der erste betrachtete Zug mit der maximal erreichten Punktzahl gewählt. Daher habe ich noch einen Zufallsgenerator implementiert, der eine zufällige Bewegung aus denen mit der höchsten und selben Punktzahl auswählt und zurückgibt.\\
+\begin{figure}[h]
 \begin{lstlisting}[basicstyle=\scriptsize\ttfamily, numbers=left, stepnumber=1, numberstyle = \tiny]
 public float Evaluate(string color)
 {
@@ -175,8 +161,99 @@ public float Evaluate(string color)
 	return eval;
 }
 \end{lstlisting}
+\label{fig:eval1}
+\caption{Evaluierungs-Funktion Version 1}
+\end{figure}
+Die \textbf{Evaluate()}-Funktionen sind für die Bewertung der Züge zuständig. Dabei ruft \textbf{Evaluate(int player)} nach der Entscheidung, welche Farbe dem Spieler zugeordnet wurde, die \textbf{Evaluate(string color)}-Funktion auf. Hier findet die eigentliche Punkteverteilung statt. Jeder Zug hat zuvor für verschiedene Spielsituationen Flags zugeordnet bekommen. Diese werden bei der Suche nach möglichen Bewegungen auf \textit{true} gesetzt, wenn die definierte Bedingung zutrifft. Beispielsweise wird das \textit{Attacked}-Flag gesetzt, wenn der Zug zu einer Eroberung führt und die Aktion erhält die vorher festgelegte Punktzahl für Angriffe. Das Flag \textit{attacked2} wird gesetzt, wenn zwei Steine in diesem Zug erobert werden können. \textit{Threaten} wird \textit{true}, wenn die Aktion zu einer Bedrohung für den Gegenspieler führt. \textit{HighThreat} wurde eingeführt um Bedrohungen, die im nächsten Zug zur Eroberung führen, besser bewerten zu können. Das \textit{Hide}-Flag steht für den Abzug aus einer eigenen Bedrohung, also werden hier Punkte für ein defensives Verhalten verteilt. Zum Schluss wird geprüft ob das Spiel nach dem Zug beendet wäre und dementsprechend die Punktzahl dazu addiert. Die Punkteverteilung bestimmt auch den Schwierigkeitsgrad. Nach dem Testen dieses Bewertungssystem hat sich herausgestellt, dass diese Bewertung noch zu unpräzise ist. Um die KI noch intelligenter zu machen, wurden weitere wichtige Spielsituationen betrachtet und die Evaluierung um Kriterien ergänzt.
+\paragraph{Verbesserung der Evaluierungs-Funktion}
+Die zuvor beschriebene Evaluierung wurde zu grob gestaltet, sodass wichtige Situationen nicht oder zu wenig betrachtet wurden. Dabei ist aufgefallen, dass die KI vor allem akute Bedrohungen der eigenen Steine nicht erkannt hat. Daher wurden die Flags ,,danger'', ,,squadHide'' \& ,,isSquadHide'', ,,prepSquadHide'' \& ,,isPrepSquad'', ,,corner'' \& ,,isInCorner'', ,,OOBAndFriendlyCorner'' \& ,,isOOBAndFriendlyCorner'' und ,,highAlert'' hinzugefügt wie in der Abbildung \ref{fig:eval2} zu sehen ist. Dabei steht ,,squadHide'' für eine Vierer-Formation auf dem Spielfeld (vgl. Abbildung \ref{fig:squad}), die vom Gegner nicht erobert werden kann. Diese Formation ist aufgrund der fehlenden Möglichkeit eingenommen werden zu können, die wichtigste Verteidigungsstellung im Spiel. ,,PrepSquadHide'' ist ein Flag, dass die Vorbereitung auf die Vierer-Stellung darstellt. Es steht also für eine L-Förmige Formation auf dem Spielfeld, wie die Steine es in \ref{fig:squad} abbilden. Das Flag ,,danger'' steht für eine akute Gefahr und wurde so implementiert, dass erkannt wird, wenn ein bedrohter Stein von einem weiteren gegnerischen erreichbar ist und beeinflusst die Puntkeverteilung insofern, dass bei aktivem Danger-Flag die Gewichtung der Verteidigungs-Flags des bedrohten Steins erhöht werden. Das Prefix ,,is'' steht für das jeweils äquivalente Flag des Ist-Zustands und beeinflusst die Gewichtung der Punkte.
+\begin{figure}
+	\centering
+	\includegraphics{img/Squad2}
+	\caption{Vierer-Formation und L-Form}
+	\label{fig:squad}
+\end{figure}
+\begin{figure}[h]
+	\begin{lstlisting}[basicstyle=\scriptsize\ttfamily, numbers=left, stepnumber=1, numberstyle = \tiny]
+public float Evaluate(string color)
+{
+	dangerMultiplier = 1f;
+	attackWeight = 1f;
+	if (danger)
+	{
+		dangerMultiplier = 2f;
+	}
+	if (isInCorner)
+	{
+		eval += -20;
+	}
+	if (isPrepSquad)
+	{
+		eval += -10;
+	}
+	if (isInCorner && attacked && !highAlert)
+	{
+		attackWeight = 3f;
+	}
+	if (isOOBAndFriendlyCorner)
+	{
+		eval += -50;
+	}
+	else if ((isOOBAndFriendlyCorner || isSquadHide) && threaten && !attacked)
+	{
+		attackWeight = 2f;
+	}
+	else if ((isOOBAndFriendlyCorner || isSquadHide) && threaten && !attacked)
+	{
+		attackWeight = 1.25f;
+	}
+	else if (isOOBAndFriendlyCorner && attacked && !highAlert)
+	{
+		attackWeight = 3f;
+	}
+	else if (isOOBAndFriendlyCorner && attacked && highAlert)
+	{
+		attackWeight = 3f;
+	}
+	else if (attacked)
+	{
+		attackWeight = 2f;
+	}
+	if (attacked)
+		eval += pointAttacked * attackWeight;
+	if (attacked2)
+		eval += pointAttacked * attackWeight;
+	if (attacked2)
+		eval += pointAttacked * attackWeight;
+	if (threaten)
+		eval += pointThreat * attackWeight; ;
+	if (hide)
+		eval += pointHide * dangerMultiplier;
+	if (squadHide)
+		eval += pointSquadHide * dangerMultiplier;
+	if (prepSquad)
+		eval += pointPrepSquad * dangerMultiplier;
+	if (corner)
+		eval += pointCorner * dangerMultiplier;
+	if (OOBAndFriendlyCorner)
+		eval += pointOOBAndCorner*dangerMultiplier;
+	if (highAlert)
+		eval += pointHighAlert;
+	if (highThreat)
+		eval += pointHighThreat;
+	if (IsGameOver())
+		eval += pointSuccess;
+	return eval;
+	}
+	\end{lstlisting}
+	\label{fig:eval2}
+	\caption{Evaluierungs-Funktion Version 2}
+\end{figure}
+\paragraph{Analyse der Ausgangssituation}
+Das System wurde um eine Analyse der Ausgangssituation erweitert um Bedrohungen besser ausweichen zu können oder wichtige Positionen nicht zu verlassen. Hier wird geprüft ob der aktuelle Stein in Gefahr ist und dementsprechend die Gewichtung dieser Züge erhöht, um aus der Situation fliehen zu können. Des weiteren werden unschlagbare Positionen höher gewichtet. Befindet sich ein Stein in der Ecke des Spielfelds, wird die Gewichtung der Verteidigungs-Flags erhöht, sodass die Stellung nur für Eroberungen oder sichere Bedrohungen des Gegners verlassen wird. Eine sichere Bedrohung ist so definiert, dass ein Stein sich neben dem Gegenspieler positionieren kann ohne im nächsten Zug geschlagen werden zu können. Außerdem wurde das Flag ,,isInCorner'' eingeführt, welches evaluiert, ob der Spielstein sich in einer Ecke befindet. Dann wird der Gesamtpunktzahl ein Wert $x$ abgezogen um die Stellung nicht zu verlassen, außer es sind keine anderen Züge möglich oder es kann eine Spielfigur eingenommen werden. Außerdem wird in der Abbildung \ref{fig:eval2} Zeile 21 geprüft, ob der Stein sich am Rande des Spielfelds und neben einem weiteren eigenen befindet, da dies ebenfalls eine unschlagbare Position bildet.
 
-Die \textbf{Evaluate()}-Funktionen sind für die Bewertung der Züge zuständig. Dabei ruft \textbf{Evaluate(int player)} nach der Entscheidung, welche Farbe dem Spieler zugeordnet wurde, die \textbf{Evaluate(string color)}-Funktion auf. Hier findet die eigentliche Punkteverteilung statt. Jeder Zug hat zuvor für verschiedene Spielsituationen Flags zugeordnet bekommen. Diese werden bei der Suche nach möglichen Bewegungen auf \textit{true} gesetzt, wenn die definierte Bedingung zutrifft. Beispielsweise wird das \textit{Attacked}-Flag gesetzt, wenn der Zug zu einer Eroberung führt und die Aktion erhält die vorher festgelegte Punktzahl für Angriffe. Das Flag \textit{attacked2} wird gesetzt, wenn zwei Steine in diesem Zug erobert werden können. \textit{Threaten} wird \textit{true}, wenn die Aktion zu einer Bedrohung für den Gegenspieler führt. \textit{HighThreat} wurde eingeführt um Bedrohungen, die im nächsten Zug zur Eroberung führen, besser bewerten zu können. Das \textit{Hide}-Flag steht für den Abzug aus einer eigenen Bedrohung, also werden hier Punkte für ein defensives Verhalten verteilt. Zum Schluss wird geprüft ob das Spiel nach dem Zug beendet wäre und dementsprechend die Punktzahl dazu addiert. Die Punkteverteilung bestimmt auch den Schwierigkeitsgrad. Um die KI noch intelligenter zu machen, könnte die Evaluierung noch um eine beliebige Anzahl an Flags erweitert werden, sodass die Spielsituation immer präziser bewertet wird.
+
+% könnte die Evaluierung noch um eine beliebige Anzahl an Flags erweitert werden, sodass die Spielsituation immer präziser bewertet wird.
 
 %%% Local Variables: 
 %%% mode: latex

@@ -25,14 +25,26 @@ public class BoardDraught : Board
     protected Move currentMove = null;
 
 
+    float dangerPoints = -10f;
+    float dangerLowPoints = -5f;
+    float squarePoints = 30f; 
+    float prepSquareHidePoints = 7f;
+    float attackPoints = 50f;
+    float pointHighHide = 5f;
+
+
     float eval = 1f;
     float pointSimple = 1f;
     float pointSuccess = 250f;
     float pointAttacked = 100f;
     float pointThreat = 10f;
-    float pointHide = 100f;
-    float pointHighThreat = 75f;
-
+    float pointHide = 20f;
+    float pointHighThreat = 60f;
+    float pointSquareHide = 40f;
+    float pointHighAlert = -100f;
+    float pointCorner = 80f;
+    float pointPrepSquad = 20f;
+    float pointOOBAndCorner = 20f;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +62,7 @@ public class BoardDraught : Board
         currentMove = newMove;
     }
 
-    public BoardDraught(string[,] copyBoard, int nextPlayer, int rows, int cols, float newAttackPoints, float newHidePoints, float newThreatPoints, float newHighThreatPoints)
+    public BoardDraught(string[,] copyBoard, int nextPlayer, int rows, int cols, float newAttackPoints, float newHidePoints, float newThreatPoints, float newHighThreatPoints, float newSquadPoints, float newCornerPoints, float newHighAlertPoints, float newPrepSquadPoints)
     {
         simpleAllCells = copyBoard; 
         player = nextPlayer;
@@ -61,6 +73,16 @@ public class BoardDraught : Board
         pointHide = newHidePoints;
         pointThreat = newThreatPoints;
         pointHighThreat = newHighThreatPoints;
+        pointPrepSquad = newPrepSquadPoints;
+        /*  pointThreat = 50;
+  pointAttacked = 80;
+  pointHide = 70;
+  pointHighThreat = 60;
+  pointSquareHide = 0;
+  pointCorner = 0;
+  pointHighAlert = 0;
+*/
+
     }
 
     public void changeAttackPoints ()
@@ -80,7 +102,323 @@ public class BoardDraught : Board
        // throw new NotImplementedException();
     }
 
- 
+    public override void FindMoves_new(Vector2Int currentPos, Vector2Int targetPos)
+    {
+        int currentX = targetPos.x;
+        int currentY = targetPos.y;
+
+        int targetX = targetPos.x + 1;
+        int targetY = targetPos.y;
+
+        int allyX = targetPos.x + 2;
+        int allyY = targetPos.y;
+
+        List<Vector2Int> attackedCells = new List<Vector2Int>();
+        int counter = allMoves.Count;
+        Move m = new Move();
+
+        m.mPieceName = simpleAllCells[currentPos.x, currentPos.y];
+
+        m.removeX = -1;
+        m.removeY = -1;
+        m.removeX2 = -1;
+        m.removeY2 = -1;
+        m.currentX = currentPos.x;
+        m.currentY = currentPos.y;
+        m.x = targetPos.x;
+        m.y = targetPos.y;
+
+        for (int i = targetPos.y; i < sizeY; i++)
+        {
+            for (int j = targetPos.x; j < sizeX; j++)
+            {
+                if (ValidateCell(j, i) == CellState.Enemy)
+                {
+                    if (j == targetPos.x + 1 && i == targetPos.y)
+                    {
+                        m.highAlertRight = true;
+                        m.threatRight = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y + 1)
+                    {
+                        m.threatUp = true;
+                        m.highAlertUp = true;
+                    }
+
+                }
+                if (ValidateCell(j, i) == CellState.Friendly)
+                {
+                    if (j == targetPos.x + 1 && i == targetPos.y)
+                    {
+                        m.highHideRight = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y + 1)
+                    {
+                        m.highHideUp = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y + 2 && m.highThreatUp)
+                    {
+                        attackedCells.Add(new Vector2Int(targetX, targetY));
+                        if (m.attacked)
+                        {
+                            m.attacked2 = true;
+                            m.removeX2 = j;
+                            m.removeY2 = i;
+                        }
+                        else if (m.attacked2)
+                        {
+                            m.attacked3 = true;
+                            m.removeX3 = j;
+                            m.removeY3 = i;
+                        }
+                        else
+                        {
+                            m.attacked = true;
+                            m.removeX = j;
+                            m.removeY = i;
+                        }
+                    }
+                    if (j == targetPos.x + 2 && i == targetPos.y && m.highThreatRight)
+                    {
+                        attackedCells.Add(new Vector2Int(targetX, targetY));
+
+                        if (m.attacked)
+                        {
+                            m.attacked2 = true;
+                            m.removeX2 = j;
+                            m.removeY2 = i;
+                        }
+                        else if (m.attacked2)
+                        {
+                            m.attacked3 = true;
+                            m.removeX3 = j;
+                            m.removeY3 = i;
+                        }
+                        else
+                        {
+                            m.attacked = true;
+                            m.removeX = j;
+                            m.removeY = i;
+                        }
+                    }
+
+
+                }
+                if (ValidateCell(j, i) == CellState.OutOfBounds)
+                {
+                    break;
+                }
+                if (ValidateCell(j, i) == CellState.Free)
+                {
+
+                }
+            }
+        }
+
+        for (int i = targetPos.y; i >= 0; i--)
+        {
+            for (int j = targetPos.x; j >= 0; j--)
+            {
+                if (ValidateCell(j, i) == CellState.Enemy)
+                {
+                    if (j == targetPos.x - 1 && i == targetPos.y)
+                    {
+                        m.highAlertLeft = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y - 1)
+                    {
+                        m.highAlertDown = true;
+                    }
+                    if (j == targetPos.x - 1 && i < targetPos.y - 1 && m.highAlertRight)
+                    {
+                        m.danger = true;
+                    }
+                    if (i == targetPos.y - 1 && i < targetPos.x - 1 && m.highAlertRight)
+                    {
+                        m.danger = true;
+                    }
+                    if (j == targetPos.x - 1 && i < targetPos.y - 1 && m.alertRight)
+                    {
+                        m.dangerLow = true;
+                    }
+                    if (i == targetPos.y - 1 && i < targetPos.x - 1 && m.alertRight)
+                    {
+                        m.dangerLow = true;
+                    }
+                }
+                if (ValidateCell(j, i) == CellState.Friendly)
+                {
+                    if (j == targetPos.x - 1 && i == targetPos.y)
+                    {
+                        m.highHideRight = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y - 1)
+                    {
+                        m.highHideUp = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y - 2 && m.highThreatDown)
+                    {
+                        attackedCells.Add(new Vector2Int(targetX, targetY));
+
+                        if (m.attacked)
+                        {
+                            m.attacked2 = true;
+                            m.removeX2 = j;
+                            m.removeY2 = i;
+                        }
+                        else if (m.attacked2)
+                        {
+                            m.attacked3 = true;
+                            m.removeX3 = j;
+                            m.removeY3 = i;
+                        }
+                        else
+                        {
+                            m.attacked = true;
+                            m.removeX = j;
+                            m.removeY = i;
+                        }
+                    }
+                    if (j == targetPos.x - 2 && i == targetPos.y && m.highThreatLeft)
+                    {
+                        attackedCells.Add(new Vector2Int(targetX, targetY));
+
+                        if (m.attacked)
+                        {
+                            m.attacked2 = true;
+                            m.removeX2 = j;
+                            m.removeY2 = i;
+                        }
+                        else if (m.attacked2)
+                        {
+                            m.attacked3 = true;
+                            m.removeX3 = j;
+                            m.removeY3 = i;
+                        }
+                        else
+                        {
+                            m.attacked = true;
+                            m.removeX = j;
+                            m.removeY = i;
+                        }
+                    }
+
+
+
+                }
+                if (ValidateCell(j, i) == CellState.OutOfBounds)
+                {
+                    break;
+                }
+                if (ValidateCell(j, i) == CellState.Free)
+                {
+
+                }
+
+            }
+            if (ValidateCell(sizeX, i) == CellState.OutOfBounds)
+            {
+                break;
+            }
+        }
+
+        for (int i = targetPos.y + 1; i < sizeY; i++)
+        {
+            for (int j = targetPos.x - 1; j > 0; j--)
+            {
+                if (ValidateCell(j, i) == CellState.Enemy)
+                {
+                    if (j == targetPos.x - 1 && i == targetPos.y + 1 && (m.highAlertRight || m.highAlertDown))
+                    {
+                        m.danger = true;
+                    }
+                    if (j == targetPos.x - 1 && i > targetPos.y + 1)
+                    {
+                        m.danger = true;
+                    }
+                }
+                if (ValidateCell(j, i) == CellState.Friendly)
+                {
+                    if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideLeft && m.highHideUp == false)
+                    {
+                        m.prepSquareHideUpMiss = true;
+                        //m.highHideRight = true;
+                    }
+                    if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideLeft && m.highHideUp)
+                    {
+                        m.squareHide = true;
+                    }
+
+
+                    if (j == targetPos.x - 1 && i > targetPos.y + 1)
+                    {
+
+                    }
+
+
+                }
+                if (ValidateCell(j, i) == CellState.OutOfBounds)
+                {
+                    break;
+                }
+                if (ValidateCell(j, i) == CellState.Free)
+                {
+
+                }
+            }
+
+        }
+
+        for (int i = targetPos.y - 1; i > 0; i--)
+        {
+            for (int j = targetPos.x + 1; j < sizeX; j++)
+            {
+                if (ValidateCell(j, i) == CellState.Enemy)
+                {
+                    if (i == targetPos.y - 1 && j == targetPos.x + 1 && m.highAlertLeft)
+                    {
+                        m.danger = true;
+                    }
+                    if (i == targetPos.y - 1 && j == targetPos.x + 1 && m.highAlertUp)
+                    {
+                        m.danger = true;
+                    }
+                    if (i == targetPos.y - 1 && j == targetPos.x + 1 && !m.highAlertUp && !m.highAlertLeft && !m.danger)
+                    {
+                        m.dangerLow = true;
+                    }
+
+
+                }
+                if (ValidateCell(j, i) == CellState.Friendly)
+                {
+                    if (j == targetPos.x + 1 && i == targetPos.y - 1 && m.highHideRight && m.highHideDown == false)
+                    {
+                        m.prepSquareHideDownMiss = true;
+                        //m.highHideRight = true;
+                    }
+                    if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideRight && m.highHideDown)
+                    {
+                        m.squareHide = true;
+                    }
+
+                    if (j == targetPos.x - 1 && i > targetPos.y + 1)
+                    {
+
+                    }
+                }
+                if (ValidateCell(j, i) == CellState.OutOfBounds)
+                {
+                    break;
+                }
+                if (ValidateCell(j, i) == CellState.Free)
+                {
+
+                }
+            }
+        }
+        allMoves.Add(m);
+    }
 
     public override void FindMoves(Vector2Int currentPos, Vector2Int targetPos)
     {
@@ -121,11 +459,160 @@ public class BoardDraught : Board
         else
             m.player = 1;
 
+
+        //ANALYZE CURRENTPOS
+
+        if ((currentPos.x == 0 && currentPos.y == 0) || (currentPos.x == 0 && currentPos.y == sizeY - 1)
+|| (currentPos.x == sizeX - 1 && currentPos.y == 0) || (currentPos.x == sizeX - 1 && currentPos.y == sizeY - 1))
+        {
+            m.isInCorner = true;
+        }
+
+        if ((ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x+1, currentPos.y+1) == CellState.Free) 
+            || (ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Free)
+            || (ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Free)
+            || (ValidateCell(currentPos.x - 1, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Free)
+            || (ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y + 1) == CellState.Free)
+            || (ValidateCell(currentPos.x - 1, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Free)
+            || (ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y - 1) == CellState.Free)
+            || (ValidateCell(currentPos.x - 1, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Free)
+            || (ValidateCell(currentPos.x - 1, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Free)
+            || (ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y - 1) == CellState.Free)
+            || (ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Free)
+            || (ValidateCell(currentPos.x + 1, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Free))
+        {
+            m.isPrepSquad = true;
+        }
+
+        if ((currentPos.x == 1 && currentPos.y == 0 && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly) 
+            || (currentPos.x == 0 && currentPos.y == 1 && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly)
+            || (currentPos.x == 1 && currentPos.y == sizeY-1 && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly)
+            || (currentPos.x == 0 && currentPos.y == sizeY - 2 && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly)
+            || (currentPos.x == sizeX - 2 && currentPos.y == 0 && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly)
+            || (currentPos.x == sizeX-1 && currentPos.y == 1 && ValidateCell(currentPos.x , currentPos.y + 1) == CellState.Friendly)
+            || (currentPos.x == sizeX - 2 && currentPos.y == sizeY - 1 && ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly)
+            || (currentPos.x == sizeX - 1 && currentPos.y == sizeY - 2 && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly))
+        {
+            m.isOOBAndFriendlyCorner = true;
+        }
+
+        if ((ValidateCell(currentPos.x+1,currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y+1) == CellState.Friendly
+            && ValidateCell(currentPos.x+1, currentPos.y+1) == CellState.Friendly)
+            || (ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly
+            && ValidateCell(currentPos.x - 1, currentPos.y + 1) == CellState.Friendly)
+            || (ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x-1, currentPos.y - 1) == CellState.Friendly
+            && ValidateCell(currentPos.x , currentPos.y - 1) == CellState.Friendly)
+            || (ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly
+            && ValidateCell(currentPos.x + 1, currentPos.y - 1) == CellState.Friendly))
+        {
+            m.isSquareHide = true;
+            m.isPrepSquad = false;
+        }
+
+
+        for (int i = 0; i < sizeX; i++)
+        {
+            if ((ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Enemy && ValidateCell(i, currentPos.y) == CellState.Enemy)|| 
+                (ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Enemy && ValidateCell(i, currentPos.y) == CellState.Enemy))
+            {
+                m.danger = true;
+            }
+            if (ValidateCell(i, currentPos.y) == CellState.OutOfBounds || ValidateCell(i, currentPos.y) == CellState.Friendly)
+                break;
+        }
+        for (int i = 0; i >= 0; i--)
+        {
+            if ((ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Enemy && ValidateCell(i, currentPos.y) == CellState.Enemy) ||
+                (ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Enemy && ValidateCell(i, currentPos.y) == CellState.Enemy))
+            {
+                m.danger = true;
+            }
+            if (ValidateCell(i, currentPos.y) == CellState.OutOfBounds || ValidateCell(i, currentPos.y) == CellState.Friendly)
+                break;
+        }
+
+        for (int j = 0; j < sizeY; j++)
+        {
+            if ((ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Enemy && ValidateCell(currentPos.x, j) == CellState.Enemy) ||
+                (ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Enemy && ValidateCell(currentPos.x, j) == CellState.Enemy))
+            {
+                m.danger = true;
+            }
+            if (ValidateCell(currentPos.x, j) == CellState.OutOfBounds || ValidateCell(currentPos.x, j) == CellState.Friendly)
+                break;
+        }
+        for (int j = 0; j >= 0; j++)
+        {
+            if ((ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Enemy && ValidateCell(currentPos.x, j) == CellState.Enemy) ||
+                (ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Enemy && ValidateCell(currentPos.x, j) == CellState.Enemy))
+            {
+                m.danger = true;
+            }
+            if (ValidateCell(currentPos.x, j) == CellState.OutOfBounds || ValidateCell(currentPos.x, j) == CellState.Friendly)
+                break;
+        }
+
+        //ANALYZE NEW POSITION
+
+
+        if ((ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y + 1) == CellState.Free)
+    || (ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Free)
+    || (ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Free)
+    || (ValidateCell(currentPos.x - 1, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Free)
+    || (ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y + 1) == CellState.Free)
+    || (ValidateCell(currentPos.x - 1, currentPos.y + 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y + 1) == CellState.Free)
+    || (ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y - 1) == CellState.Free)
+    || (ValidateCell(currentPos.x - 1, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Free)
+    || (ValidateCell(currentPos.x - 1, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x - 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Free)
+    || (ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y - 1) == CellState.Free)
+    || (ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Free)
+    || (ValidateCell(currentPos.x + 1, currentPos.y - 1) == CellState.Friendly && ValidateCell(currentPos.x + 1, currentPos.y) == CellState.Friendly && ValidateCell(currentPos.x, currentPos.y - 1) == CellState.Free))
+        {
+            m.prepSquad = true;
+        }
+
+        if ((ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Friendly && ValidateCell(targetPos.x, targetPos.y + 1) == CellState.Friendly
+    && ValidateCell(targetPos.x + 1, targetPos.y + 1) == CellState.Friendly)
+    || (ValidateCell(targetPos.x - 1, targetPos.y) == CellState.Friendly && ValidateCell(targetPos.x, targetPos.y + 1) == CellState.Friendly
+    && ValidateCell(targetPos.x - 1, targetPos.y + 1) == CellState.Friendly)
+    || (ValidateCell(targetPos.x - 1, targetPos.y) == CellState.Friendly && ValidateCell(targetPos.x - 1, targetPos.y - 1) == CellState.Friendly
+    && ValidateCell(targetPos.x, targetPos.y - 1) == CellState.Friendly)
+    || (ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Friendly && ValidateCell(targetPos.x, targetPos.y - 1) == CellState.Friendly
+    && ValidateCell(targetPos.x + 1, targetPos.y - 1) == CellState.Friendly))
+        {
+            m.squareHide = true;
+            m.prepSquad = false;
+        }
+
+        if ((targetPos.x == 1 && targetPos.y == 0 && ValidateCell(targetPos.x - 1, targetPos.y) == CellState.Friendly)
+    || (targetPos.x == 0 && targetPos.y == 1 && ValidateCell(targetPos.x, targetPos.y - 1) == CellState.Friendly)
+    || (targetPos.x == 1 && targetPos.y == sizeY - 1 && ValidateCell(targetPos.x - 1, targetPos.y) == CellState.Friendly)
+    || (targetPos.x == 0 && targetPos.y == sizeY - 2 && ValidateCell(targetPos.x, targetPos.y + 1) == CellState.Friendly)
+    || (targetPos.x == sizeX - 2 && targetPos.y == 0 && ValidateCell(targetPos.x - 1, targetPos.y) == CellState.Friendly)
+    || (targetPos.x == sizeX - 1 && targetPos.y == 1 && ValidateCell(targetPos.x, targetPos.y + 1) == CellState.Friendly)
+    || (targetPos.x == sizeX - 2 && targetPos.y == sizeY - 1 && ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Friendly)
+    || (targetPos.x == sizeX - 1 && targetPos.y == sizeY - 2 && ValidateCell(targetPos.x, targetPos.y + 1) == CellState.Friendly))
+        {
+            m.OOBAndFriendlyCorner = true;
+        }
+
+        if (ValidateCell(targetPos.x, targetPos.y) == CellState.Free && ((targetPos.x == 0 && targetPos.y == 0) || (targetPos.x == 0 && targetPos.y == sizeY - 1)
+   || (targetPos.x == sizeX - 1 && targetPos.y == 0) || (targetPos.x == sizeX - 1 && targetPos.y == sizeY - 1)))
+        {
+            m.corner = true;
+        }
+
         if (ValidateCell(targetX, targetY) == CellState.Enemy
             && ValidateCell(allyX, allyY) == CellState.Friendly)
         {
             attackedCells.Add(new Vector2Int (targetX, targetY));
-            if (m.attacked == true)
+            if (m.attacked2 == true && m.attacked == true)
+            {
+                m.attacked3 = true;
+                m.removeX3 = targetX;
+                m.removeY3 = targetY;
+            }
+            else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
@@ -144,6 +631,58 @@ public class BoardDraught : Board
             && ValidateCell(allyX, allyY) != CellState.OutOfBounds)
         {
             m.threaten = true;
+            for (int i = currentX; i >= 0; i--)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(i, targetPos.y + 1) == CellState.Enemy && ValidateCell(targetPos.x, targetPos.y - 1) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int i = currentX; i < sizeX; i++)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(i, targetPos.y - 1) == CellState.Enemy && ValidateCell(targetPos.x, targetPos.y + 1) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j >= 0; j--)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(targetPos.x - 1, j) == CellState.Enemy && ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j < sizeY; j++)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(targetPos.x - 1, j) == CellState.Enemy && ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
         }
 
         targetX = targetPos.x - 1;
@@ -156,7 +695,13 @@ public class BoardDraught : Board
 && ValidateCell(allyX, allyY) == CellState.Friendly)
         {
             attackedCells.Add(new Vector2Int(targetX, targetY));
-            if (m.attacked == true)
+            if (m.attacked2 == true && m.attacked == true)
+            {
+                m.attacked3 = true;
+                m.removeX3 = targetX;
+                m.removeY3 = targetY;
+            }
+            else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
@@ -176,6 +721,58 @@ public class BoardDraught : Board
     && ValidateCell(allyX, allyY) != CellState.OutOfBounds)
         {
             m.threaten = true;
+            for (int i = currentX; i >= 0; i--)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(i, targetPos.y + 1) == CellState.Enemy && ValidateCell(targetPos.x, targetPos.y - 1) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int i = currentX; i < sizeX; i++)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(i, targetPos.y - 1) == CellState.Enemy && ValidateCell(targetPos.x, targetPos.y + 1) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j >= 0; j--)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(targetPos.x - 1, j) == CellState.Enemy && ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j < sizeY; j++)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(targetPos.x - 1, j) == CellState.Enemy && ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
         }
 
         targetX = targetPos.x;
@@ -188,7 +785,13 @@ public class BoardDraught : Board
     && ValidateCell(allyX, allyY) == CellState.Friendly)
         {
             attackedCells.Add(new Vector2Int(targetX, targetY));
-            if (m.attacked == true)
+            if (m.attacked2 == true && m.attacked == true)
+            {
+                m.attacked3 = true;
+                m.removeX3 = targetX;
+                m.removeY3 = targetY;
+            }
+            else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
@@ -207,6 +810,58 @@ public class BoardDraught : Board
 && ValidateCell(allyX, allyY) != CellState.OutOfBounds)
         {
             m.threaten = true;
+            for (int i = currentX; i >= 0; i--)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(i, targetPos.y + 1) == CellState.Enemy && ValidateCell(targetPos.x, targetPos.y - 1) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int i = currentX; i < sizeX; i++)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(i, targetPos.y - 1) == CellState.Enemy && ValidateCell(targetPos.x, targetPos.y + 1) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j >= 0; j--)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(targetPos.x - 1, j) == CellState.Enemy && ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j < sizeY; j++)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(targetPos.x - 1, j) == CellState.Enemy && ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
         }
 
         targetX = targetPos.x;
@@ -219,7 +874,13 @@ public class BoardDraught : Board
     && ValidateCell(allyX, allyY) == CellState.Friendly)
         {
             attackedCells.Add(new Vector2Int (targetX, targetY));
-            if (m.attacked == true)
+            if (m.attacked2 == true && m.attacked == true)
+            {
+                m.attacked3 = true;
+                m.removeX3 = targetX;
+                m.removeY3 = targetY;
+            }
+            else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
@@ -238,6 +899,58 @@ public class BoardDraught : Board
 && ValidateCell(allyX, allyY) != CellState.OutOfBounds)
         {
             m.threaten = true;
+            for (int i = currentX; i >= 0; i--)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(i, targetPos.y + 1) == CellState.Enemy && ValidateCell(targetPos.x, targetPos.y - 1) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int i = currentX; i < sizeX; i++)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(i, targetPos.y - 1) == CellState.Enemy && ValidateCell(targetPos.x, targetPos.y + 1) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j >= 0; j--)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(targetPos.x - 1, j) == CellState.Enemy && ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j < sizeY; j++)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+                if (ValidateCell(targetPos.x-1, j) == CellState.Enemy && ValidateCell(targetPos.x + 1, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
         }
 
         if (ValidateCell(targetX, targetY) != CellState.Enemy
@@ -387,6 +1100,7 @@ public class BoardDraught : Board
                 }
             }
         }
+        int iwas = GetMoves(player).Count;
         if (whitePiecesLeft < 2 || blackPiecesLeft < 2 || GetMoves(player).Count == 0)
         {
             gameOver = true;
@@ -432,6 +1146,7 @@ public class BoardDraught : Board
         string color = "W";
         if (player == 1)
             color ="B";
+       // return Evaluate_new(color);
         return Evaluate(color);
 
         //return Mathf.NegativeInfinity;
@@ -469,27 +1184,169 @@ public class BoardDraught : Board
         pointHide = newHidePoints;
     }
 
+    public float Evaluate_new(string color)
+    {
+        float eval = 1f;
+
+
+        int rows = sizeX;
+        int cols = sizeY;
+
+        if (currentMove.danger)
+            eval += dangerPoints;
+        if (currentMove.dangerLow)
+            eval += dangerLowPoints;
+        if (currentMove.squareHide)
+            eval += squarePoints; 
+        if (currentMove.prepSquareHide)
+            eval += prepSquareHidePoints;
+        if (currentMove.attacked)
+            eval += attackPoints;
+        if (currentMove.attacked2)
+            eval += attackPoints;
+        if (currentMove.highHide)
+            eval += pointHighHide;
+        if (currentMove.attacked3)
+            eval += attackPoints;
+
+       /* if (currentMove.attacked)
+            eval += pointAttacked;
+        if (currentMove.attacked2)
+            eval += pointAttacked;
+        if (currentMove.threaten)
+            eval += pointThreat;
+        if (currentMove.hide)
+            eval += pointHide;
+        if (currentMove.highThreat)
+            eval += pointHighThreat;*/
+        if (IsGameOver())
+            eval += pointSuccess;
+        currentMove.mScore += eval;
+
+
+        //    }
+        //  }
+        //  return 1;
+        return eval;
+    }
+
     public float Evaluate(string color)
     {
       float eval = 1f;
 
 
     int rows = sizeX;
-        int cols = sizeY;
+    int cols = sizeY;
+        float dangerMultiplier = 1f;
+        float attackWeight = 1f;
+        if (currentMove.danger)
+        {
+            dangerMultiplier = 2f;
+        }
+        if (currentMove.isInCorner)
+        {
+            eval += -20;
+        }
+        if (currentMove.isPrepSquad)
+        {
+            eval += -10;
+        }
+        if (currentMove.isInCorner && currentMove.attacked && !currentMove.highAlert)
+        {
+            attackWeight = 3f;
+        }
 
-                    if (currentMove.attacked)
-                        eval += pointAttacked;
-                    if (currentMove.attacked2)
-                        eval += pointAttacked;
-                    if (currentMove.threaten)
-                        eval += pointThreat;
-                    if (currentMove.hide)
-                        eval += pointHide;
-            //        if (eval == 1f)
-             //           eval += pointSimple;
-                    //if (currentMove.success)
-                      //  eval += pointSuccess;
-                    if (currentMove.highThreat)
+            if (currentMove.isOOBAndFriendlyCorner)
+        {
+            eval += -10;
+        }
+        else if ((currentMove.isOOBAndFriendlyCorner || currentMove.isSquareHide) && currentMove.threaten && !currentMove.attacked)
+        {
+            attackWeight = 2f;
+        }
+        else if ((currentMove.isOOBAndFriendlyCorner || currentMove.isSquareHide) && currentMove.threaten && !currentMove.attacked)
+        {
+            attackWeight = 1.25f;
+        }
+        else if (currentMove.isOOBAndFriendlyCorner && currentMove.attacked && !currentMove.highAlert)
+        {
+            attackWeight = 3f;
+        }
+        else if (currentMove.isOOBAndFriendlyCorner && currentMove.attacked && currentMove.highAlert)
+        {
+            attackWeight = 3f;
+        }
+            else if (currentMove.attacked)
+        {
+            attackWeight = 2f;
+        }
+
+        //attackWeight = 1;
+        // dangerMultiplier = 1;
+        /*  pointThreat = 50;
+          pointAttacked = 80;
+          pointHide = 70;
+          pointHighThreat = 60;
+          pointSquareHide = 0;
+          pointCorner = 0;
+          pointHighAlert = 0;
+        */
+
+       /* pointSuccess = 250f; //Defensiv
+        pointAttacked = 100f;
+        pointThreat = 10f;
+        pointHide = 20f;
+        pointHighThreat = 60f;
+        pointSquareHide = 40f;
+        pointHighAlert = -100f;
+        pointCorner = 100f;
+        pointPrepSquad = 20f;*/
+
+       /*  pointSuccess = 250f;
+         pointAttacked = 50f;
+         pointThreat = 50f;
+         pointHide = 50f; //BOTH
+         pointHighThreat = 50f;
+         pointSquareHide = 40f;
+         pointHighAlert = -50f;
+         pointCorner = 50f;
+         pointPrepSquad = 50f;*/
+
+   /*      pointSuccess = 250f;
+ pointAttacked = 100f;
+ pointThreat = 70f;
+ pointHide = 10f; //Aggro
+ pointHighThreat = 80f;
+ pointSquareHide = 20f;
+ pointHighAlert = -100f;
+ pointCorner = 10f;
+ pointPrepSquad = 10f;*/
+
+        if (currentMove.attacked)
+            eval += pointAttacked * attackWeight;
+        if (currentMove.attacked2)
+            eval += pointAttacked * attackWeight;
+        if (currentMove.attacked2)
+            eval += pointAttacked * attackWeight;// * dangerMultiplier;
+        if (currentMove.threaten)
+            eval += pointThreat * attackWeight; ;// * dangerMultiplier;
+        if (currentMove.hide)
+            eval += pointHide * dangerMultiplier;
+        if (currentMove.squareHide)
+            eval += pointSquareHide * dangerMultiplier;
+        if (currentMove.prepSquad)
+            eval += pointPrepSquad * dangerMultiplier;
+        if (currentMove.corner)
+            eval += pointCorner * dangerMultiplier;
+        if (currentMove.OOBAndFriendlyCorner)
+            eval += pointOOBAndCorner*dangerMultiplier;
+            if (currentMove.highAlert)
+            eval += pointHighAlert;
+        //        if (eval == 1f)
+        //           eval += pointSimple;
+        //if (currentMove.success)
+        //  eval += pointSuccess;
+        if (currentMove.highThreat)
                         eval += pointHighThreat;
                     if (IsGameOver())
                         eval += pointSuccess;

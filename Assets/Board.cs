@@ -353,6 +353,7 @@ public class Board : MonoBehaviour
             //ADD to Highlighted List
             // mHighlightedCells.Add(mCurrentCell.mBoard.mAllCells[currentX, currentY]);
             Vector2Int targetPos = new Vector2Int(currentX, currentY);
+          //  FindMoves_new(currentPos, targetPos);
             FindMoves(currentPos, targetPos);
 
 
@@ -378,6 +379,8 @@ public class Board : MonoBehaviour
         m.mPieceName = simpleAllCells[currentPos.x, currentPos.y];
         m.attacked = false;
         m.attacked2 = false;
+        m.attacked3 = false;
+
         m.threaten = false;
         m.hide = false;
         m.removeX = -1;
@@ -398,7 +401,13 @@ public class Board : MonoBehaviour
             && ValidateCell(allyX, allyY) == CellState.Friendly)
         {//check for attack
             attackedCells.Add(new Vector2Int(targetX, targetY));
-            if (m.attacked == true)
+            if (m.attacked2 == true && m.attacked == true)
+            {
+                m.attacked3 = true;
+                m.removeX3 = targetX;
+                m.removeY3 = targetY;
+            }
+            else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
@@ -410,12 +419,201 @@ public class Board : MonoBehaviour
                 m.removeX = targetX;
                 m.removeY = targetY;
             }
+
+
+                  
         }
 
         if (ValidateCell(targetX, targetY) == CellState.Enemy
             && ValidateCell(allyX, allyY) != CellState.Friendly && ValidateCell(allyX, allyY) != CellState.OutOfBounds)
         {//check for threat
             m.threaten = true;
+            for (int i = currentX; i >= 0; i--)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int i = currentX; i < sizeX; i++)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j >= 0; j--)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j < sizeY; j++)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+        }
+
+        int ally2X = targetPos.x - 1;
+        int ally2Y = targetPos.y;
+
+        int ally3X = targetPos.x - 1;
+        int ally3Y = targetPos.y + 1;
+
+        allyX = targetPos.x;
+        allyY = targetPos.y + 1;
+
+        if (ValidateCell(allyX, allyY) == CellState.Friendly && ValidateCell(ally2X, ally2Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+
+        if (ValidateCell(allyX, allyY) == CellState.Friendly && ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(ally2X, ally2Y) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+
+        if (ValidateCell(ally2X, ally2Y) == CellState.Friendly && ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(allyX, allyY) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+
+        ally2X = targetPos.x + 1;
+        ally2Y = targetPos.y;
+
+        ally3X = targetPos.x + 1;
+        ally3Y = targetPos.y + 1;
+
+        //  allyX = targetPos.x;
+        //  allyY = targetPos.y + 1;
+
+        if (ValidateCell(allyX, allyY) == CellState.Friendly && ValidateCell(ally2X, ally2Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+        if (ValidateCell(ally2X, ally2Y) == CellState.Friendly && ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(allyX, allyY) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+        if (ValidateCell(allyX, allyY) == CellState.Friendly && ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(ally2X, ally2Y) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+
+        ally2X = targetPos.x - 1;
+        ally2Y = targetPos.y;
+
+        ally3X = targetPos.x - 1;
+        ally3Y = targetPos.y - 1;
+
+        allyX = targetPos.x;
+        allyY = targetPos.y - 1;
+
+        if (ValidateCell(allyX, allyY) == CellState.Friendly && ValidateCell(ally2X, ally2Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+        if (ValidateCell(ally2X, ally2Y) == CellState.Friendly && ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(allyX, allyY) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+        if (ValidateCell(allyX, allyY) == CellState.Friendly && ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(ally2X, ally2Y) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+
+        ally2X = targetPos.x + 1;
+        ally2Y = targetPos.y;
+
+        ally3X = targetPos.x + 1;
+        ally3Y = targetPos.y - 1;
+
+        allyX = targetPos.x;
+        allyY = targetPos.y - 1;
+
+        if (ValidateCell(allyX, allyY) == CellState.Friendly && ValidateCell(ally2X, ally2Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+        if (ValidateCell(ally2X, ally2Y) == CellState.Friendly && ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(allyX, allyY) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
+        }
+        if (ValidateCell(allyX, allyY) == CellState.Friendly && ValidateCell(ally3X, ally3Y) == CellState.Friendly)
+        {
+            m.prepSquareHide = true;
+            if (ValidateCell(ally2X, ally2Y) == CellState.Friendly)
+            {
+                m.prepSquareHide = false;
+                m.squareHide = true;
+            }
         }
 
         targetX = targetPos.x - 1;
@@ -424,11 +622,18 @@ public class Board : MonoBehaviour
         allyX = targetPos.x - 2;
         allyY = targetPos.y;
 
+
         if (ValidateCell(targetX, targetY) == CellState.Enemy
             && ValidateCell(allyX, allyY) == CellState.Friendly)
         {//check for attack
             attackedCells.Add(new Vector2Int(targetX, targetY));
-            if (m.attacked == true)
+            if (m.attacked2 == true && m.attacked == true)
+            {
+                m.attacked3 = true;
+                m.removeX3 = targetX;
+                m.removeY3 = targetY;
+            }
+            else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
@@ -447,6 +652,42 @@ public class Board : MonoBehaviour
             && ValidateCell(allyX, allyY) != CellState.Friendly && ValidateCell(allyX, allyY) != CellState.OutOfBounds)
         {//check for threat
             m.threaten = true;
+            for (int i = currentX; i >= 0; i--)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int i = currentX; i < sizeX; i++)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j >= 0; j--)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j < sizeY; j++)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
         }
 
         targetX = targetPos.x;
@@ -459,7 +700,13 @@ public class Board : MonoBehaviour
             && ValidateCell(allyX, allyY) == CellState.Friendly)
         {//check for attack
             attackedCells.Add(new Vector2Int(targetX, targetY));
-            if (m.attacked == true)
+            if (m.attacked2 == true && m.attacked == true)
+            {
+                m.attacked3 = true;
+                m.removeX3 = targetX;
+                m.removeY3 = targetY;
+            }
+            else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
@@ -489,7 +736,13 @@ public class Board : MonoBehaviour
             && ValidateCell(allyX, allyY) == CellState.Friendly)
         {//check for attack
             attackedCells.Add(new Vector2Int(targetX, targetY));
-            if (m.attacked == true)
+            if (m.attacked2 == true && m.attacked == true)
+            {
+                m.attacked3 = true;
+                m.removeX3 = targetX;
+                m.removeY3 = targetY;
+            }
+            else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
@@ -508,6 +761,44 @@ public class Board : MonoBehaviour
             ValidateCell(allyX, allyY) != CellState.OutOfBounds)
         {//check for threat
             m.threaten = true;
+            for (int i = currentX; i >= 0; i--)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int i = currentX; i < sizeX; i++)
+            {
+                if (ValidateCell(i, targetPos.y) == CellState.Friendly || ValidateCell(i, targetPos.y) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(i, targetPos.y) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j >= 0; j--)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+            for (int j = currentY; j < sizeY; j++)
+            {
+                if (ValidateCell(targetPos.x, j) == CellState.Friendly || ValidateCell(targetPos.x, j) == CellState.OutOfBounds)
+                    break;
+                if (ValidateCell(targetPos.x, j) == CellState.Enemy)
+                {
+                    m.highAlert = true;
+                }
+            }
+
+
         }
 
         if (ValidateCell(targetX, targetY) != CellState.Enemy
@@ -613,7 +904,313 @@ public class Board : MonoBehaviour
             allMoves.Add(m);
     }
 
+    public virtual void FindMoves_new(Vector2Int currentPos, Vector2Int targetPos)
+    {
+        int currentX = targetPos.x;
+        int currentY = targetPos.y;
 
+        int targetX = targetPos.x + 1;
+        int targetY = targetPos.y;
+
+        int allyX = targetPos.x + 2;
+        int allyY = targetPos.y;
+
+        List<Vector2Int> attackedCells = new List<Vector2Int>();
+        int counter = allMoves.Count;
+        Move m = new Move();
+        m.removeX = -1;
+        m.removeY = -1;
+        m.removeX2 = -1;
+        m.removeY2 = -1;
+        m.currentX = currentPos.x;
+        m.currentY = currentPos.y;
+        m.x = targetPos.x;
+        m.y = targetPos.y;
+
+        for (int i = targetPos.y; i < sizeY; i++)
+        {
+            for (int j = targetPos.x; j < sizeX; j++)
+            {
+                if (ValidateCell(j,i) == CellState.Enemy)
+                {
+                    if (j == targetPos.x+1 && i==targetPos.y)
+                    {
+                        m.highAlertRight = true;
+                        m.threatRight = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y + 1)
+                    {
+                        m.threatUp = true;
+                        m.highAlertUp = true;
+                    }
+
+                }
+                if (ValidateCell(j, i) == CellState.Friendly)
+                {
+                    if (j == targetPos.x + 1 && i == targetPos.y)
+                    {
+                        m.highHideRight = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y + 1) 
+                    { 
+                        m.highHideUp = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y + 2 && m.highThreatUp)
+                    {
+                        if (m.attacked)
+                        {
+                            m.attacked2 = true;
+                            m.removeX2 = j;
+                            m.removeY2 = i;
+                        }
+                        else if (m.attacked2)
+                        {
+                            m.attacked3 = true;
+                            m.removeX3 = j;
+                            m.removeY3 = i;
+                        }
+                        else
+                        {
+                            m.attacked = true;
+                            m.removeX = j;
+                            m.removeY = i;
+                        }
+                    }
+                    if (j == targetPos.x + 2 && i == targetPos.y && m.highThreatRight)
+                    {
+                        if (m.attacked)
+                        {
+                            m.attacked2 = true;
+                            m.removeX2 = j;
+                            m.removeY2 = i;
+                        }
+                        else if (m.attacked2)
+                        {
+                            m.attacked3 = true;
+                            m.removeX3 = j;
+                            m.removeY3 = i;
+                        }
+                        else
+                        {
+                            m.attacked = true;
+                            m.removeX = j;
+                            m.removeY = i;
+                        }
+                    }
+
+
+                }
+                if (ValidateCell(j, i) == CellState.OutOfBounds)
+                {
+                    break;
+                }
+                if (ValidateCell(j, i) == CellState.Free)
+                {
+                    
+                }
+            }
+        }
+
+        for (int i = targetPos.y; i >= 0; i--)
+        {
+            for (int j = targetPos.x; j >= 0; j--)
+            {
+                if (ValidateCell(j, i) == CellState.Enemy)
+                {
+                    if (j == targetPos.x - 1 && i == targetPos.y)
+                    {
+                        m.highAlertLeft = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y - 1)
+                    {
+                        m.highAlertDown = true;
+                    }
+                    if ( j == targetPos.x - 1 && i < targetPos.y - 1 && m.highAlertRight)
+                    {
+                        m.danger = true;
+                    }
+                    if (i == targetPos.y - 1 && i < targetPos.x - 1 && m.highAlertRight)
+                    {
+                        m.danger = true;
+                    }
+                    if (j == targetPos.x - 1 && i < targetPos.y - 1 && m.alertRight)
+                    {
+                        m.dangerLow = true;
+                    }
+                    if (i == targetPos.y - 1 && i < targetPos.x - 1 && m.alertRight)
+                    {
+                        m.dangerLow = true;
+                    }
+                }
+                if (ValidateCell(j, i) == CellState.Friendly)
+                {
+                    if (j == targetPos.x - 1 && i == targetPos.y)
+                    {
+                        m.highHideRight = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y - 1)
+                    {
+                        m.highHideUp = true;
+                    }
+                    if (j == targetPos.x && i == targetPos.y - 2 && m.highThreatDown)
+                    {
+                        if (m.attacked)
+                        {
+                            m.attacked2 = true;
+                            m.removeX2 = j;
+                            m.removeY2 = i;
+                        }
+                        else if (m.attacked2)
+                        {
+                            m.attacked3 = true;
+                            m.removeX3 = j;
+                            m.removeY3 = i;
+                        }
+                        else
+                        {
+                            m.attacked = true;
+                            m.removeX = j;
+                            m.removeY = i;
+                        }
+                    }
+                    if (j == targetPos.x - 2 && i == targetPos.y && m.highThreatLeft)
+                    {
+                        if (m.attacked)
+                        {
+                            m.attacked2 = true;
+                            m.removeX2 = j;
+                            m.removeY2 = i;
+                        }
+                        else if (m.attacked2)
+                        {
+                            m.attacked3 = true;
+                            m.removeX3 = j;
+                            m.removeY3 = i;
+                        }
+                        else
+                        {
+                            m.attacked = true;
+                            m.removeX = j;
+                            m.removeY = i;
+                        }
+                    }
+
+
+
+                }
+                if (ValidateCell(j, i) == CellState.OutOfBounds)
+                {
+                    break;
+                }
+                if (ValidateCell(j, i) == CellState.Free)
+                {
+
+                }
+
+            }
+            if (ValidateCell(sizeX, i) == CellState.OutOfBounds)
+            {
+                break;
+            }
+        }
+
+        for (int i = targetPos.y + 1; i < sizeY; i++)
+        {
+            for (int j = targetPos.x - 1; j > 0; j--)
+            {
+                if (ValidateCell(j, i) == CellState.Enemy)
+                {
+                    if (j == targetPos.x - 1 && i == targetPos.y + 1 && (m.highAlertRight || m.highAlertDown))
+                    {
+                        m.danger = true;
+                    }
+                    if (j == targetPos.x - 1 && i > targetPos.y + 1 )
+                    {
+                        m.danger = true;
+                    }
+                }
+                if (ValidateCell(j, i) == CellState.Friendly)
+                {
+                    if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideLeft && m.highHideUp == false)
+                    {
+                        m.prepSquareHideUpMiss = true;
+                        //m.highHideRight = true;
+                    }
+                    if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideLeft && m.highHideUp)
+                    {
+                        m.squareHide = true;
+                    }
+
+
+                        if (j == targetPos.x - 1 && i > targetPos.y + 1)
+                    {
+                        
+                    }
+
+
+                }
+                    if (ValidateCell(j, i) == CellState.OutOfBounds)
+                {
+                    break;
+                }
+                if (ValidateCell(j, i) == CellState.Free)
+                {
+
+                }
+            }
+
+        }
+
+        for (int i = targetPos.y - 1; i > 0; i--)
+        {
+            for (int j = targetPos.x + 1; j < sizeX; j++)
+            {
+                if (ValidateCell(j, i) == CellState.Enemy)
+                {
+                    if (i == targetPos.y -1 && j == targetPos.x+1 && m.highAlertLeft)
+                    {
+                        m.danger = true;
+                    }
+                    if (i == targetPos.y - 1 && j == targetPos.x + 1 && m.highAlertUp)
+                    {
+                        m.danger = true;
+                    }
+                    if (i == targetPos.y - 1 && j == targetPos.x + 1 && !m.highAlertUp && !m.highAlertLeft && !m.danger)
+                    {
+                        m.dangerLow = true; 
+                    }
+
+
+                }
+                if (ValidateCell(j, i) == CellState.Friendly)
+                {
+                    if (j == targetPos.x + 1 && i == targetPos.y - 1 && m.highHideRight && m.highHideDown == false)
+                    {
+                        m.prepSquareHideDownMiss = true;
+                        //m.highHideRight = true;
+                    }
+                    if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideRight && m.highHideDown)
+                    {
+                        m.squareHide = true;
+                    }
+
+                    if (j == targetPos.x - 1 && i > targetPos.y + 1)
+                    {
+
+                    }
+                }
+                if (ValidateCell(j, i) == CellState.OutOfBounds)
+                {
+                    break;
+                }
+                if (ValidateCell(j, i) == CellState.Free)
+                {
+
+                }
+            }
+        }
+        allMoves.Add(m);
+    }
     public virtual void FindAggressiveMoves(Vector2Int currentPos, Vector2Int targetPos)
     {
         int currentX = targetPos.x;

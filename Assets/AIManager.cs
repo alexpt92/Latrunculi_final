@@ -17,7 +17,8 @@ public static float Minimax(
         if (board.IsGameOver() || currentDepth == maxDepth)
         {
             //board.SetCurrentMove(bestMove);
-            return 0;
+                return 0;
+           
         }
 
         bestMove = null;
@@ -62,9 +63,12 @@ public static float Minimax(
             //board.SetCurrentMove(m);
             float newScore = board.Evaluate(player);
             //Evaluierung aktueller Move
-            
-            //currentScore += newScore;
-            if (board.GetCurrentPlayer() == player)
+           // if (player == 1 && board.GetMoves(2).ToArray().Length == 0)
+             //   newScore += 200;
+            //else if (player == 2 && board.GetMoves(1).ToArray().Length == 0)
+              //  newScore += 200;
+                //currentScore += newScore;
+                if (board.GetCurrentPlayer() == player)
             {
                 currentScore += newScore;
 
