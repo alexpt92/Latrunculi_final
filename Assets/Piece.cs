@@ -218,10 +218,27 @@ public class Piece : EventTrigger
         if (attackedCells != null)
         {
             if (color == Color.white)
+            {
                 color = Color.black;
+             //   GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
+
+            }
             else
+            {
                 color = Color.white;
+             //   GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
+
+            }
         }
+     /*   if (color == Color.black)
+        {
+            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
+        }
+        else if (color == Color.white)
+        {
+            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
+
+        }*/
         Vector2 oldPosition = mCurrentCell.getBoardPosition();
         mPieceManager.getBoard().simpleAllCells[(int)oldPosition.x, (int)oldPosition.y] = "empty";
         mCurrentCell.mCurrentPiece = null;

@@ -31,7 +31,8 @@ public class BoardDraught : Board
     float prepSquareHidePoints = 7f;
     float attackPoints = 50f;
     float pointHighHide = 5f;
-
+    private List<String> mWPieces = null;
+    private List<String> mBPieces = null;
 
     float eval = 1f;
     float pointSimple = 1f;
@@ -62,7 +63,7 @@ public class BoardDraught : Board
         currentMove = newMove;
     }
 
-    public BoardDraught(string[,] copyBoard, int nextPlayer, int rows, int cols, float newAttackPoints, float newHidePoints, float newThreatPoints, float newHighThreatPoints, float newSquadPoints, float newCornerPoints, float newHighAlertPoints, float newPrepSquadPoints)
+    public BoardDraught(string[,] copyBoard, int nextPlayer, int rows, int cols, float newAttackPoints, float newHidePoints, float newThreatPoints, float newHighThreatPoints, float newSquadPoints, float newCornerPoints, float newHighAlertPoints, float newPrepSquadPoints, List<Piece> newMWPieces, List<Piece> newMBPieces)
     {
         simpleAllCells = copyBoard; 
         player = nextPlayer;
@@ -74,16 +75,35 @@ public class BoardDraught : Board
         pointThreat = newThreatPoints;
         pointHighThreat = newHighThreatPoints;
         pointPrepSquad = newPrepSquadPoints;
-        /*  pointThreat = 50;
-  pointAttacked = 80;
-  pointHide = 70;
-  pointHighThreat = 60;
-  pointSquareHide = 0;
-  pointCorner = 0;
-  pointHighAlert = 0;
+        Piece[] test = newMWPieces.ToArray();
+        GameObject test2 =  test[1].gameObject;
+        mWPieces = new List<string>();
+        mBPieces = new List<string>();
+        for (int i = 0; i < newMWPieces.ToArray().Length-1; i++)
+        {
+            mWPieces.Add(newMWPieces.ToArray()[i].gameObject.name);
+           // mWPieces[i] = newMWPieces.ToArray()[i].gameObject.name;
+
+        }
+        for (int i = 0; i < newMBPieces.ToArray().Length-1; i++)
+        {
+            mBPieces.Add(newMBPieces.ToArray()[i].gameObject.name);
+
+           // mBPieces[i] = newMBPieces.ToArray()[i].gameObject.name;
+
+        }
+     //   mWPieces = newMWPieces;
+       // mBPieces = newbMPieces;
+    /*  pointThreat = 50;
+pointAttacked = 80;
+pointHide = 70;
+pointHighThreat = 60;
+pointSquareHide = 0;
+pointCorner = 0;
+pointHighAlert = 0;
 */
 
-    }
+}
 
     public void changeAttackPoints ()
     {
@@ -123,6 +143,7 @@ public class BoardDraught : Board
         m.removeY = -1;
         m.removeX2 = -1;
         m.removeY2 = -1;
+
         m.currentX = currentPos.x;
         m.currentY = currentPos.y;
         m.x = targetPos.x;
@@ -443,23 +464,48 @@ public class BoardDraught : Board
         m.mPieceName = simpleAllCells[currentPos.x, currentPos.y];
         m.attacked = false;
         m.attacked2 = false;
+        m.attacked3 = false;
         m.threaten = false;
         m.hide = false;
         m.removeX = -1;
         m.removeY = -1;
         m.removeX2 = -1;
         m.removeY2 = -1;
+        m.removeX3 = -1;
+        m.removeY3 = -1;
         m.currentX = currentPos.x;
         m.currentY = currentPos.y;
         m.x = targetPos.x;
         m.y = targetPos.y;
 
         if (currentColor == Color.black)
+        {
             m.player = 2;
+            if (mBPieces.ToArray().Length < mWPieces.ToArray().Length)
+            {
+                m.winning = false;
+            }
+            else if (mBPieces.ToArray().Length == mWPieces.ToArray().Length)
+            {
+                m.even = true;
+            }
+            else
+            {
+                m.winning = true;
+            }
+        }
         else
+        {
             m.player = 1;
-
-
+            if (mWPieces.ToArray().Length < mBPieces.ToArray().Length)
+            {
+                m.winning = false;
+            }
+            else
+            {
+                m.winning = true;
+            }
+        }
         //ANALYZE CURRENTPOS
 
         if ((currentPos.x == 0 && currentPos.y == 0) || (currentPos.x == 0 && currentPos.y == sizeY - 1)
@@ -611,18 +657,23 @@ public class BoardDraught : Board
                 m.attacked3 = true;
                 m.removeX3 = targetX;
                 m.removeY3 = targetY;
+                m.attackedPiece3 = simpleAllCells[targetX, targetY];
+
             }
             else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
                 m.removeY2 = targetY;
+                m.attackedPiece2 = simpleAllCells[targetX, targetY];
+
             }
             else
             {
                 m.attacked = true;
                 m.removeX = targetX;
                 m.removeY = targetY;
+                m.attackedPiece = simpleAllCells[targetX, targetY];
             }
         }
 
@@ -700,18 +751,24 @@ public class BoardDraught : Board
                 m.attacked3 = true;
                 m.removeX3 = targetX;
                 m.removeY3 = targetY;
+                m.attackedPiece3 = simpleAllCells[targetX, targetY];
+
             }
             else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
                 m.removeY2 = targetY;
+                m.attackedPiece2 = simpleAllCells[targetX, targetY];
+
             }
             else
             {
                 m.attacked = true;
                 m.removeX = targetX;
                 m.removeY = targetY;
+                m.attackedPiece = simpleAllCells[targetX, targetY];
+
             }
 
         }
@@ -790,18 +847,24 @@ public class BoardDraught : Board
                 m.attacked3 = true;
                 m.removeX3 = targetX;
                 m.removeY3 = targetY;
+                m.attackedPiece3 = simpleAllCells[targetX, targetY];
+
             }
             else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
                 m.removeY2 = targetY;
+                m.attackedPiece2 = simpleAllCells[targetX, targetY];
+
             }
             else
             {
                 m.attacked = true;
                 m.removeX = targetX;
                 m.removeY = targetY;
+                m.attackedPiece = simpleAllCells[targetX, targetY];
+
             }
         }
 
@@ -879,18 +942,24 @@ public class BoardDraught : Board
                 m.attacked3 = true;
                 m.removeX3 = targetX;
                 m.removeY3 = targetY;
+                m.attackedPiece3 = simpleAllCells[targetX, targetY];
+
             }
             else if (m.attacked && !m.attacked2)
             {
                 m.attacked2 = true;
                 m.removeX2 = targetX;
                 m.removeY2 = targetY;
+                m.attackedPiece2 = simpleAllCells[targetX, targetY];
+
             }
             else
             {
                 m.attacked = true;
                 m.removeX = targetX;
                 m.removeY = targetY;
+                m.attackedPiece = simpleAllCells[targetX, targetY];
+
             }
         }
 
@@ -1052,11 +1121,74 @@ public class BoardDraught : Board
         {
             lastMove.attackedPiece = simpleAllCells[m.removeX, m.removeY];
             simpleAllCells[m.removeX, m.removeY] = null;
+            if (player == 1)
+           // if (m.attackedPiece.Contains("W"))
+            for (int i = 0; i<mWPieces.ToArray().Length; i++)
+            {
+                if (m.attackedPiece == mWPieces.ToArray()[i])
+                {
+                        mWPieces.Remove(mWPieces.ToArray()[i]);
+                }
+            }
+            if (player == 2)
+           // if (m.attackedPiece.Contains("B"))
+                for (int i = 0; i < mBPieces.ToArray().Length; i++)
+                {
+                    if (m.attackedPiece == mBPieces.ToArray()[i])
+                    {
+                        mBPieces.Remove(mBPieces.ToArray()[i]);
+                    }
+                }
         }
         if (m.attacked2)
         {
-            lastMove.attackedPiece2 = simpleAllCells[m.removeX2, m.removeY2];
+            m.attackedPiece2 = simpleAllCells[m.removeX2, m.removeY2];
             simpleAllCells[m.removeX2, m.removeY2] = null;
+            if (player == 1)
+
+               // if (m.attackedPiece2.Contains("W"))
+                for (int i = 0; i < mWPieces.ToArray().Length; i++)
+                {
+                    if (m.attackedPiece2 == mWPieces.ToArray()[i])
+                    {
+                        mWPieces.Remove(mWPieces.ToArray()[i]);
+                    }
+                }
+            if (player == 2)
+
+                //if (m.attackedPiece2.Contains("B"))
+                for (int i = 0; i < mBPieces.ToArray().Length; i++)
+                {
+                    if (m.attackedPiece2 == mBPieces.ToArray()[i])
+                    {
+                        mBPieces.Remove(mBPieces.ToArray()[i]);
+                    }
+                }
+        }
+        if (m.attacked3)
+        {
+            m.attackedPiece3 = simpleAllCells[m.removeX3, m.removeY3];
+            simpleAllCells[m.removeX3, m.removeY3] = null;
+            if (player == 1)
+
+              //  if (m.attackedPiece3.Contains("W"))
+                for (int i = 0; i < mWPieces.ToArray().Length; i++)
+                {
+                    if (m.attackedPiece3 == mWPieces.ToArray()[i])
+                    {
+                        mWPieces.Remove(mWPieces.ToArray()[i]);
+                    }
+                }
+            if (player == 2)
+
+               // if (m.attackedPiece3.Contains("B"))
+                for (int i = 0; i < mBPieces.ToArray().Length; i++)
+                {
+                    if (m.attackedPiece3 == mBPieces.ToArray()[i])
+                    {
+                        mBPieces.Remove(mBPieces.ToArray()[i]);
+                    }
+                }
         }
         //BoardDraught b = new BoardDraught(copy, nextPlayer, sizeX, sizeY);
         currentMove = m;
@@ -1071,15 +1203,42 @@ public class BoardDraught : Board
         if (lastMove.attackedPiece != null)
         {
             simpleAllCells[lastMove.removeX, lastMove.removeY] = lastMove.attackedPiece;
-
+            if (lastMove.attackedPiece.Contains("W"))
+            {
+                mWPieces.Add(lastMove.attackedPiece);
+            }
+            if (lastMove.attackedPiece.Contains("B"))
+            {
+                mBPieces.Add(lastMove.attackedPiece);
+            }
         }
         if (lastMove.attackedPiece2 != null)
         {
             simpleAllCells[lastMove.removeX2, lastMove.removeY2] = lastMove.attackedPiece2;
-            
+            if (lastMove.attackedPiece2.Contains("W"))
+            {
+                mWPieces.Add(lastMove.attackedPiece2);
+            }
+            if (lastMove.attackedPiece2.Contains("B"))
+            {
+                mBPieces.Add(lastMove.attackedPiece2);
+            }
         }
+        if (lastMove.attackedPiece3 != null)
+        {
+            simpleAllCells[lastMove.removeX3, lastMove.removeY3] = lastMove.attackedPiece3;
+            if (lastMove.attackedPiece3.Contains("W"))
+                { 
+                mWPieces.Add(lastMove.attackedPiece3);
+                }
+            if (lastMove.attackedPiece3.Contains("B"))
+                {
+                 mBPieces.Add(lastMove.attackedPiece3);
+                }
+            }
 
-    }
+        }
+    
 
     public bool IsGameOver()
     {
@@ -1141,13 +1300,13 @@ public class BoardDraught : Board
         return allMoves;
     }
 
-    public override float Evaluate(int player)
+    public float Evaluate(int player, int depth)
     {
         string color = "W";
         if (player == 1)
             color ="B";
        // return Evaluate_new(color);
-        return Evaluate(color);
+        return Evaluate(color, depth);
 
         //return Mathf.NegativeInfinity;
     }
@@ -1230,15 +1389,29 @@ public class BoardDraught : Board
         return eval;
     }
 
-    public float Evaluate(string color)
+    public float Evaluate(string color, int depth)
     {
       float eval = 1f;
-
+        float depthWeight = 1;
+        if (depth>0)
+            depthWeight = 1 / depth;
 
     int rows = sizeX;
     int cols = sizeY;
         float dangerMultiplier = 1f;
         float attackWeight = 1f;
+        float aggroWeight = 1f;
+        float defenseWeight = 1f;
+        if (currentMove.even)
+        {
+            aggroWeight = 2;
+        }
+        if (currentMove.winning)
+        {
+            aggroWeight = 3;
+        }
+        if (!currentMove.winning && !currentMove.even)
+            defenseWeight = 2;
         if (currentMove.danger)
         {
             dangerMultiplier = 2f;
@@ -1323,23 +1496,23 @@ public class BoardDraught : Board
  pointPrepSquad = 10f;*/
 
         if (currentMove.attacked)
-            eval += pointAttacked * attackWeight;
+            eval += pointAttacked * attackWeight * aggroWeight;
         if (currentMove.attacked2)
-            eval += pointAttacked * attackWeight;
+            eval += pointAttacked * attackWeight * aggroWeight; 
         if (currentMove.attacked2)
-            eval += pointAttacked * attackWeight;// * dangerMultiplier;
+            eval += pointAttacked * attackWeight * aggroWeight;// * dangerMultiplier;
         if (currentMove.threaten)
-            eval += pointThreat * attackWeight; ;// * dangerMultiplier;
+            eval += pointThreat * attackWeight * aggroWeight;// * dangerMultiplier;
         if (currentMove.hide)
-            eval += pointHide * dangerMultiplier;
+            eval += pointHide * dangerMultiplier * defenseWeight;
         if (currentMove.squareHide)
-            eval += pointSquareHide * dangerMultiplier;
+            eval += pointSquareHide * dangerMultiplier * defenseWeight;
         if (currentMove.prepSquad)
-            eval += pointPrepSquad * dangerMultiplier;
+            eval += pointPrepSquad * dangerMultiplier * defenseWeight;
         if (currentMove.corner)
-            eval += pointCorner * dangerMultiplier;
+            eval += pointCorner * dangerMultiplier * defenseWeight;
         if (currentMove.OOBAndFriendlyCorner)
-            eval += pointOOBAndCorner*dangerMultiplier;
+            eval += pointOOBAndCorner * dangerMultiplier * defenseWeight;
             if (currentMove.highAlert)
             eval += pointHighAlert;
         //        if (eval == 1f)
@@ -1350,6 +1523,7 @@ public class BoardDraught : Board
                         eval += pointHighThreat;
                     if (IsGameOver())
                         eval += pointSuccess;
+        eval *= depthWeight;
                         currentMove.mScore += eval;
 
 

@@ -207,6 +207,16 @@ public class PieceManager : MonoBehaviour
 
     private void SetInteractive(List<Piece> allPieces, bool value)
     {
+      //  board.getCurrentPlayer == 2
+      
+     /*   if (value && board.GetCurrentPlayer() == 2)
+        {
+            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
+
+        }
+        else if (value == true && board.GetCurrentPlayer() == 1)
+            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";*/
+
         foreach (Piece piece in allPieces)
             piece.enabled = value;
     }
@@ -267,6 +277,8 @@ public class PieceManager : MonoBehaviour
                 {
                     Debug.Log("White wins. No Moves left.");
                     GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "SHELL WINS!";
+                    StartCoroutine(RemoveWinMessageAfterDelay());
+
                     if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
                         StartCoroutine(RemoveWinMessageAfterDelay());
                 }
@@ -275,6 +287,8 @@ public class PieceManager : MonoBehaviour
                 {
                     Debug.Log("Black wins. No Moves left");
                     GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "STONE WINS!";
+                    StartCoroutine(RemoveWinMessageAfterDelay());
+
                     if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
                     StartCoroutine(RemoveWinMessageAfterDelay());
 
@@ -286,6 +300,8 @@ public class PieceManager : MonoBehaviour
                 {
                     Debug.Log("Black wins. No Moves left");
                     GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "STONE WINS!";
+                    StartCoroutine(RemoveWinMessageAfterDelay());
+
                     if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
                         StartCoroutine(RemoveWinMessageAfterDelay());
                 }
@@ -293,6 +309,8 @@ public class PieceManager : MonoBehaviour
                 {
                     Debug.Log("White wins. No Moves left.");
                     GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "SHELL WINS!";
+                    StartCoroutine(RemoveWinMessageAfterDelay());
+
                     if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
                         StartCoroutine(RemoveWinMessageAfterDelay());
 
@@ -335,9 +353,13 @@ public class PieceManager : MonoBehaviour
             if (referenceScript.getCurrentPlayer() == 1 && (referenceScript.firstAIActive.isOn))// || referenceScript.secondAIActive.isOn))
             {
                 DisableAllPieces();
+               // GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
+
             }
             else if (referenceScript.getCurrentPlayer() == 2)
             {
+               // GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
+
                 // referenceScript.MoveAgain(2);
             }
 
@@ -360,6 +382,11 @@ public class PieceManager : MonoBehaviour
 
             referenceScript.MoveAgain();
         }
+        if (board.GetCurrentPlayer() == 2)
+            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
+        else
+            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
+
     }
 
     private void NextPlayer()
