@@ -61,7 +61,7 @@ public static float Minimax(
             currentScore = Minimax(board, nextPlayer, maxDepth, currentDepth + 1, ref currentMove);
 
             //board.SetCurrentMove(m);
-            float newScore = board.Evaluate(player);
+            float newScore = board.Evaluate(player, currentDepth);
             //Evaluierung aktueller Move
            // if (player == 1 && board.GetMoves(2).ToArray().Length == 0)
              //   newScore += 200;

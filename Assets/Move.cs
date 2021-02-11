@@ -30,7 +30,8 @@ public class Move
 
     public bool dangerLow;
     public bool danger;
-
+    public bool winning;
+    public bool even;
 
     public bool highThreat;
     public bool attacked;
@@ -80,5 +81,6 @@ public class Move
 
     public string attackedPiece;
     public string attackedPiece2;
+    public string attackedPiece3;
 
 }

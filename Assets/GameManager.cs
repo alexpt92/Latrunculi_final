@@ -295,7 +295,7 @@ public class GameManager : MonoBehaviour
                 float pointCorner = 50f;
                 float pointPrepSquad = 50f;
 
-                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad, mPieceManager.getWPieces(), mPieceManager.getBPieces());
 
             }
             else if (difficulty == 1 && !secondAIActive.isOn)// isActiveAndEnabled)
@@ -309,7 +309,7 @@ public class GameManager : MonoBehaviour
                 float pointCorner = 10f;
                 float pointPrepSquad = 10f;
 
-                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad, mPieceManager.getWPieces(), mPieceManager.getBPieces());
             }
             else if (difficulty == 2 && !secondAIActive.isOn)//isActiveAndEnabled)
             {
@@ -324,7 +324,7 @@ public class GameManager : MonoBehaviour
                 float pointCorner = 100f;
                 float pointPrepSquad = 20f;
 
-                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad, mPieceManager.getWPieces(), mPieceManager.getBPieces());
             }
             else
             {
@@ -338,7 +338,7 @@ public class GameManager : MonoBehaviour
                 float pointCorner = 100f;
                 float pointPrepSquad = 20f;
 
-                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
+                b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad, mPieceManager.getWPieces(), mPieceManager.getBPieces());
             }
           //  BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, 80);
             float test;
@@ -372,7 +372,7 @@ public class GameManager : MonoBehaviour
             float pointHighAlert = -50f;
             float pointCorner = 10f;
             float pointPrepSquad = 10f;
-            BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked2, pointHide2, pointThreat2, pointHighThreat2, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad);
+            BoardDraught b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked2, pointHide2, pointThreat2, pointHighThreat2, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad, mPieceManager.getWPieces(), mPieceManager.getBPieces());
             float test;
             Move currentMove = new Move();
 
@@ -563,21 +563,31 @@ public class GameManager : MonoBehaviour
                 if (AIActive == 2)
                 {
                     MovePiece();
+                    GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
+
                 }
             }
             else if (currentPlayer == 1 && (firstAIActive.isOn || secondAIActive.isOn))
             {
                 currentPlayer = 2;
+                GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
+
                 MovePiece();
 
-            }else if (currentPlayer == 2 && secondAIActive.isOn)//AIActive == 2)
+            }
+            else if (currentPlayer == 2 && secondAIActive.isOn)//AIActive == 2)
             {
                 currentPlayer = 1;
+                GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
+
                 MovePiece();
 
             }
             else
+            {
                 currentPlayer = 1;
+                GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
+            }
         }
     }
     public int getCurrentPlayer ()
