@@ -1532,6 +1532,40 @@ pointHighAlert = 0;
       //  return 1;
         return eval;
     }
+
+
+    public float Evaluate_old2(string color)
+    {
+        float score = 0;
+        if (IsGameOver())
+        {
+            score += 1000;
+        }
+        if (color == "B")//&& mBPieces.ToArray().Length > mWPieces.ToArray().Length)
+        {
+            score += 100 * (mBPieces.ToArray().Length - mWPieces.ToArray().Length);
+
+        }
+        if (color == "W")//&& mBPieces.ToArray().Length > mWPieces.ToArray().Length)
+        {
+            score += 100 * (mWPieces.ToArray().Length - mBPieces.ToArray().Length);
+
+        }
+        return score;
+
+    }
+
+    public float EvaluateOld2(int player)
+    {
+        string color = "W";
+        if (player == 1)
+            color = "B";
+        // return Evaluate_new(color);
+        return Evaluate_old2(color);
+
+        //return Mathf.NegativeInfinity;
+    }
+
     public float Evaluate_old(string color)
     {
         float eval = 1f;

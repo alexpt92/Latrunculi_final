@@ -345,6 +345,7 @@ public class GameManager : MonoBehaviour
             Move currentMove = new Move();
 
             test = AIManager.Minimax(b, currentPlayer, maxDepth, 0, ref currentMove);
+           // test = AIManager.Minimax_old(b, currentPlayer, maxDepth, 0, ref currentMove);
 
             // StartCoroutine(ExecuteMoveAfterDelay(1));
             List<Piece> blist = mPieceManager.getBPieces();

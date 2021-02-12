@@ -11,8 +11,12 @@ public class EscapeMenuActivator : MonoBehaviour
     public Button quit;
     public Button restart;
     public Button start;
+    public Button rulesBtn;
+
     public Text quitText;
     public Text startText;
+    public Text restartText;
+    public Text rulesText;
     public Text attackText;
     public Text attackText2;
     public Text hideText;
@@ -121,9 +125,15 @@ public class EscapeMenuActivator : MonoBehaviour
         //threatSlider2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
         //hideSlider2.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
         //quit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)(width*1.5));
-        start.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)(width * 1.5));
-        start.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (float)(height * 1.5));
-       // quit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (float)(height * 1.5));
+        start.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)(width * 1.3));
+        start.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (float)(height * 1.3));
+        rulesBtn.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)(width * 0.7));
+        rulesBtn.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (float)(height * 0.5));
+        quit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)(width * 0.7));
+        quit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (float)(height * 0.5));
+        restart.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)(width * 0.7));
+        restart.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (float)(height * 0.5));
+        // quit.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (float)(height * 1.5));
 
         float uiScale = Screen.width / uiBaseWidth;
         int buttonFontSize = Mathf.RoundToInt(baseFontSize * uiScale);
@@ -147,7 +157,11 @@ public class EscapeMenuActivator : MonoBehaviour
         rules.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (450 * changedRatioWidth));
         rules.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (600 * changedRatioHeight));
         // quitText.fontSize = buttonFontSize;
-        startText.fontSize = buttonFontSize;
+        startText.fontSize = buttonFontSize + 5;
+        quitText.fontSize = buttonFontSize - 5;
+        restartText.fontSize = buttonFontSize - 5;
+        rulesText.fontSize = buttonFontSize - 5;
+
         //diffText.fontSize = buttonFontSize -2;
 
         // attackText.fontSize = sliderFontSize;

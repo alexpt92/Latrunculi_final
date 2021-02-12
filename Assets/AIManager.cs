@@ -6,28 +6,28 @@ public class AIManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-public static float Minimax(
-            BoardDraught board,
-            int player,
-            int maxDepth,
-            int currentDepth,
+    public static float Minimax(
+                BoardDraught board,
+                int player,
+                int maxDepth,
+                int currentDepth,
 
-            ref Move bestMove)
+                ref Move bestMove)
     {
         if (board.IsGameOver() || currentDepth == maxDepth)
         {
             //board.SetCurrentMove(bestMove);
-                return 0;
-           
+            return 0;
+
         }
 
         bestMove = null;
         float bestScore = Mathf.Infinity;
         if (board.GetCurrentPlayer() == player)
             bestScore = Mathf.NegativeInfinity;
-         List<Move> allMoves = new List<Move>();
+        List<Move> allMoves = new List<Move>();
         int nextPlayer = 0;
-        
+
         if (player == 2)
         {
             allMoves = board.GetMoves(player);
@@ -38,11 +38,11 @@ public static float Minimax(
             allMoves = board.GetMoves(player);
             nextPlayer = 2;
         }
-       // BoardDraught bTest = board;
+        // BoardDraught bTest = board;
         Move currentMove;
         if (currentDepth == 0)
         {
-           float maxScore = 0;
+            float maxScore = 0;
         }
         float score = 0;
         foreach (Move m in allMoves)//board.GetMoves())
@@ -57,18 +57,18 @@ public static float Minimax(
                     nextPlayer = 1;
                 else
                     nextPlayer = 2;
-            } 
+            }
             currentScore = Minimax(board, nextPlayer, maxDepth, currentDepth + 1, ref currentMove);
 
             //board.SetCurrentMove(m);
             float newScore = board.Evaluate(player, currentDepth);
             //Evaluierung aktueller Move
-           // if (player == 1 && board.GetMoves(2).ToArray().Length == 0)
-             //   newScore += 200;
+            // if (player == 1 && board.GetMoves(2).ToArray().Length == 0)
+            //   newScore += 200;
             //else if (player == 2 && board.GetMoves(1).ToArray().Length == 0)
-              //  newScore += 200;
-                //currentScore += newScore;
-                if (board.GetCurrentPlayer() == player)
+            //  newScore += 200;
+            //currentScore += newScore;
+            if (board.GetCurrentPlayer() == player)
             {
                 currentScore += newScore;
 
@@ -100,9 +100,9 @@ public static float Minimax(
             }
         }
         List<Move> bestMoves = new List<Move>();
-            score += bestScore;
-        
-            if (currentDepth == 0)
+        score += bestScore;
+
+        if (currentDepth == 0)
         {
             foreach (Move m in allMoves)
             {
@@ -122,9 +122,122 @@ public static float Minimax(
         //   bestMove.mScore = bestScore;
         return score;//bestScore;
     }
+
+
+    public static float Minimax_old(
+                BoardDraught board,
+                int player,
+                int maxDepth,
+                int currentDepth,
+
+                ref Move bestMove)
+    {
+        if (board.IsGameOver() || currentDepth == maxDepth)
+        {
+            //board.SetCurrentMove(bestMove);
+            return board.EvaluateOld2(player);
+
+        }
+
+        bestMove = null;
+        float bestScore = Mathf.Infinity;
+        if (board.GetCurrentPlayer() == player)
+            bestScore = Mathf.NegativeInfinity;
+        List<Move> allMoves = new List<Move>();
+        int nextPlayer = 0;
+
+        if (player == 2)
+        {
+            allMoves = board.GetMoves(player);
+            nextPlayer = 1;
+        }
+        else if (player == 1)
+        {
+            allMoves = board.GetMoves(player);
+            nextPlayer = 2;
+        }
+        // BoardDraught bTest = board;
+        Move currentMove;
+
+
+        foreach (Move m in allMoves)//board.GetMoves())
+        {
+            board.MakeMove(m);
+            float currentScore = 0;
+            //Evaluate Moves
+            currentMove = m;// null;//= m;//m; ??
+            if (m.attacked)
+            {
+                if (nextPlayer == 2)
+                    nextPlayer = 1;
+                else
+                    nextPlayer = 2;
+            }
+            currentScore = Minimax_old(board, nextPlayer, maxDepth, currentDepth + 1, ref currentMove);
+
+            //board.SetCurrentMove(m);
+            //  float newScore = board.Evaluate(player, currentDepth);
+            //Evaluierung aktueller Move
+            // if (player == 1 && board.GetMoves(2).ToArray().Length == 0)
+            //   newScore += 200;
+            //else if (player == 2 && board.GetMoves(1).ToArray().Length == 0)
+            //  newScore += 200;
+            //currentScore += newScore;
+            if (board.GetCurrentPlayer() == player)
+            {
+                //  currentScore += newScore;
+
+                if (currentScore > bestScore)
+                {
+                    bestScore = currentScore;
+                    bestMove = m;
+                    m.mScore = bestScore;
+                }
+            }
+            else
+            {
+                //  currentScore -= newScore;
+
+                if (currentScore < bestScore)
+                {
+                    bestScore = currentScore;
+                    bestMove = m;
+                    m.mScore = bestScore;
+                }
+            }
+            board.StepBack();
+            if (m.attacked)
+            {
+                if (nextPlayer == 2)
+                    nextPlayer = 1;
+                else
+                    nextPlayer = 2;
+            }
+        }
+        List<Move> bestMoves = new List<Move>();
+        //score += bestScore;
+
+        if (currentDepth == 0)
+        {
+            foreach (Move m in allMoves)
+            {
+                if (m.mScore == bestScore)
+                {
+                    bestMoves.Add(m);
+                }
+            }
+            System.Random rnd = new System.Random();
+
+            int index = rnd.Next(bestMoves.Count);
+            bestMove = bestMoves.ToArray()[index];
+        }
+        //board.GetMoves())
+
+
+        //   bestMove.mScore = bestScore;
+        return bestScore;//bestScore;
+    }
 }
-
-
 
 /*  for (int i = 0; i < pieceManager.getBPieces().ToArray().Length; i++)
             {
