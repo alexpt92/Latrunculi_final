@@ -90,9 +90,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mOutlineImage: {fileID: 8951212277923435613}
+  n_Sprite: {fileID: 0}
+  o_Sprite: {fileID: 0}
+  state: 0
   mBoardPosition: {x: 0, y: 0}
   mBoard: {fileID: 0}
   mRectTransform: {fileID: 0}
+  mCurrentPiece: {fileID: 0}
 --- !u!212 &6438678930215925990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -130,7 +134,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -422123203
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

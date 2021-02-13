@@ -382,11 +382,11 @@ public class PieceManager : MonoBehaviour
 
             referenceScript.MoveAgain();
         }
-        if (board.GetCurrentPlayer() == 2)
+     /*   if (board.GetCurrentPlayer() == 2)
             GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
         else
             GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
-
+     */
     }
 
     private void NextPlayer()
