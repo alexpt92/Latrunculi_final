@@ -60,7 +60,6 @@ public class PieceManager : MonoBehaviour
         mWPieces = CreatePieces(Color.white, new Color32(100, 100, 100, 255), board);        
         //Create Black Pieces
         mBPieces = CreatePieces(Color.black, new Color32(0, 0, 0, 255), board);
-       // mAllPieces = mWPieces.ToArray().CopyTo(mAllPieces.ToArray(), mAllPieces.ToArray().Length - 1);//.Union<Piece>;
 
 
         PlacePieces(0, mWPieces, board);
@@ -68,10 +67,6 @@ public class PieceManager : MonoBehaviour
         PlacePieces(board.sizeY - 1, mBPieces, board);
 
         //White starts
-        //Switch Sides
-       
-        //!!!!!SwitchSides(Color.black);
-
     }
 
 
@@ -99,8 +94,7 @@ public class PieceManager : MonoBehaviour
         }
         float offsetY = (Screen.height - height) / 2;
         float offsetX = (Screen.width - (board.sizeX * sizePieceY)) / 2;
-        float sizePieceX = sizePieceY;// * ratio;
-
+        float sizePieceX = sizePieceY;
         for (int i = 0; i < getBPieces().ToArray().Length; i++)
         {
             //new Object
@@ -111,12 +105,6 @@ public class PieceManager : MonoBehaviour
             rectTransform.sizeDelta = new Vector2(sizePieceX, sizePieceX);
             Vector3 currentCellPos = getBPieces().ToArray()[i].getCurrentCell().GetComponent<RectTransform>().anchoredPosition;
             rectTransform.anchoredPosition = new Vector3(currentCellPos.x, currentCellPos.y, 0);
-            //getBPieces().ToArray()[i].getCurrentCell().GetComponent<RectTransform>().anchoredPosition;
-            //rectTransform.anchoredPosition = new Vector2((i * sizePieceX) + offsetX, (i * sizePieceX) + offsetY);
-
-            //Store piece
-          //  Piece newPiece = (Piece)newPieceObject.AddComponent(typeof(SimplePiece));
-          //  newPieces.Add(newPiece);
 
         }
         for (int i = 0; i < getWPieces().ToArray().Length; i++)
@@ -129,12 +117,6 @@ public class PieceManager : MonoBehaviour
             rectTransform.sizeDelta = new Vector2(sizePieceX, sizePieceX);
             Vector3 currentCellPos = getWPieces().ToArray()[i].getCurrentCell().GetComponent<RectTransform>().anchoredPosition;
             rectTransform.anchoredPosition = new Vector3(currentCellPos.x, currentCellPos.y, 0);
-           // rectTransform.anchoredPosition = getWPieces().ToArray()[i].getCurrentCell().GetComponent<RectTransform>().anchoredPosition;//new Vector2((i * sizePieceX) + offsetX, (i * sizePieceX) + offsetY);
-
-            //Store piece
-            //Piece newPiece = (Piece)newPieceObject.AddComponent(typeof(SimplePiece));
-            //newPieces.Add(newPiece);
-
         }
     }
 
@@ -159,7 +141,7 @@ public class PieceManager : MonoBehaviour
         }
         float offsetY = (Screen.height - height) / 2;
         float offsetX = (Screen.width - (board.sizeX * sizePieceY)) / 2;
-        float sizePieceX = sizePieceY;// * ratio;
+        float sizePieceX = sizePieceY;
 
         for (int i = 0; i < board.sizeX; i++)
         {
@@ -177,9 +159,7 @@ public class PieceManager : MonoBehaviour
             newPieceObject.transform.localScale = new Vector3(1, 1, 1);
             newPieceObject.transform.localRotation = Quaternion.identity;
             RectTransform rectTransform = newPieceObject.GetComponent<RectTransform>();
-            //  float height = Screen.height / (board.sizeY);
 
-            //rectTransform.sizeDelta = new Vector2(sizePieceY+(sizePieceX -sizePieceY), sizePieceY);
             rectTransform.sizeDelta = new Vector2(sizePieceX, sizePieceX);
 
             rectTransform.anchoredPosition = new Vector2((i * sizePieceX) + offsetX, (i * sizePieceX) + offsetY);
@@ -201,22 +181,11 @@ public class PieceManager : MonoBehaviour
         {
             pieces[i].Place(board.mAllCells[i, initRow]);
             board.simpleAllCells[i, initRow] = pieces[i].name;
-
         }
     }
 
     private void SetInteractive(List<Piece> allPieces, bool value)
     {
-      //  board.getCurrentPlayer == 2
-      
-     /*   if (value && board.GetCurrentPlayer() == 2)
-        {
-            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
-
-        }
-        else if (value == true && board.GetCurrentPlayer() == 1)
-            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";*/
-
         foreach (Piece piece in allPieces)
             piece.enabled = value;
     }
@@ -276,7 +245,7 @@ public class PieceManager : MonoBehaviour
             {       if (moveAgain)
                 {
                     Debug.Log("White wins. No Moves left.");
-                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "SHELL WINS!";
+                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "MUSCHELN GEWINNEN!";
                     StartCoroutine(RemoveWinMessageAfterDelay());
 
                     if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
@@ -286,7 +255,7 @@ public class PieceManager : MonoBehaviour
                 else
                 {
                     Debug.Log("Black wins. No Moves left");
-                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "STONE WINS!";
+                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "STEINE GEWINNEN!";
                     StartCoroutine(RemoveWinMessageAfterDelay());
 
                     if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
@@ -299,7 +268,7 @@ public class PieceManager : MonoBehaviour
                 if (moveAgain)
                 {
                     Debug.Log("Black wins. No Moves left");
-                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "STONE WINS!";
+                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "STEINE GEWINNEN!";
                     StartCoroutine(RemoveWinMessageAfterDelay());
 
                     if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
@@ -308,7 +277,7 @@ public class PieceManager : MonoBehaviour
                 else
                 {
                     Debug.Log("White wins. No Moves left.");
-                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "SHELL WINS!";
+                    GameObject.FindGameObjectWithTag("WinTag").GetComponent<TMPro.TextMeshProUGUI>().text = "MUSCHELN GEWINNEN!";
                     StartCoroutine(RemoveWinMessageAfterDelay());
 
                     if (referenceScript.firstAIActive.isOn && referenceScript.secondAIActive.isOn)
@@ -329,7 +298,6 @@ public class PieceManager : MonoBehaviour
                         Debug.Log("Black wins.");
 
                         ResetPieces(false);
-                        //  SwitchSides(Color.black);
                     }
                 }
                 if (bPieces[i].isDead())
@@ -340,7 +308,6 @@ public class PieceManager : MonoBehaviour
                         Debug.Log("White wins.");
 
                         ResetPieces(false);
-                        // SwitchSides(Color.black);
                     }
                 }
             }
@@ -353,14 +320,10 @@ public class PieceManager : MonoBehaviour
             if (referenceScript.getCurrentPlayer() == 1 && (referenceScript.firstAIActive.isOn))// || referenceScript.secondAIActive.isOn))
             {
                 DisableAllPieces();
-               // GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
-
             }
             else if (referenceScript.getCurrentPlayer() == 2)
             {
-               // GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
 
-                // referenceScript.MoveAgain(2);
             }
 
         }
@@ -382,11 +345,11 @@ public class PieceManager : MonoBehaviour
 
             referenceScript.MoveAgain();
         }
-     /*   if (board.GetCurrentPlayer() == 2)
+        if (board.GetCurrentPlayer() == 2)
             GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
         else
             GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
-     */
+     
     }
 
     private void NextPlayer()
@@ -395,7 +358,6 @@ public class PieceManager : MonoBehaviour
         GameManager referenceScript;
         referenceObject = GameObject.FindGameObjectWithTag("GameManager");
         referenceScript = referenceObject.GetComponent<GameManager>();
-        //if (moveAgain == false)
             
         referenceScript.nextPlayer();
 

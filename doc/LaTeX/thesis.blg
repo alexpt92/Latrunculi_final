@@ -41,7 +41,7 @@ I was expecting a `,' or a `}'---line 55 of file thesis.bib
  : year = {2011}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 136 of file thesis.bib
+Repeated entry---line 137 of file thesis.bib
  : @article{DBLP:journals/tc/Griffith76
  :                                     ,
 I'm skipping whatever remains of this entry
@@ -54,15 +54,15 @@ Warning--empty note in edwards1961alpha
 Warning--neither address nor publication date in uebel
 You've used 14 entries,
             4332 wiz_defined-function locations,
-            926 strings with 7911 characters,
-and the built_in function-call counts, 6021 in all, are:
-= -- 603
+            927 strings with 7914 characters,
+and the built_in function-call counts, 6036 in all, are:
+= -- 608
 > -- 115
 < -- 101
 + -- 135
 - -- 44
-* -- 372
-:= -- 1013
+* -- 373
+:= -- 1016
 add.period$ -- 21
 call.type$ -- 14
 change.case$ -- 43
@@ -71,17 +71,17 @@ cite$ -- 21
 duplicate$ -- 185
 empty$ -- 571
 format.name$ -- 60
-if$ -- 1304
+if$ -- 1309
 int.to.chr$ -- 0
 int.to.str$ -- 14
 missing$ -- 62
-newline$ -- 98
+newline$ -- 99
 num.names$ -- 24
-pop$ -- 79
+pop$ -- 78
 preamble$ -- 1
 purify$ -- 43
 quote$ -- 0
-skip$ -- 251
+skip$ -- 250
 stack$ -- 0
 substring$ -- 460
 swap$ -- 40
@@ -92,5 +92,5 @@ type$ -- 51
 warning$ -- 7
 while$ -- 47
 width$ -- 16
-write$ -- 202
+write$ -- 204
 (There were 2 error messages)

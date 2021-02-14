@@ -16,7 +16,6 @@ public class AIManager : MonoBehaviour
     {
         if (board.IsGameOver() || currentDepth == maxDepth)
         {
-            //board.SetCurrentMove(bestMove);
             return 0;
 
         }
@@ -38,19 +37,17 @@ public class AIManager : MonoBehaviour
             allMoves = board.GetMoves(player);
             nextPlayer = 2;
         }
-        // BoardDraught bTest = board;
         Move currentMove;
         if (currentDepth == 0)
         {
             float maxScore = 0;
         }
         float score = 0;
-        foreach (Move m in allMoves)//board.GetMoves())
+        foreach (Move m in allMoves)
         {
             board.MakeMove(m);
             float currentScore = 0;
-            //Evaluate Moves
-            currentMove = m;// null;//= m;//m; ??
+            currentMove = m;
             if (m.attacked)
             {
                 if (nextPlayer == 2)
@@ -60,14 +57,8 @@ public class AIManager : MonoBehaviour
             }
             currentScore = Minimax(board, nextPlayer, maxDepth, currentDepth + 1, ref currentMove);
 
-            //board.SetCurrentMove(m);
             float newScore = board.Evaluate(player, currentDepth);
             //Evaluierung aktueller Move
-            // if (player == 1 && board.GetMoves(2).ToArray().Length == 0)
-            //   newScore += 200;
-            //else if (player == 2 && board.GetMoves(1).ToArray().Length == 0)
-            //  newScore += 200;
-            //currentScore += newScore;
             if (board.GetCurrentPlayer() == player)
             {
                 currentScore += newScore;
@@ -116,11 +107,7 @@ public class AIManager : MonoBehaviour
             int index = rnd.Next(bestMoves.Count);
             bestMove = bestMoves.ToArray()[index];
         }
-        //board.GetMoves())
-
-
-        //   bestMove.mScore = bestScore;
-        return score;//bestScore;
+        return score;
     }
 
 
@@ -134,9 +121,7 @@ public class AIManager : MonoBehaviour
     {
         if (board.IsGameOver() || currentDepth == maxDepth)
         {
-            //board.SetCurrentMove(bestMove);
             return board.EvaluateOld2(player);
-
         }
 
         bestMove = null;
@@ -156,16 +141,14 @@ public class AIManager : MonoBehaviour
             allMoves = board.GetMoves(player);
             nextPlayer = 2;
         }
-        // BoardDraught bTest = board;
         Move currentMove;
 
 
-        foreach (Move m in allMoves)//board.GetMoves())
+        foreach (Move m in allMoves)
         {
             board.MakeMove(m);
             float currentScore = 0;
-            //Evaluate Moves
-            currentMove = m;// null;//= m;//m; ??
+            currentMove = m;
             if (m.attacked)
             {
                 if (nextPlayer == 2)
@@ -175,18 +158,9 @@ public class AIManager : MonoBehaviour
             }
             currentScore = Minimax_old(board, nextPlayer, maxDepth, currentDepth + 1, ref currentMove);
 
-            //board.SetCurrentMove(m);
-            //  float newScore = board.Evaluate(player, currentDepth);
-            //Evaluierung aktueller Move
-            // if (player == 1 && board.GetMoves(2).ToArray().Length == 0)
-            //   newScore += 200;
-            //else if (player == 2 && board.GetMoves(1).ToArray().Length == 0)
-            //  newScore += 200;
-            //currentScore += newScore;
+            
             if (board.GetCurrentPlayer() == player)
             {
-                //  currentScore += newScore;
-
                 if (currentScore > bestScore)
                 {
                     bestScore = currentScore;
@@ -196,8 +170,6 @@ public class AIManager : MonoBehaviour
             }
             else
             {
-                //  currentScore -= newScore;
-
                 if (currentScore < bestScore)
                 {
                     bestScore = currentScore;
@@ -215,8 +187,6 @@ public class AIManager : MonoBehaviour
             }
         }
         List<Move> bestMoves = new List<Move>();
-        //score += bestScore;
-
         if (currentDepth == 0)
         {
             foreach (Move m in allMoves)
@@ -231,34 +201,7 @@ public class AIManager : MonoBehaviour
             int index = rnd.Next(bestMoves.Count);
             bestMove = bestMoves.ToArray()[index];
         }
-        //board.GetMoves())
 
-
-        //   bestMove.mScore = bestScore;
-        return bestScore;//bestScore;
+        return bestScore;
     }
 }
-
-/*  for (int i = 0; i < pieceManager.getBPieces().ToArray().Length; i++)
-            {
-                List<Piece> list = pieceManager.getBPieces();
-                pieceManager.getBPieces()[i].getPossibleActions();
-                bool checkDead = list[i].isDead();
-                if (!pieceManager.getBPieces()[i].isDead())
-                    allMoves.AddRange(pieceManager.getBPieces()[i].moves); //Searching for all Possible Moves
-            }
-        }
-        else if (player == 1)
-        {
-            for (int i = 0; i < pieceManager.getBPieces().ToArray().Length; i++)
-            {
-                nextPlayer = 2;
-
-                List<Piece> list = pieceManager.getWPieces();
-                pieceManager.getWPieces()[i].getPossibleActions();
-                bool checkDead = list[i].isDead();
-                if (!pieceManager.getWPieces()[i].isDead())
-                    allMoves.AddRange(pieceManager.getWPieces()[i].moves); //Searching for all Possible Moves
-            }
-        }
-*/

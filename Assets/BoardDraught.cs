@@ -6,13 +6,9 @@ using UnityEngine.UI;
 
 public class BoardDraught : Board
 {
-    //public string[,] simpleAllCells;
-    //public int sizeX;
-    //public int sizeY;
+
     [HideInInspector]
-    //public string[,] simpleAllCells;
-    //protected int player;
-    //private bool gameOver = false;
+
    private Vector3Int mMovement;
    private Color currentColor = Color.clear;
     List<Move> allMoves = new List<Move>();
@@ -46,17 +42,6 @@ public class BoardDraught : Board
     float pointCorner = 80f;
     float pointPrepSquad = 20f;
     float pointOOBAndCorner = 20f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SetCurrentMove(Move newMove)
     {
@@ -82,27 +67,12 @@ public class BoardDraught : Board
         for (int i = 0; i < newMWPieces.ToArray().Length-1; i++)
         {
             mWPieces.Add(newMWPieces.ToArray()[i].gameObject.name);
-           // mWPieces[i] = newMWPieces.ToArray()[i].gameObject.name;
 
         }
         for (int i = 0; i < newMBPieces.ToArray().Length-1; i++)
         {
             mBPieces.Add(newMBPieces.ToArray()[i].gameObject.name);
-
-           // mBPieces[i] = newMBPieces.ToArray()[i].gameObject.name;
-
         }
-     //   mWPieces = newMWPieces;
-       // mBPieces = newbMPieces;
-    /*  pointThreat = 50;
-pointAttacked = 80;
-pointHide = 70;
-pointHighThreat = 60;
-pointSquareHide = 0;
-pointCorner = 0;
-pointHighAlert = 0;
-*/
-
 }
 
     public void changeAttackPoints ()
@@ -119,7 +89,6 @@ pointHighAlert = 0;
         //Vertical
         CreateCellPath(0, 1, mMovement.y, currentPos);
         CreateCellPath(0, -1, mMovement.y, currentPos);
-       // throw new NotImplementedException();
     }
 
     public override void FindMoves_new(Vector2Int currentPos, Vector2Int targetPos)
@@ -363,7 +332,6 @@ pointHighAlert = 0;
                     if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideLeft && m.highHideUp == false)
                     {
                         m.prepSquareHideUpMiss = true;
-                        //m.highHideRight = true;
                     }
                     if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideLeft && m.highHideUp)
                     {
@@ -416,7 +384,6 @@ pointHighAlert = 0;
                     if (j == targetPos.x + 1 && i == targetPos.y - 1 && m.highHideRight && m.highHideDown == false)
                     {
                         m.prepSquareHideDownMiss = true;
-                        //m.highHideRight = true;
                     }
                     if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideRight && m.highHideDown)
                     {
@@ -456,11 +423,7 @@ pointHighAlert = 0;
 
         int counter = allMoves.Count;
         Move m = new Move();
-        //GameObject referenceObject;
 
-        //referenceObject = GameObject.FindGameObjectWithTag("BoardCanvas");
-
-      // MoveDraught m = referenceObject.AddComponent<MoveDraught>();// = new MoveDraught();
         m.mPieceName = simpleAllCells[currentPos.x, currentPos.y];
         m.attacked = false;
         m.attacked2 = false;
@@ -1075,46 +1038,9 @@ pointHighAlert = 0;
     public BoardDraught MakeMove(Move m)
     {
 
-        //int nextPlayer;
-
-        //Copy Board and make move#
-
-
-     /*   int nextPlayer;
-        if (player == 1)
-            nextPlayer = 2;
-        else
-            nextPlayer = 1;*/
-        // string[,] copy = new string[sizeX, sizeY];
-
-        //   copy = mAllCells;
-
-        /*for (int i = 0; i < sizeX; i++)
-        {
-            for (int j = 0; j < sizeY; j++)
-            {
-                copy[i, j] = mAllCells[i, j];
-            }
-
-
-        }*/
-        //mAllCells[m.x,m.y] = m.mPieceName;
-        /*copy[m.x, m.y] = m.mPieceName;
-        copy[m.currentX, m.currentY] = null;
-        if (m.attacked)
-        {
-            copy[m.removeX, m.removeY] = null;
-        }
-        if (m.attacked2)
-        {
-            copy[m.removeX2, m.removeY2] = null;
-        }*/
+ 
         lastMove = m;
-      /*  movedPiece = m.mPieceName;
-        oldX = m.currentX;
-        oldY = m.currentY;
-        currentX = m.x;
-        currentY = m.y;*/
+
         simpleAllCells[m.x, m.y] = m.mPieceName;
         simpleAllCells[m.currentX, m.currentY] = null;
         if (m.attacked)
@@ -1122,7 +1048,6 @@ pointHighAlert = 0;
             lastMove.attackedPiece = simpleAllCells[m.removeX, m.removeY];
             simpleAllCells[m.removeX, m.removeY] = null;
             if (player == 1)
-           // if (m.attackedPiece.Contains("W"))
             for (int i = 0; i<mWPieces.ToArray().Length; i++)
             {
                 if (m.attackedPiece == mWPieces.ToArray()[i])
@@ -1131,7 +1056,6 @@ pointHighAlert = 0;
                 }
             }
             if (player == 2)
-           // if (m.attackedPiece.Contains("B"))
                 for (int i = 0; i < mBPieces.ToArray().Length; i++)
                 {
                     if (m.attackedPiece == mBPieces.ToArray()[i])
@@ -1146,7 +1070,6 @@ pointHighAlert = 0;
             simpleAllCells[m.removeX2, m.removeY2] = null;
             if (player == 1)
 
-               // if (m.attackedPiece2.Contains("W"))
                 for (int i = 0; i < mWPieces.ToArray().Length; i++)
                 {
                     if (m.attackedPiece2 == mWPieces.ToArray()[i])
@@ -1156,7 +1079,6 @@ pointHighAlert = 0;
                 }
             if (player == 2)
 
-                //if (m.attackedPiece2.Contains("B"))
                 for (int i = 0; i < mBPieces.ToArray().Length; i++)
                 {
                     if (m.attackedPiece2 == mBPieces.ToArray()[i])
@@ -1171,7 +1093,6 @@ pointHighAlert = 0;
             simpleAllCells[m.removeX3, m.removeY3] = null;
             if (player == 1)
 
-              //  if (m.attackedPiece3.Contains("W"))
                 for (int i = 0; i < mWPieces.ToArray().Length; i++)
                 {
                     if (m.attackedPiece3 == mWPieces.ToArray()[i])
@@ -1181,7 +1102,6 @@ pointHighAlert = 0;
                 }
             if (player == 2)
 
-               // if (m.attackedPiece3.Contains("B"))
                 for (int i = 0; i < mBPieces.ToArray().Length; i++)
                 {
                     if (m.attackedPiece3 == mBPieces.ToArray()[i])
@@ -1190,7 +1110,6 @@ pointHighAlert = 0;
                     }
                 }
         }
-        //BoardDraught b = new BoardDraught(copy, nextPlayer, sizeX, sizeY);
         currentMove = m;
 
         return this;
@@ -1305,25 +1224,13 @@ pointHighAlert = 0;
         string color = "W";
         if (player == 1)
             color ="B";
-       // return Evaluate_new(color);
         return Evaluate(color, depth);
-
-        //return Mathf.NegativeInfinity;
     }
 
-    /* public virtual float Evaluate(int player, Move m)
-     {
-         string color = "W";
-         if (player == 1)
-             color = "B";
-         return Evaluate(color);
-
-         //return Mathf.NegativeInfinity;
-     }*/
+  
     public void AdjustAttackPoints(float newAttackPoints)
     {
-       // pointAttacked = attackSlider.value;
-        //Debug.Log(pointAttacked);
+
     }
   
 
@@ -1368,24 +1275,11 @@ pointHighAlert = 0;
         if (currentMove.attacked3)
             eval += attackPoints;
 
-       /* if (currentMove.attacked)
-            eval += pointAttacked;
-        if (currentMove.attacked2)
-            eval += pointAttacked;
-        if (currentMove.threaten)
-            eval += pointThreat;
-        if (currentMove.hide)
-            eval += pointHide;
-        if (currentMove.highThreat)
-            eval += pointHighThreat;*/
+ 
         if (IsGameOver())
             eval += pointSuccess;
         currentMove.mScore += eval;
 
-
-        //    }
-        //  }
-        //  return 1;
         return eval;
     }
 
@@ -1454,17 +1348,6 @@ pointHighAlert = 0;
             attackWeight = 2f;
         }
 
-        //attackWeight = 1;
-        // dangerMultiplier = 1;
-        /*  pointThreat = 50;
-          pointAttacked = 80;
-          pointHide = 70;
-          pointHighThreat = 60;
-          pointSquareHide = 0;
-          pointCorner = 0;
-          pointHighAlert = 0;
-        */
-
        /* pointSuccess = 250f; //Defensiv
         pointAttacked = 100f;
         pointThreat = 10f;
@@ -1500,9 +1383,9 @@ pointHighAlert = 0;
         if (currentMove.attacked2)
             eval += pointAttacked * attackWeight * aggroWeight; 
         if (currentMove.attacked2)
-            eval += pointAttacked * attackWeight * aggroWeight;// * dangerMultiplier;
+            eval += pointAttacked * attackWeight * aggroWeight;
         if (currentMove.threaten)
-            eval += pointThreat * attackWeight * aggroWeight;// * dangerMultiplier;
+            eval += pointThreat * attackWeight * aggroWeight;
         if (currentMove.hide)
             eval += pointHide * dangerMultiplier * defenseWeight;
         if (currentMove.squareHide)
@@ -1515,21 +1398,13 @@ pointHighAlert = 0;
             eval += pointOOBAndCorner * dangerMultiplier * defenseWeight;
             if (currentMove.highAlert)
             eval += pointHighAlert;
-        //        if (eval == 1f)
-        //           eval += pointSimple;
-        //if (currentMove.success)
-        //  eval += pointSuccess;
+
         if (currentMove.highThreat)
                         eval += pointHighThreat;
                     if (IsGameOver())
                         eval += pointSuccess;
         eval *= depthWeight;
                         currentMove.mScore += eval;
-
-
-        //    }
-        //  }
-      //  return 1;
         return eval;
     }
 
@@ -1541,12 +1416,12 @@ pointHighAlert = 0;
         {
             score += 1000;
         }
-        if (color == "B")//&& mBPieces.ToArray().Length > mWPieces.ToArray().Length)
+        if (color == "B")
         {
             score += 100 * (mBPieces.ToArray().Length - mWPieces.ToArray().Length);
 
         }
-        if (color == "W")//&& mBPieces.ToArray().Length > mWPieces.ToArray().Length)
+        if (color == "W")
         {
             score += 100 * (mWPieces.ToArray().Length - mBPieces.ToArray().Length);
 
@@ -1560,10 +1435,7 @@ pointHighAlert = 0;
         string color = "W";
         if (player == 1)
             color = "B";
-        // return Evaluate_new(color);
         return Evaluate_old2(color);
-
-        //return Mathf.NegativeInfinity;
     }
 
     public float Evaluate_old(string color)
@@ -1586,7 +1458,7 @@ pointHighAlert = 0;
                 string p = simpleAllCells[i, j];
                 if (p == null || !(p.Contains(color)))
                     continue;
-                Move[] moves = GetMoves(player).ToArray();//p.getPossibleActions().ToArray();
+                Move[] moves = GetMoves(player).ToArray();
                 foreach (Move m in moves)
                 {
                     if (m.attacked)
@@ -1599,8 +1471,6 @@ pointHighAlert = 0;
                         eval += pointHide;
                     if (eval == 1f)
                         eval += pointSimple;
-                   // if (m.success)
-                     //   eval += pointSuccess;
                     m.mScore += eval;
                 }
             }
