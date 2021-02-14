@@ -300,14 +300,22 @@ public class GameManager : MonoBehaviour
             }
             else if (difficulty == 1 && !secondAIActive.isOn)// isActiveAndEnabled)
             {
-                pointAttacked = 100f;
+                pointAttacked = 90f;
+                pointThreat = 60f;
+                pointHide = 20f; //Aggro
+                pointHighThreat = 70f;
+                float pointSquareHide = 30f;
+                float pointHighAlert = -100f;
+                float pointCorner = 20f;
+                float pointPrepSquad = 20f;
+               /* pointAttacked = 100f;
                 pointThreat = 70f;
                 pointHide = 10f; //Aggro
                 pointHighThreat = 80f;
-                float pointSquareHide = 20f;
+                float pointSquareHide = 10f;
                 float pointHighAlert = -100f;
                 float pointCorner = 10f;
-                float pointPrepSquad = 10f;
+                float pointPrepSquad = 10f;*/
 
                 b = new BoardDraught(boarddraught, currentPlayer, mBoard.sizeX, mBoard.sizeY, pointAttacked, pointHide, pointThreat, pointHighThreat, pointSquareHide, pointCorner, pointHighAlert, pointPrepSquad, mPieceManager.getWPieces(), mPieceManager.getBPieces());
             }
@@ -584,6 +592,7 @@ public class GameManager : MonoBehaviour
                 MovePiece();
 
             }
+           // else if ( currentPlayer)
             else
             {
                 currentPlayer = 1;

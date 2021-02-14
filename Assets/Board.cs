@@ -26,80 +26,11 @@ public class Board : MonoBehaviour
     public int sizeX;
     public int sizeY;
     [HideInInspector]
-    public CellDraughtV[,] mAllCells;// = new Cell[sizeX, sizeY];
+    public CellDraughtV[,] mAllCells;
     public string[,] simpleAllCells;
     protected int player;
-    //private bool gameOver;//= false;
     protected Vector3Int mMovement;
     Color currentColor = Color.clear;
-
-   /* private void Update()
-    {
-        Debug.Log("Attack: " + pointAttacked + " Hide: " + pointHide + " Threat: " + pointThreat);
-    }*/
-    /* public Board(Cell[,] copyBoard, int nextPlayer, int rows, int cols)
-     {
-         mAllCells = copyBoard;
-         player = nextPlayer;
-         this.sizeX = rows;
-         this.sizeY = cols;
- }*/
-
-    /*public Board MakeMove(Move m)
-    {
-        //int nextPlayer;
-        //Copy Board and make move#
-        Move move = (Move)m;
-        //NextPlayer();
-        int nextPlayer;
-        if (player == 1)
-            nextPlayer = 2;
-        else
-            nextPlayer = 1;
-        Cell[,] copy = new Cell[sizeX, sizeY];
-        Cell[] copy2 = new Cell[sizeX];
-        //Array.Copy(mAllCells, 0, copy, 0, mAllCells.Length);
-        //copy = (Cell[,])mAllCells.Clone() as Cell[,];
-        //Cell[] tmpcopy;
-        //Extensions.Clone<Cell>(CustomArray.GetRow(mAllCells, 1));
-        for (int i = 0; i < sizeX; i++)
-        {
-            for (int j = 0; j < sizeY; j++)
-            {
-                copy[i, j] = Instantiate(mAllCells[i, j]);// copy2[j];
-            }
-            
-        }
-        //copy[m.x, m.y].mCurrentPiece = m.mPiece;
-        copy[m.currentX, m.currentY].mCurrentPiece = null;
-        if (m.attacked)
-        {
-            copy[m.removeX, m.removeY].mCurrentPiece = null;
-        }
-        if (m.attacked2)
-        {
-            copy[m.removeX2, m.removeY2].mCurrentPiece = null;
-        }
-        //Board b = new BoardDraught(copy, nextPlayer, sizeX, sizeY);
-        // return b;
-        return null;
-        //Piece[,] copy = new Cell[sizeX, sizeY]; 
-        //Array.Copy(board, 0, copy, 0, board.Length);
-        // Board newBoard = new Board();
-        //   Array.Clear(newBoard.mAll)
-        //   Array.Copy(mAllCells, 0, newBoard.mAllCells, 0, mAllCells.Length);
-        string tmpName = simpleAllCells[m.currentX, m.currentY];
-        simpleAllCells[m.currentX, m.currentY] = "empty";
-        simpleAllCells[m.x, m.y] = tmpName;
-        //mAllCells[m.currentX, m.currentY].mCurrentPiece.MakeMove(mAllCells[m.x, m.y]);
-        //TODO:!
-        //Array.Copy(mAllCells, 0, copy, 0, mAllCells.Length);
-        //  newBoard.mAllCells = copy;
-        // copy[move.y, move.x] = move; 
-        //Board b = new Board(copy, nextPlayer); 
-        //return b;
-        return this;// newBoard;
-    }*/
 
     public virtual string IsGameOver()
     {
@@ -129,7 +60,6 @@ public class Board : MonoBehaviour
             return "Player 2";
         else
             return "";
-       // return gameOver;
     }
 
     internal void resizeBoard()
@@ -183,8 +113,6 @@ public class Board : MonoBehaviour
         if (player == 1)
             color = Color.black;
         return Evaluate(color);
-
-        //return Mathf.NegativeInfinity;
     }
 
     public virtual void DestroyElements()
@@ -193,11 +121,8 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < sizeY; j++)
             {
-                //Destroy(mAllCells[i, j].gameObject);
-                Destroy(mAllCells[i, j]);// copy2[j];
+                Destroy(mAllCells[i, j]);
             }
-
-
         }
     }
 
@@ -234,8 +159,6 @@ public class Board : MonoBehaviour
                         eval += pointThreat;
                     if (m.hide)
                         eval += pointHide;
-                   // if (m.success)
-                     //   eval += pointSuccess;
                     if (eval == 1f)
                         eval += pointSimple;
 
@@ -253,7 +176,6 @@ public class Board : MonoBehaviour
             color = Color.black;
         }
         return Evaluate(color);
-        //  return Mathf.NegativeInfinity;
     }
 
 
@@ -269,14 +191,11 @@ public class Board : MonoBehaviour
 
         List<Move> moves = new List<Move>();
         int[] moveX = new int[] { -sizeX, sizeX };
-        //int moveY = -1;
 
         if (player == 2)
         {
 
         }
-        //return piece.getPossibleActions().ToArray();  
-
         return new Move[0];
     }
 
@@ -322,7 +241,6 @@ public class Board : MonoBehaviour
         //Vertical
         CreateCellPath(0, 1, mMovement.y, currentPos);
         CreateCellPath(0, -1, mMovement.y, currentPos);
-        // throw new NotImplementedException();
     }
 
 
@@ -330,7 +248,7 @@ public class Board : MonoBehaviour
     {
         int currentX = currentPos.x;
         int currentY = currentPos.y;
-        Move m = new Move();// this.gameObject.AddComponent<MoveDraught>();// = new MoveDraught();
+        Move m = new Move();
 
         for (int i = 1; i <= movement; i++)
         {
@@ -351,9 +269,7 @@ public class Board : MonoBehaviour
                 break;
 
             //ADD to Highlighted List
-            // mHighlightedCells.Add(mCurrentCell.mBoard.mAllCells[currentX, currentY]);
             Vector2Int targetPos = new Vector2Int(currentX, currentY);
-          //  FindMoves_new(currentPos, targetPos);
             FindMoves(currentPos, targetPos);
 
 
@@ -510,9 +426,6 @@ public class Board : MonoBehaviour
 
         ally3X = targetPos.x + 1;
         ally3Y = targetPos.y + 1;
-
-        //  allyX = targetPos.x;
-        //  allyY = targetPos.y + 1;
 
         if (ValidateCell(allyX, allyY) == CellState.Friendly && ValidateCell(ally2X, ally2Y) == CellState.Friendly)
         {
@@ -1134,7 +1047,6 @@ public class Board : MonoBehaviour
                     if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideLeft && m.highHideUp == false)
                     {
                         m.prepSquareHideUpMiss = true;
-                        //m.highHideRight = true;
                     }
                     if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideLeft && m.highHideUp)
                     {
@@ -1187,7 +1099,6 @@ public class Board : MonoBehaviour
                     if (j == targetPos.x + 1 && i == targetPos.y - 1 && m.highHideRight && m.highHideDown == false)
                     {
                         m.prepSquareHideDownMiss = true;
-                        //m.highHideRight = true;
                     }
                     if (j == targetPos.x - 1 && i == targetPos.y + 1 && m.highHideRight && m.highHideDown)
                     {
@@ -1416,12 +1327,9 @@ public class Board : MonoBehaviour
     {
         this.sizeX = newSizeX;
         this.sizeY = newSizeY;
-        //UnityEngine.Object.Instantiate(mCellPrefab, new Vector3(y * 3 - sizeX / 2, x * 3 - sizeY / 2), Quaternion.identity);
-        //gameOver = false;
         mAllCells = new CellDraughtV[this.sizeX, this.sizeY];
         simpleAllCells = new string[this.sizeX, this.sizeY];
         mMovement = new Vector3Int(sizeX, sizeY, 1);
-        //  this.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 125));
         player = 1;
 
 
@@ -1442,23 +1350,14 @@ public class Board : MonoBehaviour
         }
         float offsetY = (Screen.height - height) / 2;
         float offsetX = (Screen.width - (sizeX*sizePieceY))/2;
-        //float ratio = width / height;
-        //float sizePieceX = width / sizeX;
-        float sizePieceX = sizePieceY;//*ratio;
-
-        //float offset = (width - height) / 2;
-
+        float sizePieceX = sizePieceY;
 
         for (int y = 0; y < this.sizeY; y++)
         {
             for (int x = 0; x < this.sizeX; x++)
             {
 
-                // mCellPrefab.transform.
-                GameObject newCell = Instantiate(mCellPrefab, transform);//Instantiate(mCellPrefab, new Vector3(x * newX, y*newY), Quaternion.identity);
-                                                                         //Instantiate(mCellPrefab, transform);
-
-
+                GameObject newCell = Instantiate(mCellPrefab, transform);
                 //Position
 
 
@@ -1503,9 +1402,6 @@ public class Board : MonoBehaviour
             if (checkingPiece.mColor != targetCell.mCurrentPiece.mColor)
                 return CellState.Enemy;
         }
-
-        //if (mAllCells[targetX, targetY].mCurrentPiece != null && mAllCells[targetX, targetY].mCurrentPiece.name == checkingPiece.name)
-        //  return CellState.Free;
         if (targetCell.mCurrentPiece == null)
             return CellState.Free;
 
@@ -1527,31 +1423,6 @@ public class Board : MonoBehaviour
     }
 
 
-    /* public void copyBoard ()
-     {
-         Board newItem = new Board();
-         GameObject referenceObject;
-         referenceObject = GameObject.FindGameObjectWithTag("BoardCanvas");
-         CopySpecialComponents(referenceObject.gameObject, newItem.gameObject);
-     }*/
-
-    /*  private void CopySpecialComponents(GameObject _sourceGO, GameObject _targetGO)
-      {
-          foreach (var component in _sourceGO.GetComponents<Component>())
-          {
-              var componentType = component.GetType();
-              if (componentType != typeof(Transform) &&
-                  componentType != typeof(MeshFilter) &&
-                  componentType != typeof(MeshRenderer)
-                  )
-              {
-                  Debug.Log("Found a component of type " + component.GetType());
-                  UnityEditorInternal.ComponentUtility.CopyComponent(component);
-                  UnityEditorInternal.ComponentUtility.PasteComponentAsNew(_targetGO);
-                  Debug.Log("Copied " + component.GetType() + " from " + _sourceGO.name + " to " + _targetGO.name);
-              }
-          }
-      }*/
 
     public string[,] getDraughtAsStrings()
     {
@@ -1584,11 +1455,9 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < sizeY; j++)
             {
-                //  copy[i, j].mBoardPosition = mAllCells[i, j].mBoardPosition;
                 if (mAllCells[i, j].mCurrentPiece != null)
                     copy[i, j].Setup(mAllCells[i, j].mBoardPosition, mAllCells[i, j].mCurrentPiece.name);
 
-                // copy[i, j].mCurrentPiece = mAllCells[i, j].mCurrentPiece.name;
                 else
                     copy[i, j].Setup(mAllCells[i, j].mBoardPosition, null);
 
@@ -1596,21 +1465,8 @@ public class Board : MonoBehaviour
 
 
         }
-        //BoardDraught b = new BoardDraught(copy, player, sizeX, sizeY);
-        //return b;
+
         return null;
     }
-
-    /* public Board DeepCopy ()
-     {
-        /Board b = new Board();
-         b.mAllCells = this.mAllCells.Clone() as Cell[,];
-      //   b.mAllCells = this.mAllCells;//Array.Copy(mAllCells, b.mAllCells, mAllCells.Length);
-         b.player = this.player;
-         b.sizeX = this.sizeX;
-         b.sizeY = this.sizeY;
-         return b;
-     }*/
-
 
 }

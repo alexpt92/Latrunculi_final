@@ -14,14 +14,9 @@ public class Piece : EventTrigger
 
     protected CellDraughtV mOriginalCell = null;
     protected CellDraughtV mCurrentCell = null;
-
     protected PieceManager mPieceManager;
-
     protected CellDraughtV mTargetCell = null;
     protected List<Move> mMoves = new List<Move>();
-   // private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-
-
     protected Vector3Int mMovement;
     protected List<CellDraughtV> mHighlightedCells = new List<CellDraughtV>();
     public List<Move> moves = new List<Move>();
@@ -35,9 +30,7 @@ public class Piece : EventTrigger
     public virtual void Setup(Color newTeamColor, Color32 newSpriteColor, PieceManager newPieceManager, Vector3Int movement)
     {
         mPieceManager = newPieceManager;
-
         mColor = newTeamColor;
-       // GetComponent<Image>().color = newSpriteColor;
         mRectTransform = GetComponent<RectTransform>();
         mMovement = movement;
     }
@@ -87,8 +80,6 @@ public class Piece : EventTrigger
 
         //Object
         transform.localPosition = mCurrentCell.transform.localPosition;
-        
-        //gameObject.SetActive(true);
     }
 
     public virtual void PlaceByAI(CellDraughtV newCell)
@@ -101,7 +92,6 @@ public class Piece : EventTrigger
         if (newCell.name == null)
             Debug.Log("newCell.name is null");
         Debug.Log(this.name + " bewegt sich von " + mCurrentCell.name + " nach " + newCell.name);
-
         mTargetCell = newCell;
         Move();
     }
@@ -117,7 +107,6 @@ public class Piece : EventTrigger
         if (newCell.name == null)
             Debug.Log("newCell.name is null");
         Debug.Log("DRAUGHT: " + this.name + " bewegt sich von " + mCurrentCell.name + " nach " + newCell.name);
-
         mTargetCell = newCell;
         MakeMove();
     }
@@ -127,9 +116,7 @@ public class Piece : EventTrigger
     {
         if (mTargetCell.mCurrentPiece != null)
         {
-          //  transform.position = mCurrentCell.transform.position;
             mTargetCell = null;
-
             return;
         }
 
@@ -163,9 +150,7 @@ public class Piece : EventTrigger
         mCurrentCell = mTargetCell;
         mCurrentCell.mCurrentPiece = this;
 
-      //  transform.position = mCurrentCell.transform.position;
         mTargetCell = null;
-      //  mPieceManager.SwitchSides(color);
     }
 
     public virtual void Reset()
@@ -186,7 +171,6 @@ public class Piece : EventTrigger
     {
         //Clear Cell
         mCurrentCell.mCurrentPiece = null;
-        //mPieceManager.moveAgain = true; //NOT HERE
 
         //Remove Piece
         gameObject.SetActive(false);
@@ -220,25 +204,12 @@ public class Piece : EventTrigger
             if (color == Color.white)
             {
                 color = Color.black;
-             //   GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
-
             }
             else
             {
                 color = Color.white;
-             //   GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
-
             }
         }
-     /*   if (color == Color.black)
-        {
-            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Steine sind am Zug!";
-        }
-        else if (color == Color.white)
-        {
-            GameObject.FindGameObjectWithTag("PlayerTag").GetComponent<TMPro.TextMeshProUGUI>().text = "Muscheln sind am Zug!";
-
-        }*/
         Vector2 oldPosition = mCurrentCell.getBoardPosition();
         mPieceManager.getBoard().simpleAllCells[(int)oldPosition.x, (int)oldPosition.y] = "empty";
         mCurrentCell.mCurrentPiece = null;
@@ -251,7 +222,6 @@ public class Piece : EventTrigger
         transform.position = mCurrentCell.transform.position;
         mTargetCell = null;
 
-       // mPieceManager.activateALL();
         mPieceManager.SwitchSides(color);
 
     }
@@ -329,9 +299,6 @@ public class Piece : EventTrigger
             else
                 return null;
         
-
-        //TODO: erweitern auf "BEDROHUNG" prüfen!!!
-
     }
 
     public virtual void FindMoves()
@@ -349,7 +316,6 @@ public class Piece : EventTrigger
 
         int counter = moves.Count;
         Move m = new Move();
-        //m.mPiece = this;
         m.attacked = false;
         m.attacked2 = false;
         m.threaten = false;
@@ -561,14 +527,6 @@ public class Piece : EventTrigger
         //Vertical
         CreateCellPath(0, 1, mMovement.y, isAI);
         CreateCellPath(0, -1, mMovement.y, isAI);
-
-      /*  //Upper diagonal
-         CreateCellPath(1, 1, mMovement.z);
-         CreateCellPath(-1, 1, mMovement.z);
-
-         //Lower diagonal
-         CreateCellPath(-1, -1, mMovement.z);
-         CreateCellPath(1, -1, mMovement.z);*/
     }
 
     public virtual void CheckPath(Move m)
@@ -673,7 +631,6 @@ public class Piece : EventTrigger
             transform.position = mCurrentCell.gameObject.transform.position;
             return;
         }
-       // Debug.Log(mPieceManager.getBoard().pointHide);
         Move();
     }
     #endregion
