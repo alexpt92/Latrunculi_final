@@ -1,0 +1,31 @@
+\BOOKMARK [0][]{Inhaltsverzeichnis.0}{Inhaltsverzeichnis}{}% 1
+\BOOKMARK [0][]{chapter.1}{1 Einleitung}{}% 2
+\BOOKMARK [1][-]{section.1.1}{1.1 Motivation}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{1.2 Problemstellung}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.3}{1.3 Zielsetzung}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.4}{1.4 Aufbau der Arbeit}{chapter.1}% 6
+\BOOKMARK [0][]{chapter.2}{2 Grundlagen}{}% 7
+\BOOKMARK [1][-]{section.2.1}{2.1 Latrunculi}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{2.2 Unity Engine}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.3}{2.3 K\374nstliche Intelligenz}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Strategische KIs}{section.2.3}% 11
+\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Deterministische KIs}{section.2.3}% 12
+\BOOKMARK [2][-]{subsection.2.3.3}{2.3.3 Abgrenzung zum Machine Learning}{section.2.3}% 13
+\BOOKMARK [0][]{chapter.3}{3 Anforderungen}{}% 14
+\BOOKMARK [1][-]{section.3.1}{3.1 Technische Anforderungen}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.2}{3.2 Weitere Anforderungen}{chapter.3}% 16
+\BOOKMARK [0][]{chapter.4}{4 Ideen}{}% 17
+\BOOKMARK [0][]{chapter.5}{5 Implementierung}{}% 18
+\BOOKMARK [1][-]{section.5.1}{5.1 Unity}{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.2}{5.2 GameObjects}{chapter.5}% 20
+\BOOKMARK [1][-]{section.5.3}{5.3 Skripte}{chapter.5}% 21
+\BOOKMARK [1][-]{section.5.4}{5.4 MiniMaxing}{chapter.5}% 22
+\BOOKMARK [0][]{chapter.6}{6 Evaluation}{}% 23
+\BOOKMARK [1][-]{section.6.1}{6.1 Launch beim Kunden}{chapter.6}% 24
+\BOOKMARK [1][-]{section.6.2}{6.2 Verhalten in der Simulation ohne Analyse der Ausgangssituation}{chapter.6}% 25
+\BOOKMARK [1][-]{section.6.3}{6.3 Verhalten der KI ohne Analyse der Ausgangssituation gegen einen menschlichen Spieler}{chapter.6}% 26
+\BOOKMARK [1][-]{section.6.4}{6.4 Verhalten in der Simulation mit Analyse der Ausgangssituation}{chapter.6}% 27
+\BOOKMARK [1][-]{section.6.5}{6.5 Verhalten der KI mit Analyse der Ausgangssituation gegen einen menschlichen Spieler}{chapter.6}% 28
+\BOOKMARK [0][]{chapter.7}{7 Alpha-Beta-Algorithmus}{}% 29
+\BOOKMARK [0][]{chapter.8}{8 Diskussion und Ausblick}{}% 30
+\BOOKMARK [0][]{section*.43}{Literaturverzeichnis}{}% 31

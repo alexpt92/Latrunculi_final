@@ -26,55 +26,55 @@ Das Abbrechen der Suche führt zu der vorher erwähnten Verkürzung der Laufzeit
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/ab1}
-	\caption{Alpha-Beta Pruning: Schritt 1}
+	\caption{Alpha-Beta: Schritt 1}
 	\label{fig:ab1}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/ab2}
-	\caption{Alpha-Beta Pruning: Schritt 2}
+	\caption{Alpha-Beta: Schritt 2}
 	\label{fig:ab2}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/ab3}
-	\caption{Alpha-Beta Pruning: Schritt 3}
+	\caption{Alpha-Beta: Schritt 3}
 	\label{fig:ab3}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/ab4}
-	\caption{Alpha-Beta Pruning: Schritt 4}
+	\caption{Alpha-Beta: Schritt 4}
 	\label{fig:ab4}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/ab5}
-	\caption{Alpha-Beta Pruning: Schritt 5}
+	\caption{Alpha-Beta: Schritt 5}
 	\label{fig:ab5}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/ab6}
-	\caption{Alpha-Beta Pruning: Schritt 6}
+	\caption{Alpha-Beta: Schritt 6}
 	\label{fig:ab6}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/ab7}
-	\caption{Alpha-Beta Pruning: Schritt 7}
+	\caption{Alpha-Beta: Schritt 7}
 	\label{fig:ab7}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics{img/ab8}
-	\caption{Alpha-Beta Pruning: Schritt 8}
+	\caption{Alpha-Beta: Schritt 8}
 	\label{fig:ab8}
 \end{figure}
 %Diese Verbesserung wird dadurch erzielt, dass die Suche eines Pfades abgebrochen wird, sobald klar wird, dass das Ergebnis nicht beeinflusst wird. Als Beispiel kann die Abbildung 2.6 wieder betrachtet werden. Hier wird der linke Teilbaum zuerst durchsucht. Da jeweils vom besten Zug der Spieler ausgegangen wird, wird dieser Teilbaum durchsucht und beta wird anschließend auf -40 gesetzt (bester Zug der Muscheln). Anschließend wird der mittlere Teilbaum betrachtet. Hier wird der beste Zug der Muscheln mit -100 bewertet und somit eine neue untere Schranke von -100 festgelegt und die Durchsuchung der anderen Pfade abgebrochen, da eine bessere Wertung nicht erreichbar ist. Außerdem wird alpha mit +30 belegt. der letzte Teilbaum wird ebenfalls durchsucht bis die -100 getroffen wird und hier abgebrochen. Dadurch wird die Laufzeit verringert aber das selbe Endergebnis erzielt.

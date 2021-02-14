@@ -17,10 +17,10 @@ In diesem Kapitel werden die Features erklärt, die grundlegend notwendig sind, 
 \paragraph{Grundlegende Features}
  Diese grundsätzlichen Features entsprechen dem ursprünglichen Prototypen des Spiels, der in der Abbildung \ref{fig:Prototyp} zu sehen ist, dadurch konnten die implementierten Regeln getestet und durch  zusätzliche Ideen erweitert werden.
  	\begin{itemize}
- 		\item Spielbrett, mit einer Größe von 8x8 und fix in der Szene verankert
- 		\item Schwarze und weiße/graue Kreise als Spielsteine
- 		\item Zwei Spieler können per Klick auf einen Stein und auf ein Feld Spielsteine bewegen
- 		\item Hervorheben der möglichen Positionen
+ 		\item Spielbrett, mit einer Größe von 8x8 und fix in der Szene verankert.
+ 		\item Schwarze und weiße/graue Kreise als Spielsteine.
+ 		\item Zwei Spieler können per Klick auf einen Stein und auf ein Feld Spielsteine bewegen.
+ 		\item Hervorheben der möglichen Positionen.
  	\end{itemize}
 \begin{figure}[h]
 	\centering
@@ -31,21 +31,21 @@ In diesem Kapitel werden die Features erklärt, die grundlegend notwendig sind, 
  \paragraph{Erweiterte Features nach Testen der Logik}
  Die erweiterten Features wurden nach ausgiebigem Testen der grundsätzlichen Features und der implementierten Logik hinzugefügt.
  \begin{itemize}
- \item Künstliche Intelligenz als Gegenspieler
- \item Pausenmenü mit Neustart-, Beenden- und Start-Button
- \item Dynamisch generiertes Spielfeld für unterschiedliche Größen des Spielbretts
- \item Slider um die Punkteverteilung der künstlichen Intelligenz zu regulieren
- \item Touch-Unterstützung, da beim Landesmuseum ein Touchscreen verwendet wird, soll das Spiel die Bedienung ohne Maus und Tastatur unterstützen
- \item Simple Kreise durch Sprites von historisch verwendeten Spielsteinen ersetzen
+ \item Künstliche Intelligenz als Gegenspieler.
+ \item Pausenmenü mit Neustart-, Beenden- und Start-Button.
+ \item Dynamisch generiertes Spielfeld für unterschiedliche Größen des Spielbretts.
+ \item Slider um die Punkteverteilung der künstlichen Intelligenz zu regulieren.
+ \item Touch-Unterstützung, da beim Landesmuseum ein Touchscreen verwendet wird, soll das Spiel die Bedienung ohne Maus und Tastatur unterstützen.
+ \item Simple Kreise durch Sprites von historisch verwendeten Spielsteinen ersetzen.
 \end{itemize}
 
 
 \paragraph{Zusätzliche Features bei Übergabe an Kunden}
 Nachdem das zuvor konzeptionierte Spiel dem Landesmuseum Birkenfeld zugeschickt wurde, haben sich die folgenden noch zusätzlich benötigten Features herausgestellt:
 \begin{itemize}
-	\item Unterschiedliche Schwierigkeitsgrade anstatt Slider im Spiel gegen die KI, da diese nicht so intuitiv verstanden wurden
-	\item Zweite KI soll zuschaltbar sein, um Spiel zu simulieren
-	\item Neustart- und Beenden-Buttons auf den Spielbildschirm verschieben	
+	\item Unterschiedliche Schwierigkeitsgrade anstatt Slider im Spiel gegen die KI, da diese nicht so intuitiv verstanden wurden.
+	\item Zweite KI soll zuschaltbar sein, um Spiel zu simulieren.
+	\item Neustart- und Beenden-Buttons auf den Spielbildschirm verschieben	.
 \end{itemize}
 
 
@@ -54,20 +54,20 @@ Zur Umsetzung von Latrunculi wurden folgende Sprites genutzt:
 \begin{itemize}
 	\item Spieler 1 als Muscheln
 	\item Spieler 2 als Steine
-	\item Quadratische Zellen als einzelne Felder des Spielbretts
-	\item Quadratische Zellen mit Hervorgehobenen Rändern als Rückmeldung welche Bewegung möglich ist
+	\item Quadratische Zellen als einzelne Felder des Spielbretts darstellen.
+	\item Quadratische Zellen mit Hervorgehobenen Rändern als Rückmeldung welche Bewegung möglich ist.
 \end{itemize}
 
 \paragraph{Nötige Technologien}
 \begin{itemize}
-	\item Unity 2019.3.14f als Engine
-	\item C\# für die verwendeten Skripte
-	\item Visual Studio 2019 als Entwicklungsumgebung 
-	\item GIMP zum erstellen und bearbeiten von Sprites
+	\item Unity 2019.3.14f als Engine.
+	\item C\# für die verwendeten Skripte.
+	\item Visual Studio 2019 als Entwicklungsumgebung .
+	\item GIMP zum Erstellen und Bearbeiten von Sprites.
 \end{itemize}
 
 \paragraph{Künstliche Intelligenz}
-Um das Spielen auch alleine zu ermöglichen wurde auf Basis des MiniMax-Algorithmus eine künstliche Intelligenz entwickelt gegen die ein Spieler antreten kann. Hierbei können 3 verschiedene Schwierigkeitsgrade ausgewählt werden, indem die Punkteverteilung des Algorithmus und die Tiefe, die dieser berechnen soll, angepasst werden. Außerdem wurde für Vorführungen im Museum eine zweite KI mit einer eigenen Punkteverteilung hinzugefügt um das Spiel auch als Simulation laufen lassen zu können.
+Um das Spielen auch alleine zu ermöglichen, wurde auf Basis des MiniMax~Algorithmus eine künstliche Intelligenz entwickelt gegen die ein Spieler antreten kann. Hierbei können drei verschiedene Schwierigkeitsgrade ausgewählt werden, indem die Punkteverteilung des Algorithmus und die Tiefe, die dieser berechnen soll, angepasst werden. Außerdem wurde für Vorführungen im Museum eine zweite KI mit einer eigenen Punkteverteilung hinzugefügt um das Spiel auch als Simulation laufen lassen zu können.
 
 %% ==============================
 %%\section{Abschnitt 2}
