@@ -1,0 +1,67 @@
+\begin{thebibliography}{10}
+
+\bibitem{mastersgames}
+{Ludus Latrunculorum or Latrunculi. Rules for the Classic Roman game}, 2011.
+\newblock
+  \url{https://www.mastersofgames.com/rules/Ludus-Latrunculorum-Rules.pdf}.
+
+\bibitem{UPrefabs}
+{\em Unity Documentation}, 2018.
+\newblock Eingesehen am 30.01.2021.
+
+\bibitem{edwards1961alpha}
+Daniel~James Edwards and TP~Hart.
+\newblock The alpha-beta heuristic.
+\newblock Technical report, 1961.
+
+\bibitem{DBLP:journals/tc/Griffith76}
+Arnold~K. Griffith.
+\newblock Empirical exploration of the performance of the alpha beta
+  tree-searching heuristic.
+\newblock {\em {IEEE} Trans. Computers}, 25(1):6--11, 1976.
+
+\bibitem{AlphaBeta}
+Maria Hartmann.
+\newblock Der alpha-beta-algorithmus, 2017.
+
+\bibitem{DBLP:journals/micro/Hsu99}
+Feng{-}Hsiung Hsu.
+\newblock {IBM's Deep Blue Chess grandmaster chips}.
+\newblock {\em {IEEE} Micro}, 19(2):70--81, 1999.
+
+\bibitem{DBLP:journals/cse/Hsu06}
+Feng{-}Hsiung Hsu.
+\newblock Chess hardware in deep blue.
+\newblock {\em Comput. Sci. Eng.}, 8(1):50--60, 2006.
+
+\bibitem{palacios2016unity}
+Jorge Palacios.
+\newblock {\em Unity 5. x Game AI Programming Cookbook}.
+\newblock Packt Publishing Ltd, 2016.
+\newblock Seiten: 182-184. ISBN 978-1-78355-357-0.
+
+\bibitem{homoLudens}
+Ulrich Schadler.
+\newblock Latrunculi - ein verlorenes strategisches {Brettspiel der Romer.}
+\newblock {\em HOMO LUDENS - Der spielende Mensch}, pages 47--67, 1994.
+
+\bibitem{uebel}
+Katharina~Uebel und Peter~Buri.
+\newblock {\em Römische Spiele - So spielten die alten Römer}.
+\newblock Regionala Verlag, second edition.
+\newblock Euskirchen, Germany, ISBN 978-3-939722-32-8.
+
+\bibitem{comscigate}
+Kowalski Wally~J.
+\newblock Roman board games.
+\newblock
+  http://www.comscigate.com/HW/cs302/acsl/2007-2008/contest_3/Petteia%20Rules.htm.
+\newblock Eingesehen am 30.01.2021.
+
+\bibitem{yannakakis2018artificial}
+Georgios~N Yannakakis and Julian Togelius.
+\newblock {\em Artificial intelligence and games}, volume~2.
+\newblock Springer, 2018.
+\newblock Seite: 45, ISBN 978-3-319-63518-7.
+
+\end{thebibliography}

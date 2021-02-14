@@ -1,0 +1,34 @@
+\babel@toc {ngerman}{}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Startkonfiguration eines 7x6 Latrunculi Feldes}}{4}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Legitime Bewegungen auf einem 7x6 Latrunculi-Feld(links) \& nicht erlaubte Züge (rechts)}}{4}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Eroberung eines Spielsteins (links) und keine Eroberung (rechts)}}{5}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Ausschnitt: MinMax-Spielbaum eines 6x6 Latrunculi Feldes}}{7}{figure.2.4}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Prototyp}}{10}{figure.4.1}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces MiniMax}}{16}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Evaluierungs-Funktion Version 1}}{17}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Vierer-Formation und L-Form}}{17}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Evaluierungs-Funktion Version 2}}{18}{figure.5.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Spieloptionen}}{20}{figure.6.1}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Spielende wird nicht erkannt}}{22}{figure.6.2}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Steine und Muscheln mit der gleichen defensiven Konfiguration:\newline Links mit Suchtiefe 10 und rechts mit Suchtiefe 3}}{25}{figure.6.3}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Steine und Muscheln mit der gleichen aggressiven Konfiguration und Suchtiefe 10: Links: Reihenformation \& rechts: Endsituation.}}{25}{figure.6.4}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Steine und Muscheln mit der gleichen aggressiven Konfiguration und Suchtiefe 3: Endsituation.}}{26}{figure.6.5}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Steine und Muscheln mit der gleichen Konfiguration und Suchtiefe erkennen mögliche Eroberung spät.}}{27}{figure.6.6}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Hohe Angriffspunkte bei Suchtiefe 3. KI weicht in die Ecken aus.}}{28}{figure.6.7}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces KI lässt sich einfach einkesseln.}}{29}{figure.6.8}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Alpha-Beta: Schritt 1}}{31}{figure.7.1}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Alpha-Beta: Schritt 2}}{31}{figure.7.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Alpha-Beta: Schritt 3}}{32}{figure.7.3}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Alpha-Beta: Schritt 4}}{32}{figure.7.4}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Alpha-Beta: Schritt 5}}{33}{figure.7.5}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Alpha-Beta: Schritt 6}}{33}{figure.7.6}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Alpha-Beta: Schritt 7}}{34}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Alpha-Beta: Schritt 8}}{34}{figure.7.8}%
+\addvspace {10\p@ }

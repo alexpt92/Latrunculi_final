@@ -1,0 +1,70 @@
+\babel@toc {ngerman}{}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Problemstellung}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Zielsetzung}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Aufbau der Arbeit}{2}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Grundlagen}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Latrunculi}{3}{section.2.1}%
+\contentsline {paragraph}{Spielregeln}{3}{section*.4}%
+\contentsline {section}{\numberline {2.2}Unity Engine}{4}{section.2.2}%
+\contentsline {paragraph}{Prefab System}{5}{section*.5}%
+\contentsline {section}{\numberline {2.3}Künstliche Intelligenz}{5}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Strategische KIs}{6}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Deterministische KIs}{6}{subsection.2.3.2}%
+\contentsline {paragraph}{MiniMax}{6}{section*.6}%
+\contentsline {paragraph}{Erfolgreiche Umsetzungen}{7}{section*.7}%
+\contentsline {subsection}{\numberline {2.3.3}Abgrenzung zum Machine Learning}{7}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Anforderungen}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Technische Anforderungen}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Weitere Anforderungen}{9}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Ideen}{10}{chapter.4}%
+\contentsline {paragraph}{Grundlegende Features}{10}{section*.8}%
+\contentsline {paragraph}{Erweiterte Features nach Testen der Logik}{10}{section*.9}%
+\contentsline {paragraph}{Zusätzliche Features bei Übergabe an Kunden}{11}{section*.10}%
+\contentsline {paragraph}{Benötigte Grafiken}{11}{section*.11}%
+\contentsline {paragraph}{Nötige Technologien}{11}{section*.12}%
+\contentsline {paragraph}{Künstliche Intelligenz}{11}{section*.13}%
+\contentsline {chapter}{\numberline {5}Implementierung}{12}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Unity}{12}{section.5.1}%
+\contentsline {section}{\numberline {5.2}GameObjects}{12}{section.5.2}%
+\contentsline {paragraph}{Main Camera}{12}{section*.14}%
+\contentsline {paragraph}{Board}{12}{section*.15}%
+\contentsline {paragraph}{PieceManager}{13}{section*.16}%
+\contentsline {paragraph}{GameManager}{13}{section*.17}%
+\contentsline {paragraph}{EscapeMenuManager}{13}{section*.18}%
+\contentsline {section}{\numberline {5.3}Skripte}{13}{section.5.3}%
+\contentsline {section}{\numberline {5.4}MiniMaxing}{14}{section.5.4}%
+\contentsline {paragraph}{Funktionsaufruf MiniMax}{14}{section*.19}%
+\contentsline {paragraph}{Evaluierung}{14}{section*.20}%
+\contentsline {paragraph}{Verbesserung der Evaluierungs-Funktion}{15}{section*.21}%
+\contentsline {paragraph}{Analyse der Ausgangssituation}{15}{section*.22}%
+\contentsline {chapter}{\numberline {6}Evaluation}{19}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Launch beim Kunden}{19}{section.6.1}%
+\contentsline {paragraph}{Umsetzung der Kritikpunkte}{19}{section*.23}%
+\contentsline {section}{\numberline {6.2}Verhalten in der Simulation ohne Analyse der Ausgangssituation}{20}{section.6.2}%
+\contentsline {paragraph}{Spieler 1 (Muscheln):}{20}{section*.24}%
+\contentsline {paragraph}{Spieler 2 (Steine):}{20}{section*.25}%
+\contentsline {paragraph}{Suchtiefe: 10}{21}{section*.26}%
+\contentsline {paragraph}{Erhöhte Verteidigungspunkte und verminderte Angriffspunkte mit Suchtiefe 3}{21}{section*.27}%
+\contentsline {paragraph}{Spieler 1 (Muscheln):}{21}{section*.28}%
+\contentsline {paragraph}{Spieler 2 (Steine):}{21}{section*.29}%
+\contentsline {paragraph}{Suchtiefe 10}{22}{section*.30}%
+\contentsline {section}{\numberline {6.3}Verhalten der KI ohne Analyse der Ausgangssituation gegen einen menschlichen Spieler}{22}{section.6.3}%
+\contentsline {paragraph}{Spieler 2 (Steine):}{22}{section*.31}%
+\contentsline {paragraph}{Spieler 2 (Steine):}{23}{section*.32}%
+\contentsline {paragraph}{Spieler 2 (Steine):}{23}{section*.33}%
+\contentsline {paragraph}{Spieler 2 (Steine):}{24}{section*.34}%
+\contentsline {section}{\numberline {6.4}Verhalten in der Simulation mit Analyse der Ausgangssituation}{24}{section.6.4}%
+\contentsline {paragraph}{Erhöhte Angriffs- und verminderte Verteidigungspunkte mit Suchtiefe 10}{25}{section*.35}%
+\contentsline {paragraph}{Erhöhte Angriffs- und verminderte Verteidigungspunkte mit Suchtiefe 3}{25}{section*.36}%
+\contentsline {paragraph}{Flags mit gleicher Punkteverteilung und Suchtiefe 10}{26}{section*.37}%
+\contentsline {paragraph}{Flags mit gleicher Punkteverteilung und Suchtiefe 3}{26}{section*.38}%
+\contentsline {paragraph}{Aggressive gegen Defensive KI}{27}{section*.39}%
+\contentsline {section}{\numberline {6.5}Verhalten der KI mit Analyse der Ausgangssituation gegen einen menschlichen Spieler}{27}{section.6.5}%
+\contentsline {paragraph}{Erhöhte Angriffs- und verminderte Verteidigungspunkte mit Suchtiefe 10}{28}{section*.40}%
+\contentsline {paragraph}{Erhöhte Angriffs- und verminderte Verteidigungspunkte mit Suchtiefe 3}{28}{section*.41}%
+\contentsline {paragraph}{Ausgeglichene Punkteverteilung}{28}{section*.42}%
+\contentsline {chapter}{\numberline {7}Alpha-Beta-Algorithmus}{30}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Diskussion und Ausblick}{35}{chapter.8}%
+\contentsline {chapter}{Literaturverzeichnis}{36}{section*.43}%
